@@ -1,0 +1,32 @@
+{
+  "name": "joya-web-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saulwolfdev/joya-web-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saulwolfdev/joya-web-app/issues"
+  },
+  "homepage": "https://github.com/saulwolfdev/joya-web-app#readme",
+  "dependencies": {
+    "bootstrap": "^5.0.1",
+    "dart-sass": "^1.25.0",
+    "next": "^10.2.2",
+    "node-sass": "^6.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass": "^1.34.0",
+    "sass-loader": "^11.1.1"
+  }
+}
