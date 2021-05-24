@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/saulwolfdev/joya-web-app#readme",
   "dependencies": {
-    "bootstrap": "^5.0.1",
+    "bootstrap": "^5.0.0-beta3",
     "dart-sass": "^1.25.0",
     "next": "^10.2.2",
     "node-sass": "^6.0.0",
