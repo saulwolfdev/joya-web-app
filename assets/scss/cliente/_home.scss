@@ -6,7 +6,7 @@ $step-roundness: 100px;
 .hero {
 	padding-bottom: 2 * $step-top-offset;
 
-	background-image: url("../assets/img/hero-sample.jpg"); 
+	background-image: url("../../../assets/img/hero-sample.jpg"); 
 	background-position: center center; 
 	background-size: cover; 
 
@@ -147,7 +147,7 @@ $step-roundness: 100px;
 
 	.video-background {
 		position: relative; left: 3%; 
-	    background: transparent url("../assets/img/tablet.png") top left no-repeat; 
+	    background: transparent url("../../../assets/img/tablet.png") top left no-repeat; 
 		background-size: 100% 100%;
 		padding: 6.35% 14.6% 9.6% 9.5%;
 		//display: inline-block;
@@ -175,7 +175,7 @@ $step-roundness: 100px;
 
 	@media (min-width: $start-sm) {
 		padding: 75px 0 85px; 
-		background: $c-primary url("../assets/img/mapa-caba.jpg") center center no-repeat;
+		background: $c-primary url("../../../assets/img/mapa-caba.jpg") center center no-repeat;
 		background-size: cover; 
 
 		.content {

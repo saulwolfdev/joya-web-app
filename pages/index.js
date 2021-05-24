@@ -1,7 +1,10 @@
 
 export default function Home() {
     return (
-	    <div id="wrapper">
+		<>
+		<h1>HOME</h1>
+		</>
+	   /*  <div id="wrapper">
 		<div class="overlay"></div>
 		<header class="fixed-top-scroll fixed-top">
 	        <nav class="navbar">
@@ -288,6 +291,6 @@ export default function Home() {
 				</div>
 			</div>
 		</footer>
-	</div>
+	</div> */
     )
 }

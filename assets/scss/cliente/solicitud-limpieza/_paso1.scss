@@ -56,7 +56,7 @@
 			width: $min * 100% / $max;
 			height: $min * 100% / $max;
 
-			background: #DDECFC url("../assets/img/vidrio.jpg") no-repeat center center;
+			background: #DDECFC url("../../../img/vidrio.jpg") no-repeat center center;
 			background-size: cover; 
 			transition: all 0.3s ease-out;  
 
@@ -72,7 +72,7 @@
 
 			&:after {
 				content: ""; 
-				background: transparent url("../assets/img/stars.svg") no-repeat center center;
+				background: transparent url("../../../img/stars.svg") no-repeat center center;
 				background-size: contain; 
 				width: 29px; height: 26px; 
 				display: block;
