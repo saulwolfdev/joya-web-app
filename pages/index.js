@@ -1,5 +1,8 @@
 import Image from 'next/image'
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons"; 
+
 export default function Home() {
   return (
     <div id="wrapper">
@@ -12,6 +15,7 @@ export default function Home() {
               <h1>Tus vidrieras siempre limpias</h1>		
               <p>Solicitá tu servicio, desde $50 la limpieza.</p>
               <div className="form form-rounded">
+{/*               <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon> */}
                 <label htmlFor="direccion" className="form-label sr-only">Dirección de tu vidriera</label>
                 <div className="input-group-btn">
                   <input type="text" className="form-control" id="direccion" aria-describedby="direccionHelp" placeholder="Dirección de tu vidriera"/>
