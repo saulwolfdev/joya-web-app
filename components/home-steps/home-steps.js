@@ -1,39 +1,55 @@
+const steps = [
+    {
+        step: "01",
+        image: "/step1.jpg",
+        description: "Solicitá un vidrierista",
+        title: "Solicitá un vidrierista",
+        text: "indicando ubicación, tamaño de la vidriera.",
+        width: 80,
+        height: 67
+    },
+    {
+        step: "02",
+        image: "/step2.jpg",
+        description: "Elegí día, horario y frecuencia",
+        title: "Vos elegís día, horario y frecuencia",
+        text: "Los días que quieras, a la hora que quieras.",
+        width: 67,
+        height: 68
+    },
+    {
+        step: "03",
+        image: "/step3.jpg",
+        description: "Pago seguro",
+        title: "Pagá de forma segura",
+        text: "con tu tarjeta de crédito o adhieriéndote al débito automático.",
+        width: 76,
+        height: 67
+    }
+]
+
 const HomeSteps = () => {
     return (
         <div className="home-steps section">
             <div className="container-fluid">
-            <div className="row">
-                <div className="col step">
-                    <div className="num">01</div>
-                    <div className="img-block">
-                    <img className="img-fluid" src="step1.jpg" alt="Solicitá un vidrierista" width="80" height="67"/>       
+                <div className="row">
+                    {
+                        steps.map((step) => {
+                            return (
+                                <div className="col step">
+                                    <div className="num">{step.step}</div>
+                                    <div className="img-block">
+                                    <img className="img-fluid" src={step.image} alt={step.description} width={step.width} height={step.height}/>       
+                                </div>
+                                    <div className="text">
+                                    <h4>{step.title}</h4>
+                                    <p>{step.text}</p>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
-                    <div className="text">
-                    <h4>Solicitá un vidrierista</h4>
-                    <p>indicando ubicación, tamaño de la vidriera.</p>
-                    </div>
-                </div>
-                <div className="col step">
-                    <div className="num">02</div>
-                    <div className="img-block">
-                    <img className="img-fluid" src="/step2.jpg" alt="Elegí día, horario y frecuencia" width="67" height="68"/>
-                    </div>
-                    <div className="text">
-                    <h4>Vos elegís día, horario y frecuencia</h4>
-                    <p>Los días que quieras, a la hora que quieras.</p>
-                    </div>
-                </div>
-                <div className="col step">
-                    <div className="num">03</div>
-                    <div className="img-block">
-                    <img className="img-fluid" src="/step3.jpg" alt="Pago seguro" width="76" height="67"/>
-                    </div>
-                    <div className="text">
-                    <h4>Pagá de forma segura</h4>
-                    <p>con tu tarjeta de crédito o adhieriéndote al débito automático.</p>
-                    </div>
-                </div>
-            </div>
             </div>
         </div>
     )

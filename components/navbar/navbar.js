@@ -7,11 +7,11 @@ export default function Navbar() {
                 <div className="row">
                     <div className="col-auto logo-div">
                         <h1 className="site-title">
-{/* 	                           <a className="navbar-brand main-logo" href="#" rel="home" style="background-image: url('/img/logo@2x.png');">Joya</a> */}
+{/* 	                    <a className="navbar-brand main-logo" href="#" rel="home" style="background-image: url('/img/logo@2x.png');">Joya</a> */}
                             <a className="navbar-brand main-logo" href="#" rel="home" >Joya</a>
                         </h1>
                     </div>
-{/* 	                   <div className="col menu-col user-nav">
+{/* 	            <div className="col menu-col user-nav">
                         <button className="navbar-toggler user-toggle hamburger is-closed" 
                         type="button" data-toggle="offcanvas" data-target="#main-menu-user" 
                         aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
