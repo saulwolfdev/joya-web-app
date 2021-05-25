@@ -1,5 +1,5 @@
-import RequestService from "../request-service/request-service";
-import IPadVideo from '../ipad-video/ipad-video'
+import RequestService from "../../request-service/request-service";
+import IPadVideo from '../../ipad-video/ipad-video'
 
 const HomeVideo = () => {
     return (

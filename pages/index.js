@@ -1,11 +1,11 @@
 import Header from '../components/header/header'
 import Footer from '../components/footer/footer'
 import GlazierInfo from '../components/glazier-info/glazier-info'
-import HomeVideo from '../components/home-video/home-video'
-import HomeZone from '../components/home-zone/home-zone'
-import HomeProfits from '../components/home-profits/home-profits'
-import HomeSteps from '../components/home-steps/home-steps'
-import HomeSearch from '../components/home-search/home-search'
+import HomeVideo from '../components/home/home-video/home-video'
+import HomeZone from '../components/home/home-zone/home-zone'
+import HomeProfits from '../components/home/home-profits/home-profits'
+import HomeSteps from '../components/home/home-steps/home-steps'
+import HomeSearch from '../components/home/home-search/home-search'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons"; 
