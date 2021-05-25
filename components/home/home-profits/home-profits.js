@@ -2,6 +2,7 @@ import Image from 'next/image'
 
 const profits = [
     {
+        key:"01",
         image: "/xq_01.jpg",
         width: 142,
         height: 86,
@@ -9,6 +10,7 @@ const profits = [
         text: "Con tus vidrieras siempre limpias, tu local se luce."
     },
     {
+        key:"02",
         image: "/xq_02.jpg",
         width: 142,
         height: 86,
@@ -16,6 +18,7 @@ const profits = [
         text: "A la hora que digas, las veces que quieras, ahí estaremos."
     },
     {
+        key:"03",
         image: "/xq_03.jpg",
         width: 111,
         height: 102,
@@ -23,6 +26,7 @@ const profits = [
         text: "Mientras hacen su trabajo, nuestros profesionales dejarán perfectas tus vidrieras. "
     },
     {
+        key:"04",
         image: "/xq_04.jpg",
         width: 117,
         height: 91,
@@ -30,6 +34,7 @@ const profits = [
         text: "Pagá con tarjeta de crédito y recibí factura A o C, según tu necesidad."
     },
     {
+        key:"05",
         image: "/xq_05.jpg",
         width: 119,
         height: 106,
@@ -37,6 +42,7 @@ const profits = [
         text: "Evitá los riesgos del trabajo informal habitual en este tipo de servicio."
     },
     {
+        key:"06",
         image: "/xq_06.jpg",
         width: 130,
         height: 112,
@@ -56,7 +62,7 @@ const HomeProfits = () => {
                             {
                                 profits.map((profit) => {
                                     return (
-                                        <div className="beneficio col-6">
+                                        <div className="beneficio col-6" key={profit.key}>
                                             <div className="img-block">
                                                 <img className="img-fluid" src={profit.image}  width={profit.width} height={profit.height} alt={profit.title}/>         
                                             </div>

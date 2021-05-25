@@ -1,6 +1,6 @@
 const steps = [
     {
-        step: "01",
+        key: "01",
         image: "/step1.jpg",
         description: "Solicitá un vidrierista",
         title: "Solicitá un vidrierista",
@@ -9,7 +9,7 @@ const steps = [
         height: 67
     },
     {
-        step: "02",
+        key: "02",
         image: "/step2.jpg",
         description: "Elegí día, horario y frecuencia",
         title: "Vos elegís día, horario y frecuencia",
@@ -18,7 +18,7 @@ const steps = [
         height: 68
     },
     {
-        step: "03",
+        key: "03",
         image: "/step3.jpg",
         description: "Pago seguro",
         title: "Pagá de forma segura",
@@ -36,14 +36,14 @@ const HomeSteps = () => {
                     {
                         steps.map((step) => {
                             return (
-                                <div className="col step">
+                                <div className="col step" key={step.key}>
                                     <div className="num">{step.step}</div>
                                     <div className="img-block">
-                                    <img className="img-fluid" src={step.image} alt={step.description} width={step.width} height={step.height}/>       
-                                </div>
+                                        <img className="img-fluid" src={step.image} alt={step.description} width={step.width} height={step.height}/>       
+                                    </div>
                                     <div className="text">
-                                    <h4>{step.title}</h4>
-                                    <p>{step.text}</p>
+                                        <h4>{step.title}</h4>
+                                        <p>{step.text}</p>
                                     </div>
                                 </div>
                             )
