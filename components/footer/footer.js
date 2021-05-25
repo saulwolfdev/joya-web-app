@@ -4,7 +4,7 @@ const Footer = () => {
 			<div className="container-fluid">
 				<div className="row">
 					<div className="col-md-2 logo">
-						<img src="/img/logo-small@2x.jpg" alt="Joya" className="img-fluid" width="85" height="31"/>
+						<img src="/logo-small@2x.jpg" alt="Joya" className="img-fluid" width="85" height="31"/>
 						<p className="copy">© 2021 Joya</p>
 					</div>
 					<div className="col-md-10 link-blocks">

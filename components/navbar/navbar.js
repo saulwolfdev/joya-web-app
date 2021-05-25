@@ -1,14 +1,18 @@
 import Link from 'next/link';
 
+
+
 export default function Navbar() {
+	let logoImage={
+		backgroundImage:"url(/logo@2x.png)"
+	}
     return (
         <nav className="navbar">
 	            <div className="container-fluid">
 	                <div className="row">
 	                    <div className="col-auto logo-div">
 	                        <h1 className="site-title">
-{/* 	                           <a className="navbar-brand main-logo" href="#" rel="home" style="background-image: url('/img/logo@2x.png');">Joya</a> */}
-							   <a className="navbar-brand main-logo" href="#" rel="home" >Joya</a>
+							<a className="navbar-brand main-logo" href="#" rel="home" style={logoImage}>Joya</a> 
 	                        </h1>
 	                    </div>
 {/* 	                   <div className="col menu-col user-nav">
