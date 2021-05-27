@@ -1,4 +1,17 @@
-const NavBarLoguedInMenu = () => {
+const NavBarLoguedIn = () => {
+    return (
+        <div class="col menu-col user-nav">
+            <button class="navbar-toggler user-toggle hamburger is-closed" type="button" data-toggle="offcanvas" data-target="#main-menu-user" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="hamb-top"></span>
+                <span class="hamb-middle"></span>
+                <span class="hamb-bottom"></span>
+            </button>
+            <NavBarLoguedIn.Menu/>
+        </div>
+    )
+}
+
+const Menu = () => {
     return (
         <nav class="navbar navbar-inverse navbar-fixed-top" id="main-menu" role="navigation">
             <div class="nav sidebar-nav col">
@@ -29,4 +42,6 @@ const NavBarLoguedInMenu = () => {
     )
 }
 
-export default NavBarLoguedInMenu;
+NavBarLoguedIn.Menu = Menu;
+
+export default NavBarLoguedIn;

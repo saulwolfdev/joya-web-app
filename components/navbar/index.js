@@ -1,9 +1,8 @@
 import React,{useState} from 'react';
-import SignInModal from "../signin-modal/signin-modal";
-import SignUpModal from '../signup-modal/signup-modal';
-import NavBarLoggedOut from './navbar-logged-out/navbar-logged-out';
-import NavBarLogo from "./navbar-logo/navbar-logo";
-import NavBarLoguedIn from './navbar-logued-in/navbar-logued-in';
+import SignInModal from "../SignInModal";
+import SignUpModal from '../SignUpModal';
+import NavBarLoggedOut from './NavBarLoggedOut';
+import NavBarLoguedIn from './NavBarLoguedIn';
 
 const NavBar = () => {
     const [showSingnIn, setShowSingnIn] = useState(false);
@@ -15,8 +14,8 @@ const NavBar = () => {
         <nav className="navbar">
             <div className="container-fluid">
                 <div className="row">
-                    <NavBarLogo/>
-                    { loguedIn ? <NavBarLoguedIn/> : <NavBarLoggedOut close={closeSignInModalHandler}/> }
+                    <NavBar.Logo/>
+                    { loguedIn ? <NavBarLoguedIn/> : <NavBarLoggedOut edOut close={closeSignInModalHandler}/> }
                 </div>
             </div>
             <SignInModal show={showSingnIn} close={closeSignInModalHandler} showSignUp={setShowSingnUp}/>
@@ -24,5 +23,19 @@ const NavBar = () => {
         </nav>
     );
 }
+
+const Logo = () => {
+    let logoImage = {
+        backgroundImage:"url(/logo@2x.png)"
+    }
+    return (
+        <div className="col-auto logo-div">
+            <h1 className="site-title">
+            <a className="navbar-brand main-logo" href="#" rel="home" style={logoImage}>Joya</a>
+            </h1>
+        </div>
+    )
+}
+NavBar.Logo = Logo;
  
 export default NavBar;

@@ -1,9 +1,9 @@
-import Navbar from '../navbar/navbar'
+import Navbar from '../NavBar'
 
 const Header = () => {
     return (
         <header className="fixed-top-scroll fixed-top">
-          <Navbar></Navbar>
+            <Navbar></Navbar>
 	    </header>
     );
 }
