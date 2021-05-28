@@ -1,5 +1,5 @@
 const HomeGlazier = () => {
     return (
-
+        <></>
     );
 }

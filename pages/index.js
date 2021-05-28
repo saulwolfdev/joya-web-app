@@ -6,7 +6,7 @@ export default function Home() {
     <div id="wrapper">
 		<Header glazier={false}/>
 		<Home/>
-		<Footer/>
+		<Footer glazier={false}/>
 	</div>
   )
 }

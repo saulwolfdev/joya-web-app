@@ -1,7 +1,5 @@
-const Footer = () => {
+const Footer = ({glazier}) => {
     return (
-
-        
         <footer>
 			<div className="container-fluid">
 				<div className="row">
@@ -10,7 +8,7 @@ const Footer = () => {
 						<div className="row">
 							<Footer.Service/>
 							<Footer.We/>
-							<Footer.Contact/>
+							{ glazier ? <></> : <Footer.Contact/> }
 						</div>
 					</div>
 				</div>

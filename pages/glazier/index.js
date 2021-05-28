@@ -2,64 +2,9 @@ export default function Glazier() {
     return (
         <div id="wrapper">
 		    <Header glazier={true}/>
+			<BeGlazier/>
 	    {/* <div class="main-content">
-	    	<div class="hero">
-	    		<div class="container-fluid">
-	    			<div class="row">
-	    				<div class="col-lg-5 col-md-12 hero-content">
-	    					<h1>Convertite en vidrierista Joya!</h1>		
-	    					<p>Sumate a Joya y generá ingresos de hasta $20.000* mensuales!</p>
-	    					<p class="small">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-	    					
-	    				</div>
-	    				<div class="col-md-12 col-lg-7 col-xl-6 offset-xl-1 form-vidrierista">
-	    					<div class="form-container">
-	    						<h4>¡Postulate!</h4>
-	    						<p>Dejanos tus datos y nos pondremos en contacto con vos en la brevedad.</p>
-	    						<!-- Este código se repite tal cual más abajo en esta página -->
-	    						<div class="subscription-form form">
-						        	<div class="form-element">
-										<label for="email" class="form-label sr-only">Email</label>
-										<div class="input-group">
-											<span class="input-group-text"><i class="fal fa-envelope"></i></span>
-											<input type="email" class="form-control" name="email" placeholder="Mail">
-										</div>
-										
-									</div>
-						        	<div class="row">
-						        		<div class="col pe-0 form-element">
-											<label for="nombre" class="form-label sr-only">Nombre</label>
-											<div class="input-group">
-												<span class="input-group-text"><i class="fal fa-user-circle"></i></span>
-												<input type="text" class="form-control" name="nombre" placeholder="Nombre">
-											</div>
-											
-										</div>
-										<div class="col ps-0  form-element">
-											<label for="apellido" class="form-label sr-only">Apellido</label>
-											<input type="text" class="form-control" name="apellido" placeholder="Apellido">
-										</div>
-						        	</div>
-						        	<div class="form-element">
-										<label for="celular" class="form-label sr-only">Número de celular</label>
-										<div class="input-group">
-											<span class="input-group-text"><i class="fal fa-mobile-android-alt"></i></span>
-											<input type="text" class="form-control" name="celular" placeholder="Número de celular">
-										</div>
-									</div>
-									<div class="form-element">
-										<p>Al continuar, aceptás nuestra <a href="#">política de privacidad</a>.</p>
-									</div>
-									<div class="btn-set">
-										<button class="btn btn-primary">Enviar</button>
-									</div>
-								</div>
-					        </div>
-	    				</div>
-	    			</div>
-	    			
-	    		</div>
-	    	</div>
+	    	
 	    	<div class="home-beneficios-vidrierista section">
 	    		<div class="container-fluid">
 	    			<h3>Te conectamos con locales de Capital Federal para que <strong>generes ganancias</strong> limpiando vidrieras</h3>
@@ -209,53 +154,8 @@ export default function Glazier() {
 	    		</div>
 	    	</div>
 	    </div>
-		<footer>
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-2 logo">
-						<img src="../assets/img/logo-small@2x.jpg" alt="Joya" class="img-fluid" width="85" height="31">
-						<p class="copy">© 2021 Joya</p>
-					</div>
-					<div class="col-md-10 link-blocks">
-						<div class="row">
-							<div class="col col-lg-4 link-block">
-								<p class="title">Servicio</p>
-								<ul>
-									<li><a href="#">Contratá JOYA</a></li>	
-									<li><a href="#">Política de cancelación</a></li>
-									<li><a href="#">Ayuda</a></li>
-									<li><a href="#">Términos y condiciones</a></li>
-									<li><a href="#">Política de privacidad</a></li>
-								</ul>
-					
-							</div>
-							<div class="col col-lg-4 link-block">
-								<p class="title">Nosotros</p>
-								<ul>
-									<li><a href="#">Sobre nosotros</a></li>
-									<li><a href="#">Convertite en vidrierista JOYA</a></li>
-								</ul>
-							
-							</div>
-							<div class="col col-lg-4 link-block">
-								<p class="title">Contacto</p>
-								<ul>
-									<li>
-										<i class="far fa-envelope"></i>
-										<a href="mailto:ayuda@joya.com">ayuda@joya.com</a>
-									</li>
-									<li>
-										<i class="far fa-phone"></i>
-										<a href="tel:+5491145674568">011.4567.4568</a>
-									</li>
-									
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer> */}
+		 */}
+		 <Footer glazier={true}/>
 	</div>
     )
   }
