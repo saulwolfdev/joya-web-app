@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 const GlazierInfo = () => {
     return (
@@ -11,7 +12,7 @@ const GlazierInfo = () => {
                     <div className="col content">
                         <h3>¿Querés ser vidrierista?</h3>
                         <p>Registrate y generá las ganancias que vos quieras</p>
-                        <a href="#" className="btn btn-primary">Informate acá</a>
+                        <Link href='/glazier'><a className="btn btn-primary">Informate acá</a></Link>
                     </div>
                 </div>
             </div>
