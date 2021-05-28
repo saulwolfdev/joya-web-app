@@ -28,31 +28,29 @@ const steps = [
     }
 ]
 
-const HomeSteps = () => {
+const Step = ({step}) => {
     return (
-        <div className="home-steps section">
-            <div className="container-fluid">
-                <div className="row">
-                    {
-                        steps.map((step) => {
-                            return (
-                                <div className="col step" key={step.key}>
-                                    <div className="num">{step.step}</div>
-                                    <div className="img-block">
-                                        <img className="img-fluid" src={step.image} alt={step.description} width={step.width} height={step.height}/>       
-                                    </div>
-                                    <div className="text">
-                                        <h4>{step.title}</h4>
-                                        <p>{step.text}</p>
-                                    </div>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
+        <div className="col step" key={step.key}>
+            <div className="num">{step.step}</div>
+            <div className="img-block">
+                <img className="img-fluid" src={step.image} alt={step.description} width={step.width} height={step.height}/>       
+            </div>
+            <div className="text">
+                <h4>{step.title}</h4>
+                <p>{step.text}</p>
             </div>
         </div>
     )
 }
 
-export default HomeSteps;
+export default HomeSteps = () => {
+    return (
+        <div className="home-steps section">
+            <div className="container-fluid">
+                <div className="row">
+                    { steps.map((step) => {return <Step step={step}/>}) }
+                </div>
+            </div>
+        </div>
+    )
+}

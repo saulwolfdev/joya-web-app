@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-const GlazierInfo = () => {
+export default GlazierInfo = () => {
     return (
         <div className="home-vidrieristas section">
             <div className="container-fluid">
@@ -18,5 +18,3 @@ const GlazierInfo = () => {
         </div>
     )
 }
-
-export default GlazierInfo;

@@ -6,8 +6,8 @@ const HomeVideo = () => {
         <div className="home-video section">
             <div className="container-fluid">
                 <div className="row">
-                    <RequestService></RequestService>
-                    <IPadVideo></IPadVideo>
+                    <RequestService/>
+                    <IPadVideo/>
                 </div>
             </div>
         </div>

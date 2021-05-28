@@ -51,7 +51,21 @@ const profits = [
     }
 ]
 
-const HomeProfits = () => {
+const Profit = ({profit}) => {
+    return (
+        <div className="beneficio col-6" key={profit.key}>
+            <div className="img-block">
+                <img className="img-fluid" src={profit.image}  width={profit.width} height={profit.height} alt={profit.title}/>         
+            </div>
+            <div className="text">
+                <h5 className="title">{profit.title}</h5>
+                <p>{profit.text}</p>
+            </div>
+        </div>
+    )
+}
+
+export default HomeProfits = () => {
     return (
         <div className="home-beneficios section">
             <div className="container-fluid">
@@ -59,21 +73,7 @@ const HomeProfits = () => {
                     <div className="col-md-7 col-lg-6 beneficios">
                         <h3>¿Por qué elegir Joya?</h3>
                         <div className="row">
-                            {
-                                profits.map((profit) => {
-                                    return (
-                                        <div className="beneficio col-6" key={profit.key}>
-                                            <div className="img-block">
-                                                <img className="img-fluid" src={profit.image}  width={profit.width} height={profit.height} alt={profit.title}/>         
-                                            </div>
-                                            <div className="text">
-                                                <h5 className="title">{profit.title}</h5>
-                                                <p>{profit.text}</p>
-                                            </div>
-                                        </div>
-                                    )
-                                })
-                            }
+                            { profits.map((profit) => {return <Profit profit={profit}/>}) }
                         </div>
                     </div>
                     <div className="col-md-5 offset-lg-1 miscelaneas">
@@ -84,5 +84,3 @@ const HomeProfits = () => {
         </div>
     )
 }
-
-export default HomeProfits;
