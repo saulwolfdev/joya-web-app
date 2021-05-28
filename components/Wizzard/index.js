@@ -7,12 +7,18 @@ import WindowSizeSection from './StepOne/WindowSizeSection'
 import Features from './StepOne/Features'
 import CleanType from './StepOne/CleanType'
 
+import Image from 'next/image'
+
 const Wizzard = () => {
-    const [step, setStep] = useState(1);
+    const [step, setStep] = useState(2);
     return (
         <>
         	<Wizzard.Steps/>
-            {step === 1 ? <Wizzard.StepOne/> : <></> }
+            <div className="wizard-content">
+                {step === 1 ? <Wizzard.StepOne/> : <></> }
+                {step === 2 ? <Wizzard.StepTwo/> : <></> }
+                {step === 3 ? <Wizzard.StepThree/> : <></> }
+            </div>
             <Wizzard.Footer/>
         </>
     );
@@ -20,26 +26,212 @@ const Wizzard = () => {
 
 const StepOne = () => {
     return (
-        <div className="wizard-content">
-            <div className="step1 inner-container">
-                <h4>Detalles de Local</h4>
-                <p>Seleccioná el local que necesita de nuestro servicio o agregá un local nuevo a tu lista.</p>
-                <div className="form">
-                    <InputLocal/>
-                    <div className="localnuevo block-alternative">
-                        <InputDirection/>
-                        <InputLocalName/>
-                        <InputAdditionalIndications/>
-                        <WindowSizeSection/>
-                    </div>
-                    <Features/>
-                    <CleanType/>
+        <div className="step1 inner-container">
+            <h4>Detalles de Local</h4>
+            <p>Seleccioná el local que necesita de nuestro servicio o agregá un local nuevo a tu lista.</p>
+            <div className="form">
+                <InputLocal/>
+                <div className="localnuevo block-alternative">
+                    <InputDirection/>
+                    <InputLocalName/>
+                    <InputAdditionalIndications/>
+                    <WindowSizeSection/>
                 </div>
+                <Features/>
+                <CleanType/>
             </div>
         </div>
     );
 }
 Wizzard.StepOne = StepOne;
+
+const StepTwo = () => {
+    return (
+        <div className="step2 inner-container">
+            <h4>Frecuencia</h4>
+            <p>Con nuestro servicio recurrente ahorrá y despreocupate por completo de tus vidrieras.</p>
+            <div className="form">
+                <div className="row modalidades">
+                    <div className="col-md-4">
+                        <div className="modalidad" data-form="#freq-unica">
+                            <div className="img-block"><Image className="img-fluid" src="/xq_03.jpg"  width="130" height="80" alt="Servicio por única vez"/></div>
+                            <div className="text">
+                                <h5 className="title">Única vez</h5>
+                                <p>Contratás una vez y listo!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-4">
+                        <div className="modalidad destacada" data-form="#freq-suscripcion">
+                            <div className="img-block"><Image className="img-fluid" src="/xq_02.jpg"  width="130" height="80" alt="Suscripción a limpieza programada"/></div>
+                            <div className="text">
+                                <h5 className="title">Suscripción</h5>
+                                <p>Descuentos desde 10% según la frecuencia que elijas!</p>
+                                <a href="#" className="btn-tertiary">Ver todos los beneficios</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-4">
+                        <div className="modalidad" data-form="#freq-urgencia">
+                            <div className="img-block"><Image className="img-fluid" src="/xq_06.jpg"  width="130" height="80" alt="Suscripción a limpieza programada"/></div>
+                            <div className="text">
+                                <h5 className="title">Urgencia</h5>
+                                <p>Vamos a tu local en el día, lo más rápido posible.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="frequency-form" id="freq-unica">
+                    <div className="row dia-visita">
+                        <div className="col-lg-2 col-3 col-label">
+                            <label htmlfor="freq-unica-dia" className="h4">Día</label>
+                        </div>
+                        <div className="col col-field">
+                            {/*Contemplar posibilidad de incluir un datepicker de react*/}
+                            <input type="date" name="freq-unica-dia" className="form-control"/>
+                        </div>
+                    </div>
+                    <div className="row franja-horaria">
+                        <div className="col-lg-2 col-3 col-label">
+                            <label htmlfor="freq-unica-hora" className="h4">Horario</label>
+                        </div>
+                        <div className="col col-field">
+                            <div className="form-check">
+                                <input className="form-check-input" type="radio" name="freq-unica-hora" id="freq-unica-hora1"/>
+                                <label className="form-check-label" htmlfor="freq-unica-hora1">
+                                <strong>Flexible.</strong> Entre las 9 y las 16hs. <span className="descuento">-10%</span>
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input className="form-check-input" type="radio" name="freq-unica-hora" id="freq-unica-hora2"/>
+                                <label className="form-check-label" htmlfor="freq-unica-hora2">
+                                <strong>Franja horaria específica</strong>
+                                </label>
+                                <select className="form-select franja-horaria" aria-label="Franja horaria específica">
+                                    <option selected>Elegir franja</option>
+                                    <option value="1">franja 1</option>
+                                    <option value="2">franja 2</option>
+                                    <option value="3">franja 3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="frequency-form" id="freq-suscripcion">
+                    <p><strong>Seleccioná los días de la semana que necesitás el servicio:</strong></p>
+                    <p>Obtendrás un 10% de descuento si contratás una vez por semana, 15% si contratás 2 veces por semana, y 20% si contratás 3 veces por semana!</p>
+                    <div className="row">
+                        <div className="col-4 col-lg-2">
+                            <input type="checkbox" name="freq-suscr-dia" className="btn-check" id="freq-suscr-dia-lu" autocomplete="off"/>
+                            <label className="btn btn-outline-form" htmlfor="freq-suscr-dia-lu">Lun</label>
+                        </div>
+                        <div className="col-4 col-lg-2">
+                            <input type="checkbox" name="freq-suscr-dia" className="btn-check" id="freq-suscr-dia-ma" autocomplete="off"/>
+                            <label className="btn btn-outline-form" htmlfor="freq-suscr-dia-ma">Mar</label>
+                        </div>
+                        <div className="col-4 col-lg-2">
+                            <input type="checkbox" name="freq-suscr-dia" className="btn-check" id="freq-suscr-dia-mi" autocomplete="off"/>
+                            <label className="btn btn-outline-form" htmlfor="freq-suscr-dia-mi">Mie</label>
+                        </div>
+                        <div className="col-4 col-lg-2">
+                            <input type="checkbox" name="freq-suscr-dia" className="btn-check" id="freq-suscr-dia-ju" autocomplete="off"/>
+                            <label className="btn btn-outline-form" htmlfor="freq-suscr-dia-ju">Jue</label>
+                        </div>
+                        <div className="col-4 col-lg-2">
+                            <input type="checkbox" name="freq-suscr-dia" className="btn-check" id="freq-suscr-dia-vi" autocomplete="off"/>
+                            <label className="btn btn-outline-form" htmlfor="freq-suscr-dia-vi">Vie</label>
+                        </div>
+                        <div className="col-4 col-lg-2">
+                            <input type="checkbox" name="freq-suscr-dia" className="btn-check" id="freq-suscr-dia-sa" autocomplete="off"/>
+                            <label className="btn btn-outline-form" htmlfor="freq-suscr-dia-sa">Sab</label>
+                        </div>
+                    </div>
+                    <div className="row dia-visita">
+                        <div className="col-lg-2 col-3 col-label">
+                            <label htmlfor="freq-unica-dia" className="h4">Día</label>
+                        </div>
+                        <div className="col col-field">
+                            {/* Contemplar posibilidad de incluir un datepicker de react */}
+                            <input type="date" name="freq-unica-dia" className="form-control"/>
+                        </div>
+                    </div>
+                    <div className="row franja-horaria">
+                        <div className="col-lg-2 col-3 col-label">
+                            <label htmlfor="freq-unica-hora" className="h4">Horario</label>
+                        </div>
+                        <div className="col col-field">
+                            <div className="form-check">
+                                <input className="form-check-input" type="radio" name="freq-unica-hora" id="freq-unica-hora1"/>
+                                <label className="form-check-label" htmlfor="freq-unica-hora1">
+                                <strong>Flexible.</strong> Entre las 9 y las 16hs. <span className="descuento">-10%</span>
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input className="form-check-input" type="radio" name="freq-unica-hora" id="freq-unica-hora2"/>
+                                <label className="form-check-label" htmlfor="freq-unica-hora2">
+                                <strong>Franja horaria específica</strong>
+                                </label>
+                                <select className="form-select franja-horaria" aria-label="Franja horaria específica">
+                                    <option selected>Elegir franja</option>
+                                    <option value="1">franja 1</option>
+                                    <option value="2">franja 2</option>
+                                    <option value="3">franja 3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="frequency-form" id="freq-urgencia">
+                    <div className="dev-note">
+                        Esto es igual en formato a la frecuencia única. Probablemente sólo aplique para usuarios registrados y esté deshabilitado para otros. Consultar reglas de negocio al cliente.
+                    </div>
+                    <div className="row dia-visita">
+                        <div className="col-lg-2 col-3 col-label">
+                            <label htmlfor="freq-unica-dia" className="h4">Día</label>
+                        </div>
+                        <div className="col col-field">
+                            { /* Contemplar posibilidad de incluir un datepicker de react */}
+                            <input type="date" name="freq-unica-dia" className="form-control"/>
+                        </div>
+                    </div>
+                    <div className="row franja-horaria">
+                        <div className="col-lg-2 col-3 col-label">
+                            <label htmlfor="freq-unica-hora" className="h4">Horario</label>
+                        </div>
+                        <div className="col col-field">
+                            <div className="form-check">
+                                <input className="form-check-input" type="radio" name="freq-unica-hora" id="freq-unica-hora1"/>
+                                <label className="form-check-label" htmlfor="freq-unica-hora1">
+                                <strong>Flexible.</strong> Entre las 9 y las 16hs. <span className="descuento">-10%</span>
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input className="form-check-input" type="radio" name="freq-unica-hora" id="freq-unica-hora2"/>
+                                <label className="form-check-label" htmlfor="freq-unica-hora2">
+                                <strong>Franja horaria específica</strong>
+                                </label>
+                                <select className="form-select franja-horaria" aria-label="Franja horaria específica">
+                                    <option selected>Elegir franja</option>
+                                    <option value="1">franja 1</option>
+                                    <option value="2">franja 2</option>
+                                    <option value="3">franja 3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+Wizzard.StepTwo = StepTwo;
+
+const StepThree = () => {
+    return (
+        <></>
+    );
+}
+Wizzard.StepThree = StepThree;
 
 const Steps = () => {
     return (
