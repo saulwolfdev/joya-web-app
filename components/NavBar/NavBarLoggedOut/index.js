@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const NavBarLoggedOut = ({close}) => {
     return (
         <div className="col menu-col public-nav">
@@ -22,7 +24,7 @@ const Menu = ({close}) => {
             <div className="nav sidebar-nav col">
                 <ul className="menu public-menu">
                     <li><a href="#">Ayuda</a></li>
-                    <li><a href="#" className="destacado">Solicitar limpieza de vidriera</a></li>
+                    <li><Link href='/apply'><a className="destacado">Solicitar limpieza de vidriera</a></Link></li>
                     <li className="separator"></li>
                     <li><a href="#" onClick={() => close(false)} className="destacado">Iniciar sesión</a></li>
                 </ul>

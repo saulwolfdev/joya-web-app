@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const NavBarLoguedIn = () => {
     return (
         <div class="col menu-col user-nav">
@@ -21,7 +23,7 @@ const Menu = () => {
                         Carolina	                        			
                     </span></li>
                     <li class="ayuda"><a href="#">Ayuda</a></li>
-                    <li><a href="#" class="destacado">Solicitar limpieza de vidriera</a></li>
+                    <li><Link href='/apply'><a className="destacado">Solicitar limpieza de vidriera</a></Link></li>
                     <li class="separator"></li>
                     <li class="user-item"><a href="#">Tus pedidos</a></li>
                     <li class="user-options dropdown closed">
