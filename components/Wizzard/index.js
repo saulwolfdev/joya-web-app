@@ -10,7 +10,7 @@ import CleanType from './StepOne/CleanType'
 import Image from 'next/image'
 
 const Wizzard = () => {
-    const [step, setStep] = useState(2);
+    const [step, setStep] = useState(3);
     return (
         <>
         	<Wizzard.Steps/>
@@ -228,7 +228,67 @@ Wizzard.StepTwo = StepTwo;
 
 const StepThree = () => {
     return (
-        <></>
+        <div className="wizard-content step3">
+            <div className="inner-container">
+                <div className="row">
+                    <div className="col col-md-7 col-xl-8 col-tarjeta">
+                        <div className="inner-container-left">
+                            <h4>Para terminar, confirma tu pago</h4>
+                            <p>Se te cobrará al finalizar la primera visita. Consultá nuestras <a href="#">políticas de cancelación</a>.</p>
+                            <div className="form">
+                                <div className="form-element">
+                                    <label htmlFor="tarjeta" className="form-label">Número de la tarjeta</label>
+                                    <input type="text" className="form-control" name="tarjeta"/>
+                                </div>
+                                <div className="form-element">
+                                    <label htmlFor="titular" className="form-label">Nombre y apellido del titular de la tarjeta</label>
+                                    <input type="text" className="form-control" name="titular"/>
+                                </div>
+                                <div className="row">
+                                    <div className="col form-element">
+                                        <label htmlFor="expiracion" className="form-label">Fecha de expiración</label>
+                                        <input type="text" className="form-control" name="expiracion"/>
+                                    </div>
+                                    <div className="col form-element">
+                                        <label htmlFor="seguridad" className="form-label">Código de seguridad</label>
+                                        <input type="text" className="form-control" name="seguridad"/>
+                                    </div>
+                                </div>
+                                <div className="form-element">
+                                    <label htmlFor="dni" className="form-label">DNI del titular</label>
+                                    <input type="text" className="form-control" name="dni"/>
+                                </div>
+                                <div className="btn-set">
+                                    <button className="btn btn-primary">Confirmar pago</button>
+                                </div>
+                            </div>	
+                        </div>
+                    </div>
+                    <div className="col-xl-4 col-md-5 col-detalle">
+                        <h4>Detalle de compra</h4>
+                        <table className="detalle-compra">
+                            <tbody>
+                                <tr className="item">
+                                    <td className="descripcion">Subtotal</td>
+                                    <td className="valor"><span className="currency">$</span><span className="price">150</span></td>
+                                </tr>
+                                <tr className="item">
+                                    <td className="descripcion">Descuentos</td>
+                                    <td className="valor destacado">-<span className="currency">$</span><span className="price">37,50</span><span className="percent">(25%)</span></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr className="total">
+                                    <td className="descripcion">Total</td>
+                                    <td className="valor"><span className="currency">$</span><span className="price">112,50</span></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <p><a href="#">Tenés un cupón de descuento?</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }
 Wizzard.StepThree = StepThree;
