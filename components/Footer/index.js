@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 const Footer = ({glazier}) => {
     return (
         <footer>
@@ -52,11 +54,11 @@ const Contact = () => {
             <p className="title">Contacto</p>
             <ul>
                 <li>
-                    <i className="far fa-envelope"></i>
+                    <i className="far fa-envelope"/>
                     <a href="mailto:ayuda@joya.com">ayuda@joya.com</a>
                 </li>
                 <li>
-                    <i className="far fa-phone"></i>
+                    <i className="far fa-phone"/>
                     <a href="tel:+5491145674568">011.4567.4568</a>
                 </li>
             </ul>
@@ -68,7 +70,7 @@ Footer.Contact = Contact;
 const Logo = () => {
     return (
         <div className="col-md-2 logo">
-            <img src="/logo-small@2x.jpg" alt="Joya" className="img-fluid" width="85" height="31"/>
+            <Image src="/logo-small@2x.jpg" alt="Joya" className="img-fluid" width="85" height="31"/>
             <p className="copy">© 2021 Joya</p>
         </div>
     )

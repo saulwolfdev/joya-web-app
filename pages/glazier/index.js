@@ -2,6 +2,7 @@ import Header from '../../components/Header'
 import BeGlazier from '../../components/HomeGlazier/BeGlazier'
 import Footer from '../../components/Footer'
 import GlazierProfits from '../../components/HomeGlazier/GlazierProfits'
+import GlazierPostulate from '../../components/HomeGlazier/GlazierPostulate'
 
 export default function Glazier() {
     return (
@@ -10,64 +11,11 @@ export default function Glazier() {
 			<div className="main-content">
 				<BeGlazier/>
 				<GlazierProfits/>
+				<GlazierPostulate/>
 			</div>
 	    {/* 
 	    	
-	    	<div class="home-simple section">
-	    		<div class="container-fluid">
-		    		<div class="row">
-		    			<div class="col-auto d-none d-md-block pe-5 pe-lg-3 col-lg-5 col-xl-6 miscelaneas">	    				
-		    				<img class="img-fluid d-none d-lg-block" src="../assets/img/ciclista.jpg" width="560" height="505" alt="Joya se ocupa de que tu vidriera esté siempre limpia" />
-		    				<div class="celular">
-		    					<img class="img-fluid d-none d-md-block" src="../assets/img/celu-sample.png" width="217" height="443" alt="Joya se ocupa de que tu vidriera esté siempre limpia" />
-		    				</div>
-		    			</div>
-		    			<div class="col col-lg-5  offset-lg-1 main-content">
-		    				<h3>¡Sólo necesitás tu bicicleta y celular!</h3>
-		    				<p>Postulate como vidrierista Joya. Dejanos tus datos y nos pondremos en contacto con vos en la brevedad.</p>
-		    				<!-- Este código se repite tal cual más arriba en esta página -->
-	    						<div class="subscription-form form">
-						        	<div class="form-element">
-										<label for="email" class="form-label sr-only">Email</label>
-										<div class="input-group">
-											<span class="input-group-text"><i class="fal fa-envelope"></i></span>
-											<input type="email" class="form-control" name="email" placeholder="Mail">
-										</div>
-										
-									</div>
-						        	<div class="row">
-						        		<div class="col pe-0 form-element">
-											<label for="nombre" class="form-label sr-only">Nombre</label>
-											<div class="input-group">
-												<span class="input-group-text"><i class="fal fa-user-circle"></i></span>
-												<input type="text" class="form-control" name="nombre" placeholder="Nombre">
-											</div>
-											
-										</div>
-										<div class="col ps-0  form-element">
-											<label for="apellido" class="form-label sr-only">Apellido</label>
-											<input type="text" class="form-control" name="apellido" placeholder="Apellido">
-										</div>
-						        	</div>
-						        	<div class="form-element">
-										<label for="celular" class="form-label sr-only">Número de celular</label>
-										<div class="input-group">
-											<span class="input-group-text"><i class="fal fa-mobile-android-alt"></i></span>
-											<input type="text" class="form-control" name="celular" placeholder="Número de celular">
-										</div>
-									</div>
-									<div class="form-element">
-										<p>Al continuar, aceptás nuestra <a href="#">política de privacidad</a>.</p>
-									</div>
-									<div class="btn-set">
-										<button class="btn btn-primary">Enviar</button>
-									</div>
-								</div>
-		    			</div>
-		    			
-		    		</div>
-	    		</div>
-	    	</div>
+	    	
 			<div class="home-faq section">
 	    		<div class="container-fluid">
 		    		<div class="row">

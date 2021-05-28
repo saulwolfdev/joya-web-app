@@ -55,7 +55,7 @@ const Profit = ({profit}) => {
     return (
         <div className="beneficio col-6">
             <div className="img-block">
-                <img className="img-fluid" src={profit.image}  width={profit.width} height={profit.height} alt={profit.title}/>         
+                <Image className="img-fluid" src={profit.image}  width={profit.width} height={profit.height} alt={profit.title}/>         
             </div>
             <div className="text">
                 <h5 className="title">{profit.title}</h5>

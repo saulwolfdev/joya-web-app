@@ -17,7 +17,7 @@ const Menu = () => {
             <div class="nav sidebar-nav col">
                 <ul class="menu user-menu">
                     <li class="username d-lg-none"><span class="a">
-                        <i class="far fa-user-circle"></i>
+                        <i class="far fa-user-circle"/>
                         Carolina	                        			
                     </span></li>
                     <li class="ayuda"><a href="#">Ayuda</a></li>
@@ -26,9 +26,9 @@ const Menu = () => {
                     <li class="user-item"><a href="#">Tus pedidos</a></li>
                     <li class="user-options dropdown closed">
                         <span class="a user-item">
-                            <i class="far fa-user-circle"></i>
+                            <i class="far fa-user-circle"/>
                             Carolina
-                            <i class="far fa-chevron-down"></i>
+                            <i class="far fa-chevron-down"/>
                         </span>
                         <ul class="sub-menu">
                             <li><a href="#">Tus pedidos</a></li>

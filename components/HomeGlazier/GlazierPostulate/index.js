@@ -1,18 +1,20 @@
-const BeGlazier = () => {
+import Image from 'next/image'
+
+const GlazierPostulate = () => {
     return (
-        <div className="hero">
+        <div className="home-simple section">
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-lg-5 col-md-12 hero-content">
-                        <h1>Convertite en vidrierista Joya!</h1>		
-                        <p>Sumate a Joya y generá ingresos de hasta $20.000* mensuales!</p>
-                        <p className="small">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                        
+                    <div className="col-auto d-none d-md-block pe-5 pe-lg-3 col-lg-5 col-xl-6 miscelaneas">	    				
+                        <Image className="img-fluid d-none d-lg-block" src="/ciclista.jpg" width="560" height="505" alt="Joya se ocupa de que tu vidriera esté siempre limpia"/>
+                        <div className="celular">
+                            <Image className="img-fluid d-none d-md-block" src="/celu-sample.png" width="217" height="443" alt="Joya se ocupa de que tu vidriera esté siempre limpia"/>
+                        </div>
                     </div>
-                    <div className="col-md-12 col-lg-7 col-xl-6 offset-xl-1 form-vidrierista">
-                        <div className="form-container">
-                            <h4>¡Postulate!</h4>
-                            <p>Dejanos tus datos y nos pondremos en contacto con vos en la brevedad.</p>
+                    <div className="col col-lg-5  offset-lg-1 main-content">
+                        <h3>¡Sólo necesitás tu bicicleta y celular!</h3>
+                        <p>Postulate como vidrierista Joya. Dejanos tus datos y nos pondremos en contacto con vos en la brevedad.</p>
+                        {/*Este código se repite tal cual más arriba en esta página*/}
                             <div className="subscription-form form">
                                 <div className="form-element">
                                     <label htmlFor="email" className="form-label sr-only">Email</label>
@@ -50,13 +52,11 @@ const BeGlazier = () => {
                                     <button className="btn btn-primary">Enviar</button>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
-                
             </div>
         </div>
     );
-};
+}
 
-export default BeGlazier;
+export default GlazierPostulate;

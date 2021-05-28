@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 const steps = [
     {
         key: "01",
@@ -33,7 +35,7 @@ const Step = ({step}) => {
         <div className="col step">
             <div className="num">{step.step}</div>
             <div className="img-block">
-                <img className="img-fluid" src={step.image} alt={step.description} width={step.width} height={step.height}/>       
+                <Image className="img-fluid" src={step.image} alt={step.description} width={step.width} height={step.height}/>       
             </div>
             <div className="text">
                 <h4>{step.title}</h4>
