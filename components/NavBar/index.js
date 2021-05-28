@@ -16,7 +16,7 @@ const NavBar = ({glazier}) => {
                 <div className="container-fluid">
                     <div className="row">
                         <NavBar.Logo/>
-                        { loguedIn && !glazier ? <NavBarLoguedIn/> : <NavBarLoggedOut edOut close={closeSignInModalHandler}/> }
+                        { glazier ? <></> : (loguedIn ? <NavBarLoguedIn/> : <NavBarLoggedOut edOut close={closeSignInModalHandler}/>) }
                         { glazier ? <NavBarGlazierOptions/> : <></> }
                     </div>
                 </div>

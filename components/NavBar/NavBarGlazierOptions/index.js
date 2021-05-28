@@ -10,12 +10,12 @@ const HamburgerButton = () => {
 
 const GlazierOptions = () => {
     return (
-        <nav class="navbar navbar-inverse navbar-fixed-top" id="main-menu" role="navigation">
-            <div class="nav sidebar-nav col">
-                <ul class="menu public-menu">
+        <nav className="navbar navbar-inverse navbar-fixed-top" id="main-menu" role="navigation">
+            <div className="nav sidebar-nav col">
+                <ul className="menu public-menu">
                     <li><a href="#">Preguntas Frecuentes</a></li>
-                    <li class="separator"></li>
-                    <li><a href="#" class="destacado">Postulate</a></li>
+                    <li className="separator"></li>
+                    <li><a href="#" className="destacado">Postulate</a></li>
                 </ul>
             </div>
         </nav>
@@ -24,7 +24,7 @@ const GlazierOptions = () => {
 
 const NavBarGlazierOptions = () => {
     return (
-        <div class="col menu-col">
+        <div className="col menu-col">
             <HamburgerButton/>                   
             <GlazierOptions/>
         </div>

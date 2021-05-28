@@ -1,3 +1,7 @@
+import Header from '../../components/Header'
+import BeGlazier from '../../components/HomeGlazier/BeGlazier'
+import Footer from '../../components/Footer'
+
 export default function Glazier() {
     return (
         <div id="wrapper">
