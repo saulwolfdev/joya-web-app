@@ -4,8 +4,7 @@ import Footer from '../components/Footer'
 export default function Home() {
   return (
     <div id="wrapper">
-		<div className="overlay"/>
-		<Header/>
+		<Header glazier={false}/>
 		<Home/>
 		<Footer/>
 	</div>

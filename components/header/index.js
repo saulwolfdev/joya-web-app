@@ -1,9 +1,14 @@
 import Navbar from '../NavBar'
 
-export default Header = () => {
+const Header = ({glazier}) => {
     return (
-        <header className="fixed-top-scroll fixed-top">
-            <Navbar></Navbar>
-	    </header>
+        <>
+            <div className="overlay"/>
+            <header className="fixed-top-scroll fixed-top">
+                <Navbar glazier={glazier}/>
+            </header>
+        </>
     );
 };
+
+export default Header;

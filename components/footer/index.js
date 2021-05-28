@@ -1,5 +1,7 @@
 const Footer = () => {
     return (
+
+        
         <footer>
 			<div className="container-fluid">
 				<div className="row">
