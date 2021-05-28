@@ -53,7 +53,7 @@ const profits = [
 
 const Profit = ({profit}) => {
     return (
-        <div className="beneficio col-6" key={profit.key}>
+        <div className="beneficio col-6">
             <div className="img-block">
                 <img className="img-fluid" src={profit.image}  width={profit.width} height={profit.height} alt={profit.title}/>         
             </div>
@@ -65,22 +65,24 @@ const Profit = ({profit}) => {
     )
 }
 
-export default HomeProfits = () => {
+const HomeProfits = () => {
     return (
         <div className="home-beneficios section">
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-md-7 col-lg-6 beneficios">
-                        <h3>¿Por qué elegir Joya?</h3>
-                        <div className="row">
-                            { profits.map((profit) => {return <Profit profit={profit}/>}) }
-                        </div>
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col-md-7 col-lg-6 beneficios">
+                    <h3>¿Por qué elegir Joya?</h3>
+                    <div className="row">
+                        { profits.map((profit) => {return <Profit profit={profit} key={profit.key}/>}) }
                     </div>
-                    <div className="col-md-5 offset-lg-1 miscelaneas">
-                        <Image src="/beneficios-side.jpg" alt="Joya se ocupa de que tu vidriera esté siempre limpia" width={495} height={784} />          	    				
-                    </div>
+                </div>
+                <div className="col-md-5 offset-lg-1 miscelaneas">
+                    <Image src="/beneficios-side.jpg" alt="Joya se ocupa de que tu vidriera esté siempre limpia" width={495} height={784} />          	    				
                 </div>
             </div>
         </div>
-    )
+    </div>
+    );
 }
+ 
+export default HomeProfits;

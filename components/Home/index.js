@@ -5,7 +5,7 @@ import HomeVideo from './HomeVideo'
 import HomeZone from './HomeZone'
 import HomeGlazierInfo from './HomeGlazierInfo'
 
-export default Home = () => {
+const Home = () => {
     return (
         <div className="main-content">
 			<HomeSearch/>
@@ -24,3 +24,4 @@ export default Home = () => {
 		</div>
     )
 }
+export default Home;

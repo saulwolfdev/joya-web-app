@@ -30,7 +30,7 @@ const steps = [
 
 const Step = ({step}) => {
     return (
-        <div className="col step" key={step.key}>
+        <div className="col step">
             <div className="num">{step.step}</div>
             <div className="img-block">
                 <img className="img-fluid" src={step.image} alt={step.description} width={step.width} height={step.height}/>       
@@ -43,14 +43,16 @@ const Step = ({step}) => {
     )
 }
 
-export default HomeSteps = () => {
+const HomeSteps = () => {
     return (
         <div className="home-steps section">
             <div className="container-fluid">
                 <div className="row">
-                    { steps.map((step) => {return <Step step={step}/>}) }
+                    { steps.map((step) => {return <Step step={step}  key={step.key}/>}) }
                 </div>
             </div>
         </div>
-    )
+    );
 }
+ 
+export default HomeSteps;

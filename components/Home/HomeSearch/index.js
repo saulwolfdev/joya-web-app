@@ -1,4 +1,3 @@
-import DirectionSearch from "./direction-search/direction-search"
 
 const HomeSearch = () => {
     return (
