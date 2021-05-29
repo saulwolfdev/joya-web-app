@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import Image from 'next/image'
 
 const Modalities = ({handleModality}) => {
-    const [selectedOption, setSelectedOption] = useState('unique');
+    const [selectedOption, setSelectedOption] = useState('suscription');
 
     return (
         <div className="row modalidades" onClick={() => handleModality(selectedOption)}>
