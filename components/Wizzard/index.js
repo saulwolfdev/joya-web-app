@@ -201,8 +201,7 @@ Wizzard.StepTwo = StepTwo;
 
 const StepThree = () => {
     return (
-        <div className="step3">
-            <div className="inner-container">
+            <div className="step3 inner-container">
                 <div className="row">
                     <div className="col col-md-7 col-xl-8 col-tarjeta">
                         <div className="inner-container-left">
@@ -261,7 +260,6 @@ const StepThree = () => {
                     </div>
                 </div>
             </div>
-        </div>
     );
 }
 Wizzard.StepThree = StepThree;
