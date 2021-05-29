@@ -51,10 +51,9 @@ const Footer = ({switchModal, close, onSuccess}) => {
         if(email === 'carolina@example.com' && password === '123321') {
             console.log("Success");
             close(true);
-            onSuccess();
         }
         else {
-            console.log("Failed");
+            // Todo handle errors
         }
     }
     

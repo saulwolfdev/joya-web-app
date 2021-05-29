@@ -1,9 +1,9 @@
 const HamburgerButton = () => {
     return (
-        <button class="navbar-toggler hamburger is-closed" type="button" data-toggle="offcanvas" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="hamb-top"></span>
-            <span class="hamb-middle"></span>
-            <span class="hamb-bottom"></span>
+        <button className="navbar-toggler hamburger is-closed" type="button" data-toggle="offcanvas" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="hamb-top"></span>
+            <span className="hamb-middle"></span>
+            <span className="hamb-bottom"></span>
         </button>	
     );
 }
