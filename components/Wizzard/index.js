@@ -78,7 +78,7 @@ const StepTwo = () => {
                                 <strong>Franja horaria específica</strong>
                                 </label>
                                 <select className="form-select franja-horaria" aria-label="Franja horaria específica">
-                                    <option selected>Elegir franja</option>
+                                    <option defaultValue>Elegir franja</option>
                                     <option value="1">franja 1</option>
                                     <option value="2">franja 2</option>
                                     <option value="3">franja 3</option>
@@ -142,7 +142,7 @@ const StepTwo = () => {
                                 <strong>Franja horaria específica</strong>
                                 </label>
                                 <select className="form-select franja-horaria" aria-label="Franja horaria específica">
-                                    <option selected>Elegir franja</option>
+                                    <option defaultValue>Elegir franja</option>
                                     <option value="1">franja 1</option>
                                     <option value="2">franja 2</option>
                                     <option value="3">franja 3</option>
@@ -181,7 +181,7 @@ const StepTwo = () => {
                                 <strong>Franja horaria específica</strong>
                                 </label>
                                 <select className="form-select franja-horaria" aria-label="Franja horaria específica">
-                                    <option selected>Elegir franja</option>
+                                    <option defaultValue>Elegir franja</option>
                                     <option value="1">franja 1</option>
                                     <option value="2">franja 2</option>
                                     <option value="3">franja 3</option>
