@@ -9,7 +9,7 @@ import CleanType from './StepOne/CleanType'
 import Modalities from './StepTwo/Modalities'
 
 const Wizzard = () => {
-    const [step, setStep] = useState(2);
+    const [step, setStep] = useState(3);
     return (
         <>
         	<Wizzard.Steps/>
@@ -201,7 +201,7 @@ Wizzard.StepTwo = StepTwo;
 
 const StepThree = () => {
     return (
-        <div className="wizard-content step3">
+        <div className="step3">
             <div className="inner-container">
                 <div className="row">
                     <div className="col col-md-7 col-xl-8 col-tarjeta">
