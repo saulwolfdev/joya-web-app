@@ -45,6 +45,7 @@ const Footer = ({switchModal}) => {
     } */
 
     const registerUser = async event => {
+        event.preventDefault()
         console.log("Hola");
         let email = event.target.email.value;
         let password = event.target.password.value;
@@ -61,7 +62,6 @@ const Footer = ({switchModal}) => {
             <div className="modal-body">
                 <h4>Estás a un paso de tus vidrieras limpias</h4>
                 <p>Accedé a tu cuenta para registrar tu pedido.</p>
-
                 <form className="form" onSubmit={registerUser}>
                     <div className="form-element">
                         <label htmlFor="email" className="form-label">Email</label>
@@ -71,11 +71,11 @@ const Footer = ({switchModal}) => {
                         <label htmlFor="password" className="form-label">Contraseña</label>
                         <input type="password" className="form-control" name="password"/>
                     </div>
-                </form>
-            </div>
-            <div className="modal-footer">
+                    <div className="modal-footer">
                 <button type="submit" className="btn btn-primary">Ingresar</button>
                 <p>No tenés cuenta en Joya aún? <a href="#" data-bs-target="#registroModal" data-bs-toggle="modal" data-bs-dismiss="modal" onClick={switchModal}>Registrate</a> </p>
+            </div>
+            </form>
             </div>
         </>
     )
