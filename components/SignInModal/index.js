@@ -49,11 +49,11 @@ const Footer = ({switchModal, close, onSuccess}) => {
         let email = event.target.email.value;
         let password = event.target.password.value;
         if(email === 'carolina@example.com' && password === '123321') {
-            console.log("Success");
             close(true);
+            onSuccess();
         }
         else {
-            // Todo handle errors
+            // TODO handle errors messages
         }
     }
     
