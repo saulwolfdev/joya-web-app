@@ -11,6 +11,7 @@ const NavBar = ({glazier}) => {
     const [loguedIn, setLoguedIn] = useState(false);
     const closeSignInModalHandler = (close) => setShowSingnIn(!close);
     const closeSignUpModalHandler = (close) => setShowSingnUp(!close);
+    const onSuccessSignIn = () => setLoguedIn(true);
     return (
             <nav className="navbar">
                 <div className="container-fluid">
@@ -20,7 +21,7 @@ const NavBar = ({glazier}) => {
                         { glazier ? <NavBarGlazierOptions/> : <></> }
                     </div>
                 </div>
-                { glazier ? <></> : <SignInModal show={showSingnIn} close={closeSignInModalHandler} showSignUp={setShowSingnUp}/> }
+                { glazier ? <></> : <SignInModal onSuccess={onSuccessSignIn}show={showSingnIn} close={closeSignInModalHandler} showSignUp={setShowSingnUp}/> }
                 { glazier ? <></> : <SignUpModal show={showSingnUp} close={closeSignUpModalHandler} showSignIn={setShowSingnIn}/> }
             </nav>
         );

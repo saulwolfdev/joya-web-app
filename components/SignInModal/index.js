@@ -1,8 +1,8 @@
 import React from 'react'
 
-const SignInModal = ({show, close, showSignUp}) => {
+const SignInModal = ({show, close, showSignUp, onSuccess}) => {
     const switchModal = () => {
-        close(true);
+        close(true); // TODO review: Always ocurrencies contains true value
         showSignUp(true);
     }
     return (
@@ -10,7 +10,7 @@ const SignInModal = ({show, close, showSignUp}) => {
             <div className="modal-dialog modal-lg">
                 <div className="modal-content">
                     <SignInModal.Header close={close}/>
-                    <SignInModal.Footer switchModal={switchModal}/>
+                    <SignInModal.Footer switchModal={switchModal} onSuccess={onSuccess} close={close}/>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@ const SignInModal = ({show, close, showSignUp}) => {
 const Header = ({close}) => <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={() => close(true)}>X</button>;
 SignInModal.Header = Header;
 
-const Footer = ({switchModal}) => {
+const Footer = ({switchModal, close, onSuccess}) => {
 
     /* const registerUser = async event => {
         event.preventDefault()
@@ -46,11 +46,12 @@ const Footer = ({switchModal}) => {
 
     const registerUser = async event => {
         event.preventDefault()
-        console.log("Hola");
         let email = event.target.email.value;
         let password = event.target.password.value;
         if(email === 'carolina@example.com' && password === '123321') {
             console.log("Success");
+            close(true);
+            onSuccess();
         }
         else {
             console.log("Failed");
@@ -72,10 +73,10 @@ const Footer = ({switchModal}) => {
                         <input type="password" className="form-control" name="password"/>
                     </div>
                     <div className="modal-footer">
-                <button type="submit" className="btn btn-primary">Ingresar</button>
-                <p>No tenés cuenta en Joya aún? <a href="#" data-bs-target="#registroModal" data-bs-toggle="modal" data-bs-dismiss="modal" onClick={switchModal}>Registrate</a> </p>
-            </div>
-            </form>
+                        <button type="submit" className="btn btn-primary">Ingresar</button>
+                        <p>No tenés cuenta en Joya aún? <a href="#" data-bs-target="#registroModal" data-bs-toggle="modal" data-bs-dismiss="modal" onClick={switchModal}>Registrate</a> </p>
+                    </div>
+                </form>
             </div>
         </>
     )
