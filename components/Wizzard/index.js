@@ -45,12 +45,15 @@ const StepOne = () => {
 Wizzard.StepOne = StepOne;
 
 const StepTwo = () => {
+    // If no select, ant this value is any distinct of 'unique', 'selection' or 'urgent', then next conditions should be false (in this case 'none')
+    const [modality, setModality] = useState('none');
+    
     return (
         <div className="step2 inner-container">
             <h4>Frecuencia</h4>
             <p>Con nuestro servicio recurrente ahorrá y despreocupate por completo de tus vidrieras.</p>
             <div className="form">
-                <Modalities/>
+                <Modalities handleModality={setModality}/>
                 <div className="frequency-form" id="freq-unica">
                     <div className="row dia-visita">
                         <div className="col-lg-2 col-3 col-label">

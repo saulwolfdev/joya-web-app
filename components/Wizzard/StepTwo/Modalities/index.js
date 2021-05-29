@@ -1,11 +1,11 @@
 import React,{useState} from 'react';
 import Image from 'next/image'
 
-const Modalities = () => {
+const Modalities = ({handleModality}) => {
     const [selectedOption, setSelectedOption] = useState('unique');
 
     return (
-        <div className="row modalidades">
+        <div className="row modalidades" onClick={() => handleModality(selectedOption)}>
             <FrequencyUnique outstanding={selectedOption === 'unique'} handleClick={setSelectedOption}/>
             <FrequencySuscription outstanding={selectedOption === 'suscription'} handleClick={setSelectedOption}/>
             <FrecuencyUrgent outstanding={selectedOption === 'urgent'} handleClick={setSelectedOption}/>
