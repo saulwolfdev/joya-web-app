@@ -6,8 +6,7 @@ import InputAdditionalIndications from './StepOne/InputAdditionalIndications'
 import WindowSizeSection from './StepOne/WindowSizeSection'
 import Features from './StepOne/Features'
 import CleanType from './StepOne/CleanType'
-
-import Image from 'next/image'
+import Modalities from './StepTwo/Modalities'
 
 const Wizzard = () => {
     const [step, setStep] = useState(2);
@@ -44,67 +43,6 @@ const StepOne = () => {
     );
 }
 Wizzard.StepOne = StepOne;
-
-const FrequencyUnique = ({outstanding, handleClick}) => {
-    const styleOutstanding = 'modalidad destacada';
-    const styleNotOutstanging = 'modalidad';
-    return (
-        <div className="col-md-4" onClick={() => handleClick('unique')}>
-            <div className={outstanding ? styleOutstanding : styleNotOutstanging} data-form="#freq-unica">
-                <div className="img-block"><Image className="img-fluid" src="/xq_03.jpg"  width="130" height="80" alt="Servicio por única vez"/></div>
-                <div className="text">
-                    <h5 className="title">Única vez</h5>
-                    <p>Contratás una vez y listo!</p>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-const FrequencySuscription = ({outstanding, handleClick}) => {
-    const styleOutstanding = 'modalidad destacada';
-    const styleNotOutstanging = 'modalidad';
-    return (
-        <div className="col-md-4" onClick={() => handleClick('suscription')}>
-            <div className={outstanding ? styleOutstanding : styleNotOutstanging} data-form="#freq-suscripcion">
-                <div className="img-block"><Image className="img-fluid" src="/xq_02.jpg"  width="130" height="80" alt="Suscripción a limpieza programada"/></div>
-                <div className="text">
-                    <h5 className="title">Suscripción</h5>
-                    <p>Descuentos desde 10% según la frecuencia que elijas!</p>
-                    <a href="#" className="btn-tertiary">Ver todos los beneficios</a>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-const FrecuencyUrgent = ({outstanding, handleClick}) => {
-    const styleOutstanding = 'modalidad destacada';
-    const styleNotOutstanging = 'modalidad';
-    return (
-        <div className="col-md-4" onClick={() => handleClick('urgent')}>
-            <div className={outstanding ? styleOutstanding : styleNotOutstanging} data-form="#freq-urgencia">
-                <div className="img-block"><Image className="img-fluid" src="/xq_06.jpg"  width="130" height="80" alt="Suscripción a limpieza programada"/></div>
-                <div className="text">
-                    <h5 className="title">Urgencia</h5>
-                    <p>Vamos a tu local en el día, lo más rápido posible.</p>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-const Modalities = () => {
-    const [selectedOption, setSelectedOption] = useState('unique');
-
-    return (
-        <div className="row modalidades">
-            <FrequencyUnique outstanding={selectedOption === 'unique'} handleClick={setSelectedOption}/>
-            <FrequencySuscription outstanding={selectedOption === 'suscription'} handleClick={setSelectedOption}/>
-            <FrecuencyUrgent outstanding={selectedOption === 'urgent'} handleClick={setSelectedOption}/>
-        </div>
-    );
-}
 
 const StepTwo = () => {
     return (
