@@ -10,7 +10,7 @@ import CleanType from './StepOne/CleanType'
 import Image from 'next/image'
 
 const Wizzard = () => {
-    const [step, setStep] = useState(3);
+    const [step, setStep] = useState(2);
     return (
         <>
         	<Wizzard.Steps/>
@@ -45,46 +45,78 @@ const StepOne = () => {
 }
 Wizzard.StepOne = StepOne;
 
+const FrequencyUnique = ({outstanding, handleClick}) => {
+    const styleOutstanding = 'modalidad destacada';
+    const styleNotOutstanging = 'modalidad';
+    return (
+        <div className="col-md-4" onClick={() => handleClick('unique')}>
+            <div className={outstanding ? styleOutstanding : styleNotOutstanging} data-form="#freq-unica">
+                <div className="img-block"><Image className="img-fluid" src="/xq_03.jpg"  width="130" height="80" alt="Servicio por única vez"/></div>
+                <div className="text">
+                    <h5 className="title">Única vez</h5>
+                    <p>Contratás una vez y listo!</p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+const FrequencySuscription = ({outstanding, handleClick}) => {
+    const styleOutstanding = 'modalidad destacada';
+    const styleNotOutstanging = 'modalidad';
+    return (
+        <div className="col-md-4" onClick={() => handleClick('suscription')}>
+            <div className={outstanding ? styleOutstanding : styleNotOutstanging} data-form="#freq-suscripcion">
+                <div className="img-block"><Image className="img-fluid" src="/xq_02.jpg"  width="130" height="80" alt="Suscripción a limpieza programada"/></div>
+                <div className="text">
+                    <h5 className="title">Suscripción</h5>
+                    <p>Descuentos desde 10% según la frecuencia que elijas!</p>
+                    <a href="#" className="btn-tertiary">Ver todos los beneficios</a>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+const FrecuencyUrgent = ({outstanding, handleClick}) => {
+    const styleOutstanding = 'modalidad destacada';
+    const styleNotOutstanging = 'modalidad';
+    return (
+        <div className="col-md-4" onClick={() => handleClick('urgent')}>
+            <div className={outstanding ? styleOutstanding : styleNotOutstanging} data-form="#freq-urgencia">
+                <div className="img-block"><Image className="img-fluid" src="/xq_06.jpg"  width="130" height="80" alt="Suscripción a limpieza programada"/></div>
+                <div className="text">
+                    <h5 className="title">Urgencia</h5>
+                    <p>Vamos a tu local en el día, lo más rápido posible.</p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+const Modalities = () => {
+    const [selectedOption, setSelectedOption] = useState('unique');
+
+    return (
+        <div className="row modalidades">
+            <FrequencyUnique outstanding={selectedOption === 'unique'} handleClick={setSelectedOption}/>
+            <FrequencySuscription outstanding={selectedOption === 'suscription'} handleClick={setSelectedOption}/>
+            <FrecuencyUrgent outstanding={selectedOption === 'urgent'} handleClick={setSelectedOption}/>
+        </div>
+    );
+}
+
 const StepTwo = () => {
     return (
         <div className="step2 inner-container">
             <h4>Frecuencia</h4>
             <p>Con nuestro servicio recurrente ahorrá y despreocupate por completo de tus vidrieras.</p>
             <div className="form">
-                <div className="row modalidades">
-                    <div className="col-md-4">
-                        <div className="modalidad" data-form="#freq-unica">
-                            <div className="img-block"><Image className="img-fluid" src="/xq_03.jpg"  width="130" height="80" alt="Servicio por única vez"/></div>
-                            <div className="text">
-                                <h5 className="title">Única vez</h5>
-                                <p>Contratás una vez y listo!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-4">
-                        <div className="modalidad destacada" data-form="#freq-suscripcion">
-                            <div className="img-block"><Image className="img-fluid" src="/xq_02.jpg"  width="130" height="80" alt="Suscripción a limpieza programada"/></div>
-                            <div className="text">
-                                <h5 className="title">Suscripción</h5>
-                                <p>Descuentos desde 10% según la frecuencia que elijas!</p>
-                                <a href="#" className="btn-tertiary">Ver todos los beneficios</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-4">
-                        <div className="modalidad" data-form="#freq-urgencia">
-                            <div className="img-block"><Image className="img-fluid" src="/xq_06.jpg"  width="130" height="80" alt="Suscripción a limpieza programada"/></div>
-                            <div className="text">
-                                <h5 className="title">Urgencia</h5>
-                                <p>Vamos a tu local en el día, lo más rápido posible.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Modalities/>
                 <div className="frequency-form" id="freq-unica">
                     <div className="row dia-visita">
                         <div className="col-lg-2 col-3 col-label">
-                            <label htmlfor="freq-unica-dia" className="h4">Día</label>
+                            <label htmlFor="freq-unica-dia" className="h4">Día</label>
                         </div>
                         <div className="col col-field">
                             {/*Contemplar posibilidad de incluir un datepicker de react*/}
@@ -93,18 +125,18 @@ const StepTwo = () => {
                     </div>
                     <div className="row franja-horaria">
                         <div className="col-lg-2 col-3 col-label">
-                            <label htmlfor="freq-unica-hora" className="h4">Horario</label>
+                            <label htmlFor="freq-unica-hora" className="h4">Horario</label>
                         </div>
                         <div className="col col-field">
                             <div className="form-check">
                                 <input className="form-check-input" type="radio" name="freq-unica-hora" id="freq-unica-hora1"/>
-                                <label className="form-check-label" htmlfor="freq-unica-hora1">
+                                <label className="form-check-label" htmlFor="freq-unica-hora1">
                                 <strong>Flexible.</strong> Entre las 9 y las 16hs. <span className="descuento">-10%</span>
                                 </label>
                             </div>
                             <div className="form-check">
                                 <input className="form-check-input" type="radio" name="freq-unica-hora" id="freq-unica-hora2"/>
-                                <label className="form-check-label" htmlfor="freq-unica-hora2">
+                                <label className="form-check-label" htmlFor="freq-unica-hora2">
                                 <strong>Franja horaria específica</strong>
                                 </label>
                                 <select className="form-select franja-horaria" aria-label="Franja horaria específica">
@@ -122,33 +154,33 @@ const StepTwo = () => {
                     <p>Obtendrás un 10% de descuento si contratás una vez por semana, 15% si contratás 2 veces por semana, y 20% si contratás 3 veces por semana!</p>
                     <div className="row">
                         <div className="col-4 col-lg-2">
-                            <input type="checkbox" name="freq-suscr-dia" className="btn-check" id="freq-suscr-dia-lu" autocomplete="off"/>
-                            <label className="btn btn-outline-form" htmlfor="freq-suscr-dia-lu">Lun</label>
+                            <input type="checkbox" name="freq-suscr-dia" className="btn-check" id="freq-suscr-dia-lu" autoComplete="off"/>
+                            <label className="btn btn-outline-form" htmlFor="freq-suscr-dia-lu">Lun</label>
                         </div>
                         <div className="col-4 col-lg-2">
-                            <input type="checkbox" name="freq-suscr-dia" className="btn-check" id="freq-suscr-dia-ma" autocomplete="off"/>
-                            <label className="btn btn-outline-form" htmlfor="freq-suscr-dia-ma">Mar</label>
+                            <input type="checkbox" name="freq-suscr-dia" className="btn-check" id="freq-suscr-dia-ma" autoComplete="off"/>
+                            <label className="btn btn-outline-form" htmlFor="freq-suscr-dia-ma">Mar</label>
                         </div>
                         <div className="col-4 col-lg-2">
-                            <input type="checkbox" name="freq-suscr-dia" className="btn-check" id="freq-suscr-dia-mi" autocomplete="off"/>
-                            <label className="btn btn-outline-form" htmlfor="freq-suscr-dia-mi">Mie</label>
+                            <input type="checkbox" name="freq-suscr-dia" className="btn-check" id="freq-suscr-dia-mi" autoComplete="off"/>
+                            <label className="btn btn-outline-form" htmlFor="freq-suscr-dia-mi">Mie</label>
                         </div>
                         <div className="col-4 col-lg-2">
-                            <input type="checkbox" name="freq-suscr-dia" className="btn-check" id="freq-suscr-dia-ju" autocomplete="off"/>
-                            <label className="btn btn-outline-form" htmlfor="freq-suscr-dia-ju">Jue</label>
+                            <input type="checkbox" name="freq-suscr-dia" className="btn-check" id="freq-suscr-dia-ju" autoComplete="off"/>
+                            <label className="btn btn-outline-form" htmlFor="freq-suscr-dia-ju">Jue</label>
                         </div>
                         <div className="col-4 col-lg-2">
-                            <input type="checkbox" name="freq-suscr-dia" className="btn-check" id="freq-suscr-dia-vi" autocomplete="off"/>
-                            <label className="btn btn-outline-form" htmlfor="freq-suscr-dia-vi">Vie</label>
+                            <input type="checkbox" name="freq-suscr-dia" className="btn-check" id="freq-suscr-dia-vi" autoComplete="off"/>
+                            <label className="btn btn-outline-form" htmlFor="freq-suscr-dia-vi">Vie</label>
                         </div>
                         <div className="col-4 col-lg-2">
-                            <input type="checkbox" name="freq-suscr-dia" className="btn-check" id="freq-suscr-dia-sa" autocomplete="off"/>
-                            <label className="btn btn-outline-form" htmlfor="freq-suscr-dia-sa">Sab</label>
+                            <input type="checkbox" name="freq-suscr-dia" className="btn-check" id="freq-suscr-dia-sa" autoComplete="off"/>
+                            <label className="btn btn-outline-form" htmlFor="freq-suscr-dia-sa">Sab</label>
                         </div>
                     </div>
                     <div className="row dia-visita">
                         <div className="col-lg-2 col-3 col-label">
-                            <label htmlfor="freq-unica-dia" className="h4">Día</label>
+                            <label htmlFor="freq-unica-dia" className="h4">Día</label>
                         </div>
                         <div className="col col-field">
                             {/* Contemplar posibilidad de incluir un datepicker de react */}
@@ -157,18 +189,18 @@ const StepTwo = () => {
                     </div>
                     <div className="row franja-horaria">
                         <div className="col-lg-2 col-3 col-label">
-                            <label htmlfor="freq-unica-hora" className="h4">Horario</label>
+                            <label htmlFor="freq-unica-hora" className="h4">Horario</label>
                         </div>
                         <div className="col col-field">
                             <div className="form-check">
                                 <input className="form-check-input" type="radio" name="freq-unica-hora" id="freq-unica-hora1"/>
-                                <label className="form-check-label" htmlfor="freq-unica-hora1">
+                                <label className="form-check-label" htmlFor="freq-unica-hora1">
                                 <strong>Flexible.</strong> Entre las 9 y las 16hs. <span className="descuento">-10%</span>
                                 </label>
                             </div>
                             <div className="form-check">
                                 <input className="form-check-input" type="radio" name="freq-unica-hora" id="freq-unica-hora2"/>
-                                <label className="form-check-label" htmlfor="freq-unica-hora2">
+                                <label className="form-check-label" htmlFor="freq-unica-hora2">
                                 <strong>Franja horaria específica</strong>
                                 </label>
                                 <select className="form-select franja-horaria" aria-label="Franja horaria específica">
@@ -187,7 +219,7 @@ const StepTwo = () => {
                     </div>
                     <div className="row dia-visita">
                         <div className="col-lg-2 col-3 col-label">
-                            <label htmlfor="freq-unica-dia" className="h4">Día</label>
+                            <label htmlFor="freq-unica-dia" className="h4">Día</label>
                         </div>
                         <div className="col col-field">
                             { /* Contemplar posibilidad de incluir un datepicker de react */}
@@ -196,18 +228,18 @@ const StepTwo = () => {
                     </div>
                     <div className="row franja-horaria">
                         <div className="col-lg-2 col-3 col-label">
-                            <label htmlfor="freq-unica-hora" className="h4">Horario</label>
+                            <label htmlFor="freq-unica-hora" className="h4">Horario</label>
                         </div>
                         <div className="col col-field">
                             <div className="form-check">
                                 <input className="form-check-input" type="radio" name="freq-unica-hora" id="freq-unica-hora1"/>
-                                <label className="form-check-label" htmlfor="freq-unica-hora1">
+                                <label className="form-check-label" htmlFor="freq-unica-hora1">
                                 <strong>Flexible.</strong> Entre las 9 y las 16hs. <span className="descuento">-10%</span>
                                 </label>
                             </div>
                             <div className="form-check">
                                 <input className="form-check-input" type="radio" name="freq-unica-hora" id="freq-unica-hora2"/>
-                                <label className="form-check-label" htmlfor="freq-unica-hora2">
+                                <label className="form-check-label" htmlFor="freq-unica-hora2">
                                 <strong>Franja horaria específica</strong>
                                 </label>
                                 <select className="form-select franja-horaria" aria-label="Franja horaria específica">
