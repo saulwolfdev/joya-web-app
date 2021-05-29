@@ -8,11 +8,11 @@ import Features from './StepOne/Features'
 import CleanType from './StepOne/CleanType'
 import Modalities from './StepTwo/Modalities'
 import UniqueSection from './StepTwo/UniqueSection'
-import SelectionSection from './StepTwo/SelectionSection'
+import SuscriptionSection from './StepTwo/SuscriptionSection'
 import UrgentSection from './StepTwo/UrgentSection'
 
 const Wizzard = () => {
-    const [step, setStep] = useState(3);
+    const [step, setStep] = useState(2);
     return (
         <>
         	<Wizzard.Steps/>
@@ -57,7 +57,7 @@ const StepTwo = () => {
             <div className="form">
                 <Modalities handleModality={setModality}/>
                 {modality === 'unique' ? <UniqueSection/> : <></>}
-                {modality === 'selection' ? <SelectionSection/> : <></>}
+                {modality === 'suscription' ? <SuscriptionSection/> : <></>}
                 {modality === 'urgent' ? <UrgentSection/> : <></>}
             </div>
         </div>
