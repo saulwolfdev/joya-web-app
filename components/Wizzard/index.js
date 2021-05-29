@@ -47,14 +47,14 @@ Wizzard.StepOne = StepOne;
 const StepTwo = () => {
     // If no select, ant this value is any distinct of 'unique', 'selection' or 'urgent', then next conditions should be false (in this case 'none')
     const [modality, setModality] = useState('none');
-    
     return (
         <div className="step2 inner-container">
             <h4>Frecuencia</h4>
             <p>Con nuestro servicio recurrente ahorrá y despreocupate por completo de tus vidrieras.</p>
             <div className="form">
                 <Modalities handleModality={setModality}/>
-                <div className="frequency-form" id="freq-unica">
+               {/* agregar la clase "active"  <h3>className="frequency-form active"</h3> */}
+                <div className="frequency-form active" id="freq-unica">
                     <div className="row dia-visita">
                         <div className="col-lg-2 col-3 col-label">
                             <label htmlFor="freq-unica-dia" className="h4">Día</label>
@@ -90,7 +90,7 @@ const StepTwo = () => {
                         </div>
                     </div>
                 </div>
-                <div className="frequency-form" id="freq-suscripcion">
+                <div className="frequency-form active" id="freq-suscripcion">
                     <p><strong>Seleccioná los días de la semana que necesitás el servicio:</strong></p>
                     <p>Obtendrás un 10% de descuento si contratás una vez por semana, 15% si contratás 2 veces por semana, y 20% si contratás 3 veces por semana!</p>
                     <div className="row">
@@ -154,7 +154,7 @@ const StepTwo = () => {
                         </div>
                     </div>
                 </div>
-                <div className="frequency-form" id="freq-urgencia">
+                <div className="frequency-form active" id="freq-urgencia">
                     <div className="dev-note">
                         Esto es igual en formato a la frecuencia única. Probablemente sólo aplique para usuarios registrados y esté deshabilitado para otros. Consultar reglas de negocio al cliente.
                     </div>

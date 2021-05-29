@@ -17,6 +17,7 @@ const FrequencyUnique = ({outstanding, handleClick}) => {
     const styleOutstanding = 'modalidad destacada';
     const styleNotOutstanging = 'modalidad';
     return (
+        <>
         <div className="col-md-4" onClick={() => handleClick('unique')}>
             <div className={outstanding ? styleOutstanding : styleNotOutstanging} data-form="#freq-unica">
                 <div className="img-block"><Image className="img-fluid" src="/xq_03.jpg"  width="130" height="80" alt="Servicio por única vez"/></div>
@@ -25,7 +26,8 @@ const FrequencyUnique = ({outstanding, handleClick}) => {
                     <p>Contratás una vez y listo!</p>
                 </div>
             </div>
-        </div>
+        </div>        
+        </>
     );
 }
 Modalities.FrequencyUnique = FrequencyUnique;
