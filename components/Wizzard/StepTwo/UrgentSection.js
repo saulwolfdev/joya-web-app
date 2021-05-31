@@ -1,4 +1,4 @@
-import Schedule from '../Schedule'
+import Schedule from './Schedule'
 
 const UrgentSection = () => {
     return (
