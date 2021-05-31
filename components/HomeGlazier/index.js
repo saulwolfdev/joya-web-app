@@ -1,4 +1,4 @@
-import BeGlazier from './BeGlazier'
+import BeGlazier from './BeGlazier/BeGlazier'
 import GlazierProfits from './GlazierProfits'
 import GlazierPostulate from './GlazierPostulate'
 import GlazierFaq from './GlazierFaq'
