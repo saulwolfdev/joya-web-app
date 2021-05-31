@@ -12,7 +12,7 @@ import SuscriptionSection from './StepTwo/SuscriptionSection'
 import UrgentSection from './StepTwo/UrgentSection'
 
 const Wizzard = () => {
-    const [step, setStep] = useState(2);
+    const [step, setStep] = useState(1);
     return (
         <>
         	<Wizzard.Steps/>
