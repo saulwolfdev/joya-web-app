@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Img from '../Img';
 
 const profits = [
     {
@@ -34,7 +34,7 @@ const Profit = ({profit}) => {
     return (
         <div className="col-sm-6 col-md-4 beneficio-vidrierista">
             <div className="img-block">
-                <Image className="img-fluid" src={profit.image} alt={profit.alt} width={profit.width} height={profit.height}/>
+                <Img className="img-fluid" src={profit.image} alt={profit.alt} width={profit.width} height={profit.height}/>
             </div>
             <div className="text">
                 <h5>{profit.title}</h5>

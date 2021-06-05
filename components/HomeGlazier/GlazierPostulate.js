@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import GlazierSuscription from '../GlazierSuscription'
+import Img from '../Img';
 
 const GlazierPostulate = () => {
     return (
@@ -7,9 +7,9 @@ const GlazierPostulate = () => {
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-auto d-none d-md-block pe-5 pe-lg-3 col-lg-5 col-xl-6 miscelaneas">	    				
-                        <Image className="img-fluid d-none d-lg-block" src="/ciclista.jpg" width="560" height="505" alt="Joya se ocupa de que tu vidriera esté siempre limpia"/>
+                        <Img className="img-fluid d-none d-lg-block" src="/ciclista.jpg" width="560" height="505" alt="Joya se ocupa de que tu vidriera esté siempre limpia"/>
                         <div className="celular">
-                            <Image className="img-fluid d-none d-md-block" src="/celu-sample.png" width="217" height="443" alt="Joya se ocupa de que tu vidriera esté siempre limpia"/>
+                            <Img className="img-fluid d-none d-md-block" src="/celu-sample.png" width="217" height="443" alt="Joya se ocupa de que tu vidriera esté siempre limpia"/>
                         </div>
                     </div>
                     <div className="col col-lg-5  offset-lg-1 main-content">

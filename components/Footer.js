@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Img from './Img'
 
 const Footer = ({glazier}) => {
     return (
@@ -70,7 +70,7 @@ Footer.Contact = Contact;
 const Logo = () => {
     return (
         <div className="col-md-2 logo">
-            <Image src="/logo-small@2x.jpg" alt="Joya" className="img-fluid" width="85" height="31"/>
+            <Img src="/logo-small@2x.jpg" alt="Joya" className="img-fluid" width="85" height="31"/>
             <p className="copy">© 2021 Joya</p>
         </div>
     )

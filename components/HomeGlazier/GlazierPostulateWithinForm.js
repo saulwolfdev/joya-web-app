@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Img from '../Img';
 
 const GlazierPostulateWithinForm = () => {
     return (
@@ -6,7 +6,7 @@ const GlazierPostulateWithinForm = () => {
             <div className="container-fluid">
                 <div className="row">
                     <div className="offset-lg-1 col-md-4 misc col-12">
-                        <Image src="/vidrierista-end.jpg" alt="Podes ser vidrierista de Joya" className="img-fluid" width="302" height="220"/>	
+                        <Img src="/vidrierista-end.jpg" alt="Podes ser vidrierista de Joya" className="img-fluid" width="302" height="220"/>	
                     </div>
                     <div className="col content">
                         <h3>Comenzá a gestionar tus ingresos!</h3>

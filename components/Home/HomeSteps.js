@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Img from '../Img'
 
 const steps = [
     {
@@ -35,7 +35,7 @@ const Step = ({step}) => {
         <div className="col step">
             <div className="num">{step.step}</div>
             <div className="img-block">
-                <Image className="img-fluid" src={step.image} alt={step.description} width={step.width} height={step.height}/>       
+                <Img className="img-fluid" src={step.image} alt={step.description} width={step.width} height={step.height}/>       
             </div>
             <div className="text">
                 <h4>{step.title}</h4>
