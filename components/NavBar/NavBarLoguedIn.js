@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-const NavBarLoguedIn = () => {
+const NavBarLoguedIn = ({usuarioLogueado}) => {
     return (
         <div className="col menu-col user-nav">
             <button className="navbar-toggler user-toggle hamburger is-closed" type="button" data-toggle="offcanvas" data-target="#main-menu-user" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,19 +8,22 @@ const NavBarLoguedIn = () => {
                 <span className="hamb-middle"></span>
                 <span className="hamb-bottom"></span>
             </button>
-            <NavBarLoguedIn.Menu/>
+            <NavBarLoguedIn.Menu usuarioLogueado={usuarioLogueado}/>
         </div>
     )
 }
 
-const Menu = () => {
+const Menu = ({usuarioLogueado}) => {
+
+    
+
     return (
         <nav className="navbar navbar-inverse navbar-fixed-top" id="main-menu" role="navigation">
             <div className="nav sidebar-nav col">
                 <ul className="menu user-menu">
                     <li className="username d-lg-none"><span className="a">
                         <i className="far fa-user-circle"/>
-                        Carolina	                        			
+                        {usuarioLogueado? usuarioLogueado.displayName? usuarioLogueado.displayName : usuarioLogueado.email : ""}
                     </span></li>
                     <li className="ayuda"><a href="#">Ayuda</a></li>
                     <li><Link href='/apply'><a className="destacado">Solicitar limpieza de vidriera</a></Link></li>
@@ -29,7 +32,7 @@ const Menu = () => {
                     <li className="user-options dropdown closed">
                         <span className="a user-item">
                             <i className="far fa-user-circle"/>
-                            Carolina
+                            {usuarioLogueado? usuarioLogueado.displayName? usuarioLogueado.displayName : usuarioLogueado.email : ""}
                             <i className="far fa-chevron-down"/>
                         </span>
                         <ul className="sub-menu">
