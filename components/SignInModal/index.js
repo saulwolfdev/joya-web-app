@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { getAuth, signInWithEmailAndPassword} from 'firebase/auth';
 
 const SignInModal = ({show, close, showSignUp, onSuccess}) => {
     const switchModal = () => {
@@ -17,44 +18,40 @@ const SignInModal = ({show, close, showSignUp, onSuccess}) => {
     );
 }
 
-const Header = ({close}) => <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={() => close(true)}>X</button>;
+const Header = ({close}) => <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={() => close(true)}></button>;
 SignInModal.Header = Header;
+
+const Errores = {"auth/wrong-password": "La contraseña no es correcta.",
+"auth/invalid-email": "El correo no existe o esta mal escrito."
+};
 
 const Footer = ({switchModal, close, onSuccess}) => {
 
-    /* const registerUser = async event => {
-        event.preventDefault()
-    
-        const res = await fetch('/api/register', {
-            body: JSON.stringify({
-                email: event.target.email.value,
-                password: event.target.password.value
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            method: 'POST'
-        })
-        
-        const status = res.status;
-        if(status === 200) {
-            const result = await res.json()
-            ...
-        }
-        // result.user => 'Ada Lovelace'
-    } */
+    const[errorMsgEmail,setErrorMsgEmail] = useState("");
+    const[errorMsgPassword,setErrorMsgPassword] = useState("");
 
-    const registerUser = async event => {
-        event.preventDefault()
+    const loginUser = async event => {
+        event.preventDefault();
         let email = event.target.email.value;
         let password = event.target.password.value;
-        if(email === 'carolina@example.com' && password === '123321') {
-            close(true);
-            onSuccess();
-        }
-        else {
-            // TODO handle errors messages
-        }
+
+        const auth = getAuth();
+        await signInWithEmailAndPassword(auth,email,password)
+            .then((userCredential)=>{
+                Array.from(document.querySelectorAll("input")).forEach(
+                    input => (input.value = "")
+                  );
+                close(true);
+                onSuccess();
+                
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                if(errorCode == "auth/invalid-email")
+                    setErrorMsgEmail(Errores[errorCode]);
+                else
+                    setErrorMsgPassword(Errores[errorCode]);
+                });    
     }
     
     return (
@@ -62,14 +59,16 @@ const Footer = ({switchModal, close, onSuccess}) => {
             <div className="modal-body">
                 <h4>Estás a un paso de tus vidrieras limpias</h4>
                 <p>Accedé a tu cuenta para registrar tu pedido.</p>
-                <form className="form" onSubmit={registerUser}>
+                <form className="form" onSubmit={loginUser}>
                     <div className="form-element">
                         <label htmlFor="email" className="form-label">Email</label>
                         <input type="email" className="form-control" name="email"/>
+                        {errorMsgEmail != "" && <div className="error-msg"><i className="far fa-exclamation-circle"></i>{errorMsgEmail}</div>}
                     </div>
                     <div className="form-element">
                         <label htmlFor="password" className="form-label">Contraseña</label>
                         <input type="password" className="form-control" name="password"/>
+                        {errorMsgPassword != "" && <div className="error-msg"><i className="far fa-exclamation-circle"></i> {errorMsgPassword}</div>}
                     </div>
                     <div className="modal-footer">
                         <button type="submit" className="btn btn-primary">Ingresar</button>

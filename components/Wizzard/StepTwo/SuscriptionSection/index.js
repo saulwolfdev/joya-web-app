@@ -1,6 +1,6 @@
-import Schedule from './Schedule'
+import Schedule from '../Schedule'
 
-const SuscriptionSection = () => {
+const SelectionSection = () => {
     return (
         <div className="frequency-form active" id="freq-suscripcion">
             <p><strong>Seleccioná los días de la semana que necesitás el servicio:</strong></p>
@@ -36,4 +36,4 @@ const SuscriptionSection = () => {
     );
 }
 
-export default SuscriptionSection;
+export default SelectionSection;

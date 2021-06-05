@@ -1,18 +1,13 @@
-import Container from '../components/Container'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Home from '../components/Home'
-import Head from 'next/head'
 
-export default function LadingPage() {
+export default function LandingPage() {
   return (
-    <Container>
-		<Head>
-			<title>Joya</title>
-		</Head>
+    <div id="wrapper">
 		<Header glazier={false}/>
 		<Home/>
 		<Footer glazier={false}/>
-	</Container>
+	</div>
   )
 }

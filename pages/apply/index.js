@@ -1,10 +1,8 @@
-import Container from '../../components/Container'
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Wizzard from "../../components/Wizzard";
-import Head from 'next/head'
 
-const WizzardContainer = () => {
+const Body = () => {
     return (
         <div className="main-content">
 	    	<div className="clean-wizard step1">
@@ -22,13 +20,10 @@ const WizzardContainer = () => {
 
 export default function Apply() {
     return (
-        <Container>
-            <Head>
-                <title>Joya - Aplicar</title>
-            </Head>
+        <div id="wrapper">
             <Header glazier={false}/>
-            <WizzardContainer/>
+            <Body/>
             <Footer glazier={false}/>
-        </Container>
+        </div>
     );
 }

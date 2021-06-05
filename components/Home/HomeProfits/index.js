@@ -4,8 +4,8 @@ const profits = [
     {
         key:"01",
         image: "/xq_01.jpg",
-        width: 142,
-        height: 86,
+        width: 130,
+        height: 80,
         title: "Mejorá la exposición de tus productos",
         text: "Con tus vidrieras siempre limpias, tu local se luce."
     },
@@ -55,7 +55,8 @@ const Profit = ({profit}) => {
     return (
         <div className="beneficio col-6">
             <div className="img-block">
-                <Image className="img-fluid" src={profit.image}  width={profit.width} height={profit.height} alt={profit.title}/>         
+                {/*TODO: cambie el control Image por img para ver como quedaba y lo levanta bien, analisar si ganamos usando el control de next IMAGE */}
+                <img className="img-fluid" src={profit.image}  width={profit.width} height={profit.height} alt={profit.title} />         
             </div>
             <div className="text">
                 <h5 className="title">{profit.title}</h5>
