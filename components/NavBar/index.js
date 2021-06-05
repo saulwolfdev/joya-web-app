@@ -1,9 +1,10 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import SignInModal from "../SignInModal";
 import SignUpModal from '../SignUpModal';
 import NavBarLoggedOut from './NavBarLoggedOut';
 import NavBarLoguedIn from './NavBarLoguedIn';
 import NavBarGlazierOptions from './NavBarGlazierOptions';
+import { getAuth } from 'firebase/auth';
 
 const NavBar = ({glazier}) => {
     const [showSingnIn, setShowSingnIn] = useState(false);
@@ -12,16 +13,30 @@ const NavBar = ({glazier}) => {
     const closeSignInModalHandler = (close) => setShowSingnIn(!close);
     const closeSignUpModalHandler = (close) => setShowSingnUp(!close);
     const onSuccessSignIn = () => setLoguedIn(true);
+    const[usuarioLogueado,setUsuarioLogueado] = useState(null);
+    
+    useEffect(()=>{
+        const userLogin = getAuth();
+        userLogin.onAuthStateChanged(firebaseUser =>{
+            if(firebaseUser){
+               setLoguedIn(true);
+               setUsuarioLogueado(firebaseUser);
+            }
+            else
+                setLoguedIn(false);
+
+        });    
+    });
     return (
             <nav className="navbar">
                 <div className="container-fluid">
                     <div className="row">
                         <NavBar.Logo/>
-                        { glazier ? <></> : (loguedIn ? <NavBarLoguedIn/> : <NavBarLoggedOut edOut close={closeSignInModalHandler}/>) }
+                        { glazier ? <></> : (loguedIn ? <NavBarLoguedIn usuarioLogueado={usuarioLogueado} /> : <NavBarLoggedOut edOut close={closeSignInModalHandler}/>) }
                         { glazier ? <NavBarGlazierOptions/> : <></> }
                     </div>
                 </div>
-                { glazier ? <></> : <SignInModal onSuccess={onSuccessSignIn}show={showSingnIn} close={closeSignInModalHandler} showSignUp={setShowSingnUp}/> }
+                { glazier ? <></> : <SignInModal onSuccess={onSuccessSignIn} show={showSingnIn} close={closeSignInModalHandler} showSignUp={setShowSingnUp}/> }
                 { glazier ? <></> : <SignUpModal show={showSingnUp} close={closeSignUpModalHandler} showSignIn={setShowSingnIn}/> }
             </nav>
         );
