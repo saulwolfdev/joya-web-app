@@ -65,7 +65,7 @@ const StepOne = ({handleNext, loguedIn}) => {
 
     useEffect(() => {
         const validIsLoguedIn = loguedIn && accept && (local != "none") && (local != "0") && (local != "N");
-        const validIsLoguedOut = false;
+        const validIsLoguedOut = true;
         handleNext(validIsLoguedIn || validIsLoguedOut);
     });
 
@@ -77,7 +77,9 @@ const StepOne = ({handleNext, loguedIn}) => {
                 "Completá la información de tu vidriera. Ya tenés un local registrado? "}
                 { loguedIn ? <></> : <a href="#" className="link-text">Iniciá sesión.</a>}</p>
             <div className="form">
-                {loguedIn ? <CleanType handleAccept={handleAccept} handleLocal={handleLocal}/> : <StepOneNewUser/>}
+                {loguedIn ? 
+                <CleanType handleAccept={handleAccept} handleLocal={handleLocal}/> : 
+                <StepOneNewUser/>}
             </div>
         </div>
     );
