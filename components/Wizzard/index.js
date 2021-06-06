@@ -13,37 +13,54 @@ const Wizzard = () => {
 
     const [loguedIn, setLoguedIn] = useState(false);
     const [user,setUser] = useState(null);
+    const [enableNext,setEnableNext] = useState(true);
 
     useEffect(()=>{
         const userLogin = getAuth();
         userLogin.onAuthStateChanged(prepareUserInfo(setLoguedIn, setUser));    
     });
 
+    const handleNext = (enable) => {
+        setEnableNext(enable);
+    }
+
     return (
         <>
         	<Wizzard.Steps/>
             <div className="wizard-content">
-                {step === 1 ? <Wizzard.StepOne loguedIn={loguedIn}/> : <></>}
+                {step === 1 ? <Wizzard.StepOne handleNext={handleNext} loguedIn={loguedIn}/> : <></>}
                 {step === 2 ? <Wizzard.StepTwo/> : <></>}
                 {step === 3 ? <Wizzard.StepThree/> : <></>}
             </div>
-            <Wizzard.Footer/>
+            <Wizzard.Footer enableNext={enableNext}/>
         </>
     );
 }
 
-const StepOne = ({loguedIn}) => {
+const StepOne = ({handleNext, loguedIn}) => {
 
-    const [info, setInfo] = useState({ 
-        direction: []
-    });
+    const [accept, setAccept] = useState(false);
+    const [local, setLocal] = useState("none");
+
+    const handleAccept = (e) => {
+        setAccept(e.target.checked)
+    }
+
+    const handleLocal = (e) => {
+        setLocal(e.target.value)
+    }
+
+    const handleChange = (e) => {
+        console.log("accept :" + accept + ", local: " + local)
+        handleNext(accept && (local != "0") && (local != "N"))
+    }
 
     return (
-        <div className="step1 inner-container">
+        <div className="step1 inner-container" onChange={handleChange}>
             <h4>Detalles de Local {loguedIn ? " - Logueado" : "- No logueado"}</h4>
             <p>Seleccioná el local que necesita de nuestro servicio o agregá un local nuevo a tu lista.</p>
             <div className="form">
-                {loguedIn ? <CleanType info={info}/> : <StepOneNewUser info={info}/>}
+                {loguedIn ? <CleanType handleAccept={handleAccept} handleLocal={handleLocal}/> : <StepOneNewUser/>}
             </div>
         </div>
     );
@@ -149,11 +166,11 @@ const Steps = () => {
 }
 Wizzard.Steps = Steps;
 
-const Footer = () => {
+const Footer = ({enableNext}) => {
     return (
         <div className="wizard-footer">
             <div className="inner-container">
-                <button className="btn btn-primary" disabled>Siguiente</button>	
+                <button className="btn btn-primary" disabled={enableNext}>Siguiente</button>	
             </div>
         </div>
     );
