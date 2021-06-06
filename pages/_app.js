@@ -1,9 +1,8 @@
-import '../styles/globals.css'
-import "../scss/style.scss"
-import "@fortawesome/fontawesome-svg-core/styles.css";
-import { config } from "@fortawesome/fontawesome-svg-core";
+/* import '../assets/styles/globals.css'; */
+import '../assets/fontawesome/css/all.css';
+import "../assets/styles/main.scss";
+
 import initializeFirebase from '../utils/firebaseConfig.ts';
-config.autoAddCss = false;
 
 const firebaseapp = initializeFirebase();
 
@@ -12,3 +11,5 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp
+
+

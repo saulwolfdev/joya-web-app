@@ -27,7 +27,7 @@ const Wizzard = () => {
     return (
         <>
         	<Wizzard.Steps/>
-            <div className="wizard-content">
+            <div className="wizard-content card-page-content">
                 {step === 1 ? <Wizzard.StepOne handleNext={handleNext} loguedIn={loguedIn}/> : <></>}
                 {step === 2 ? <Wizzard.StepTwo/> : <></>}
                 {step === 3 ? <Wizzard.StepThree/> : <></>}
@@ -152,7 +152,7 @@ Wizzard.StepThree = StepThree;
 
 const Steps = () => {
     return (
-        <div className="wizard-steps">
+        <div className="wizard-steps card-page-header">
             <ul className="inner-container">
                 <li className="title"><span className="d-none d-md-inline">Tu solicitud:</span><span className="d-md-none">Pasos:</span></li>
                 <li className="step step1"><i className="fal fa-store"/><span className="d-none d-lg-inline">Detalles del local</span><span className="d-none d-md-inline d-lg-none">El local</span></li>
@@ -168,7 +168,7 @@ Wizzard.Steps = Steps;
 
 const Footer = ({enableNext}) => {
     return (
-        <div className="wizard-footer">
+        <div className="wizard-footer card-page-footer">
             <div className="inner-container">
                 <button className="btn btn-primary" disabled={enableNext}>Siguiente</button>	
             </div>

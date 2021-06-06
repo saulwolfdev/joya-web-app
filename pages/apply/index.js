@@ -7,10 +7,10 @@ import Head from 'next/head'
 const WizzardContainer = () => {
     return (
         <div className="main-content">
-	    	<div className="clean-wizard step1">
+	    	<div className="clean-wizard step1 localnuevo">
 	    		<div className="container-fluid">
 	    			<div className="row">
-	    				<div className="col-12 col-lg-10 wizard-container">
+	    				<div className="col-12 col-lg-10 wizard-container card-page-container">
                             <Wizzard/>
 	    				</div>
 	    			</div>
