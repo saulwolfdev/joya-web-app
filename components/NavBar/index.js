@@ -5,34 +5,30 @@ import NavBarLoggedOut from './NavBarLoggedOut';
 import NavBarLoguedIn from './NavBarLoguedIn';
 import NavBarGlazierOptions from './NavBarGlazierOptions';
 import { getAuth } from 'firebase/auth';
+import { prepareUserInfo } from '../../helpers'
 
 const NavBar = ({glazier}) => {
     const [showSingnIn, setShowSingnIn] = useState(false);
     const [showSingnUp, setShowSingnUp] = useState(false);
-    const [loguedIn, setLoguedIn] = useState(false);
+
     const closeSignInModalHandler = (close) => setShowSingnIn(!close);
     const closeSignUpModalHandler = (close) => setShowSingnUp(!close);
     const onSuccessSignIn = () => setLoguedIn(true);
-    const[usuarioLogueado,setUsuarioLogueado] = useState(null);
     
+    const [loguedIn, setLoguedIn] = useState(false);
+    const [user,setUser] = useState(null);
+
     useEffect(()=>{
         const userLogin = getAuth();
-        userLogin.onAuthStateChanged(firebaseUser =>{
-            if(firebaseUser){
-               setLoguedIn(true);
-               setUsuarioLogueado(firebaseUser);
-            }
-            else
-                setLoguedIn(false);
-
-        });    
+        userLogin.onAuthStateChanged(prepareUserInfo(setLoguedIn, setUser));    
     });
+    
     return (
             <nav className="navbar">
                 <div className="container-fluid">
                     <div className="row">
                         <NavBar.Logo/>
-                        { glazier ? <></> : (loguedIn ? <NavBarLoguedIn usuarioLogueado={usuarioLogueado} /> : <NavBarLoggedOut edOut close={closeSignInModalHandler}/>) }
+                        { glazier ? <></> : (loguedIn ? <NavBarLoguedIn user={user} /> : <NavBarLoggedOut edOut close={closeSignInModalHandler}/>) }
                         { glazier ? <NavBarGlazierOptions/> : <></> }
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-const NavBarLoguedIn = ({usuarioLogueado}) => {
+const NavBarLoguedIn = ({user}) => {
     return (
         <div className="col menu-col user-nav">
             <button className="navbar-toggler user-toggle hamburger is-closed" type="button" data-toggle="offcanvas" data-target="#main-menu-user" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,14 +8,12 @@ const NavBarLoguedIn = ({usuarioLogueado}) => {
                 <span className="hamb-middle"></span>
                 <span className="hamb-bottom"></span>
             </button>
-            <NavBarLoguedIn.Menu usuarioLogueado={usuarioLogueado}/>
+            <NavBarLoguedIn.Menu user={user}/>
         </div>
     )
 }
 
-const Menu = ({usuarioLogueado}) => {
-
-    
+const Menu = ({user}) => {
 
     return (
         <nav className="navbar navbar-inverse navbar-fixed-top" id="main-menu" role="navigation">
@@ -23,7 +21,7 @@ const Menu = ({usuarioLogueado}) => {
                 <ul className="menu user-menu">
                     <li className="username d-lg-none"><span className="a">
                         <i className="far fa-user-circle"/>
-                        {usuarioLogueado? usuarioLogueado.displayName? usuarioLogueado.displayName : usuarioLogueado.email : ""}
+                        {user? user.displayName? user.displayName : user.email : ""}
                     </span></li>
                     <li className="ayuda"><a href="#">Ayuda</a></li>
                     <li><Link href='/apply'><a className="destacado">Solicitar limpieza de vidriera</a></Link></li>
@@ -32,7 +30,7 @@ const Menu = ({usuarioLogueado}) => {
                     <li className="user-options dropdown closed">
                         <span className="a user-item">
                             <i className="far fa-user-circle"/>
-                            {usuarioLogueado? usuarioLogueado.displayName? usuarioLogueado.displayName : usuarioLogueado.email : ""}
+                            {user? user.displayName? user.displayName : user.email : ""}
                             <i className="far fa-chevron-down"/>
                         </span>
                         <ul className="sub-menu">

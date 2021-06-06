@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import InputLocal from './StepOne/InputLocal'
 import InputDirection from './StepOne/InputDirection'
 import InputLocalName from './StepOne/InputLocalName'
@@ -10,14 +10,25 @@ import Modalities from './StepTwo/Modalities'
 import UniqueSection from './StepTwo/UniqueSection'
 import SuscriptionSection from './StepTwo/SuscriptionSection'
 import UrgentSection from './StepTwo/UrgentSection'
+import { getAuth } from 'firebase/auth';
+import { prepareUserInfo } from '../../helpers'
 
 const Wizzard = () => {
-    const [step, setStep] = useState(2);
+    const [step, setStep] = useState(1);
+
+    const [loguedIn, setLoguedIn] = useState(false);
+    const [user,setUser] = useState(null);
+
+    useEffect(()=>{
+        const userLogin = getAuth();
+        userLogin.onAuthStateChanged(prepareUserInfo(setLoguedIn, setUser));    
+    });
+
     return (
         <>
         	<Wizzard.Steps/>
             <div className="wizard-content">
-                {step === 1 ? <Wizzard.StepOne/> : <></> }
+                {step === 1 ? <Wizzard.StepOne loguedIn={loguedIn}/> : <></> }
                 {step === 2 ? <Wizzard.StepTwo/> : <></> }
                 {step === 3 ? <Wizzard.StepThree/> : <></> }
             </div>
@@ -26,10 +37,10 @@ const Wizzard = () => {
     );
 }
 
-const StepOne = () => {
+const StepOne = ({loguedIn}) => {
     return (
         <div className="step1 inner-container">
-            <h4>Detalles de Local</h4>
+            <h4>Detalles de Local {loguedIn ? " - Logueado" : "- No logueado"}</h4>
             <p>Seleccioná el local que necesita de nuestro servicio o agregá un local nuevo a tu lista.</p>
             <div className="form">
                 <InputLocal/>
