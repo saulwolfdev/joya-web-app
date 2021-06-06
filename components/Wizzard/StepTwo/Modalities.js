@@ -5,20 +5,26 @@ const Modalities = ({handleModality}) => {
     const [selectedOption, setSelectedOption] = useState('suscription');
 
     return (
-        <div className="row modalidades" onClick={() => handleModality(selectedOption)}>
-            <FrequencyUnique outstanding={selectedOption === 'unique'} handleClick={setSelectedOption}/>
-            <FrequencySuscription outstanding={selectedOption === 'suscription'} handleClick={setSelectedOption}/>
-            <FrecuencyUrgent outstanding={selectedOption === 'urgent'} handleClick={setSelectedOption}/>
+        <div className="row modalidades">
+            <FrequencyUnique outstanding={selectedOption === 'unique'} handleModality={handleModality} handleClick={setSelectedOption}/>
+            <FrequencySuscription outstanding={selectedOption === 'suscription'} handleModality={handleModality} handleClick={setSelectedOption}/>
+            <FrecuencyUrgent outstanding={selectedOption === 'urgent'} handleModality={handleModality} handleClick={setSelectedOption}/>
         </div>
     );
 }
 
-const FrequencyUnique = ({outstanding, handleClick}) => {
+const FrequencyUnique = ({outstanding, handleModality, handleClick}) => {
     const styleOutstanding = 'modalidad destacada';
     const styleNotOutstanging = 'modalidad';
+
+    const updateModality = (e) => {
+        handleClick('unique');
+        handleModality('unique')
+    };
+    
     return (
         <>
-        <div className="col-md-4" onClick={() => handleClick('unique')}>
+        <div className="col-md-4" onClick={e => updateModality(e)}>
             <div className={outstanding ? styleOutstanding : styleNotOutstanging} data-form="#freq-unica">
                 <div className="img-block"><Img className="img-fluid" src="/xq_03.jpg"  width="130" height="80" alt="Servicio por única vez"/></div>
                 <div className="text">
@@ -32,11 +38,17 @@ const FrequencyUnique = ({outstanding, handleClick}) => {
 }
 Modalities.FrequencyUnique = FrequencyUnique;
 
-const FrequencySuscription = ({outstanding, handleClick}) => {
+const FrequencySuscription = ({outstanding, handleModality, handleClick}) => {
     const styleOutstanding = 'modalidad destacada';
     const styleNotOutstanging = 'modalidad';
+
+    const updateModality = (e) => {
+        handleClick('suscription');
+        handleModality('suscription')
+    };
+
     return (
-        <div className="col-md-4" onClick={() => handleClick('suscription')}>
+        <div className="col-md-4" onClick={e => updateModality(e)}>
             <div className={outstanding ? styleOutstanding : styleNotOutstanging} data-form="#freq-suscripcion">
                 <div className="img-block"><Img className="img-fluid" src="/xq_02.jpg"  width="130" height="80" alt="Suscripción a limpieza programada"/></div>
                 <div className="text">
@@ -50,11 +62,17 @@ const FrequencySuscription = ({outstanding, handleClick}) => {
 }
 Modalities.FrequencySuscription = FrequencySuscription;
 
-const FrecuencyUrgent = ({outstanding, handleClick}) => {
+const FrecuencyUrgent = ({outstanding, handleModality, handleClick}) => {
     const styleOutstanding = 'modalidad destacada';
     const styleNotOutstanging = 'modalidad';
+
+    const updateModality = (e) => {
+        handleClick('urgent');
+        handleModality('urgent')
+    };
+
     return (
-        <div className="col-md-4" onClick={() => handleClick('urgent')}>
+        <div className="col-md-4" onClick={e => updateModality(e)}>
             <div className={outstanding ? styleOutstanding : styleNotOutstanging} data-form="#freq-urgencia">
                 <div className="img-block"><Img className="img-fluid" src="/xq_06.jpg"  width="130" height="80" alt="Suscripción a limpieza programada"/></div>
                 <div className="text">
