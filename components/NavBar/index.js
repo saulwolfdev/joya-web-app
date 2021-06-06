@@ -1,11 +1,12 @@
 import React,{useState, useEffect} from 'react';
+import Link from 'next/link';
 import SignInModal from "../SignInModal";
 import SignUpModal from '../SignUpModal';
 import NavBarLoggedOut from './NavBarLoggedOut';
 import NavBarLoguedIn from './NavBarLoguedIn';
 import NavBarGlazierOptions from './NavBarGlazierOptions';
 import { getAuth } from 'firebase/auth';
-import { prepareUserInfo } from '../../helpers'
+import { prepareUserInfo } from '../../helpers';
 
 const NavBar = ({glazier}) => {
     const [showSingnIn, setShowSingnIn] = useState(false);
@@ -45,7 +46,7 @@ const Logo = () => {
     return (
         <div className="col-auto logo-div">
             <h1 className="site-title">
-                <a className="navbar-brand main-logo" href="#" rel="home" style={logoImage}>Joya</a>
+                <Link href='/'><a className="navbar-brand main-logo" href="#" rel="home" style={logoImage}>Joya</a></Link>
             </h1>
         </div>
     )
