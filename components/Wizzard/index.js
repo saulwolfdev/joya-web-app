@@ -33,12 +33,17 @@ const Wizzard = () => {
 }
 
 const StepOne = ({loguedIn}) => {
+
+    const [info, setInfo] = useState({ 
+        direction: []
+    });
+
     return (
         <div className="step1 inner-container">
             <h4>Detalles de Local {loguedIn ? " - Logueado" : "- No logueado"}</h4>
             <p>Seleccioná el local que necesita de nuestro servicio o agregá un local nuevo a tu lista.</p>
             <div className="form">
-                {loguedIn ? <CleanType/> : <StepOneNewUser/>}
+                {loguedIn ? <CleanType info={info}/> : <StepOneNewUser info={info}/>}
             </div>
         </div>
     );
