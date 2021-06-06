@@ -92,11 +92,28 @@ const StepTwo = ({handleNext}) => {
         setUniqueTimeZone(e.target.value);
     }
 
+    // Inputs from 'urgent'
+    const [urgentDate, setUrgentDate] = useState('none');
+    const [urgentIsFlexible, setUrgentIsFlexible] = useState(false);
+    const [urgentTimeZone, setUrgentTimeZone] = useState('none');
+
+    const handleUrgentDate = (e) => {
+        setUrgentDate(e.target.value);
+    }
+
+    const isFlexibleUrgent = (flexible) => {
+        setUrgentIsFlexible(flexible);
+    }
+
+    const handleUrgentTimeZone = (e) => {
+        setUrgentTimeZone(e.target.value);
+    }
+
     useEffect(() => {
-        console.log('uniqueDate: ' + uniqueDate);
-        console.log('uniqueIsFlexible: ' + uniqueIsFlexible);
-        console.log('uniqueTimeZone: ' + uniqueTimeZone);
-        handleNext(modality === 'unique' && uniqueDate !== 'none' &&  (uniqueIsFlexible || (!uniqueIsFlexible && uniqueTimeZone !== 'none' && uniqueTimeZone !== '0')))
+        const validUnique = modality === 'unique' && uniqueDate !== 'none' &&  (uniqueIsFlexible || (!uniqueIsFlexible && uniqueTimeZone !== 'none' && uniqueTimeZone !== '0'));
+        const validSuscription = false;
+        const validUrgent = modality === 'urgent' && urgentDate !== 'none' &&  (urgentIsFlexible || (!urgentIsFlexible && urgentTimeZone !== 'none' && urgentTimeZone !== '0'));
+        handleNext(validUnique || validSuscription || validUrgent);
     });
 
     return (
@@ -107,7 +124,7 @@ const StepTwo = ({handleNext}) => {
                 <Modalities handleModality={setModality}/>
                 {modality === 'unique' ? <UniqueSection handleUniqueDate={handleUniqueDate} isFlexible={isFlexible} handleUniqueTimeZone={handleUniqueTimeZone}/> : <></>}
                 {modality === 'suscription' ? <SuscriptionSection/> : <></>}
-                {modality === 'urgent' ? <UrgentSection/> : <></>}
+                {modality === 'urgent' ? <UrgentSection handleUrgentDate={handleUrgentDate} isFlexibleUrgent={isFlexibleUrgent} handleUrgentTimeZone={handleUrgentTimeZone}/> : <></>}
             </div>
         </div>
     );

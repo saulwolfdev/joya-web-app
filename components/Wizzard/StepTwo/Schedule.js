@@ -1,4 +1,4 @@
-const Schedule = ({handleUniqueDate, isFlexible, handleUniqueTimeZone}) => {
+const Schedule = ({handleDate, isFlexible, handleTimeZone}) => {
     return (
         <>
             <div className="row dia-visita">
@@ -7,7 +7,7 @@ const Schedule = ({handleUniqueDate, isFlexible, handleUniqueTimeZone}) => {
                 </div>
                 <div className="col col-field">
                     {/*Contemplar posibilidad de incluir un datepicker de react*/}
-                    <input type="date" name="freq-unica-dia" className="form-control" onChange={handleUniqueDate}/>
+                    <input type="date" name="freq-unica-dia" className="form-control" onChange={handleDate}/>
                 </div>
             </div>
             <div className="row franja-horaria">
@@ -26,7 +26,7 @@ const Schedule = ({handleUniqueDate, isFlexible, handleUniqueTimeZone}) => {
                         <label className="form-check-label" htmlFor="freq-unica-hora2">
                         <strong>Franja horaria específica</strong>
                         </label>
-                        <select className="form-select franja-horaria" aria-label="Franja horaria específica" onChange={handleUniqueTimeZone}>
+                        <select className="form-select franja-horaria" aria-label="Franja horaria específica" onChange={handleTimeZone}>
                             <option value="0" defaultValue>Elegir franja</option>
                             <option value="1">franja 1</option>
                             <option value="2">franja 2</option>
