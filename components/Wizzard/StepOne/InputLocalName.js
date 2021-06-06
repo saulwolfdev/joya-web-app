@@ -3,7 +3,7 @@ const InputLocalName = ({handleLocal}) => {
         <div className="form-element">
             <label htmlFor="local" className="form-label">Nombre del local</label>
             <select className="form-control" onChange={handleLocal} placeholder="Nombre del local..." name="local" aria-label="Nombre del local...">
-                <option value="0" defaultValue>Seleccioná un local</option>
+                <option defaultValue="0">Seleccioná un local</option>
                 <option value="1">Correcto</option>
                 <option value="N">+Nuevo local</option>
             </select>

@@ -27,7 +27,7 @@ const Schedule = ({isNewUser, handleDate, isFlexible, handleTimeZone}) => {
                         <strong>Franja horaria específica</strong>
                         </label>
                         <select className="form-select franja-horaria" aria-label="Franja horaria específica" onChange={handleTimeZone}>
-                            <option value="0" defaultValue>Elegir franja</option>
+                            <option defaultValue="0">Elegir franja</option>
                             <option value="1">franja 1</option>
                             <option value="2">franja 2</option>
                             <option value="3">franja 3</option>

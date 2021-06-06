@@ -44,6 +44,8 @@ const Wizzard = () => {
 
 const StepOne = ({handleNext, loguedIn}) => {
 
+    // User
+
     const [accept, setAccept] = useState(false);
     const [local, setLocal] = useState("none");
 
@@ -55,14 +57,23 @@ const StepOne = ({handleNext, loguedIn}) => {
         setLocal(e.target.value)
     }
 
+    // New User
+
+    // TODO
+
     useEffect(() => {
-        handleNext(accept && (local != "none") && (local != "0") && (local != "N"))
+        const validIsLoguedIn = loguedIn && accept && (local != "none") && (local != "0") && (local != "N");
+        const validIsLoguedOut = false;
+        handleNext(validIsLoguedIn || validIsLoguedOut);
     });
 
     return (
         <div className="step1 inner-container">
-            <h4>Detalles de Local {loguedIn ? " - Logueado" : "- No logueado"}</h4>
-            <p>Seleccioná el local que necesita de nuestro servicio o agregá un local nuevo a tu lista.</p>
+            <h4>Detalles de Local</h4>
+            <p>{ loguedIn ?
+                "Seleccioná el local que necesita de nuestro servicio o agregá un local nuevo a tu lista." :
+                "Completá la información de tu vidriera. Ya tenés un local registrado? "}
+                { loguedIn ? <></> : <a href="#" className="link-text">Iniciá sesión.</a>}</p>
             <div className="form">
                 {loguedIn ? <CleanType handleAccept={handleAccept} handleLocal={handleLocal}/> : <StepOneNewUser/>}
             </div>
