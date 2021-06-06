@@ -37,18 +37,18 @@ const Day = ({handleDay, day}) => {
     }
 
     useEffect(() => {
-        handleDay(selectedDay, day);
+        handleDay(selectedDay, String(day.value));
     });
 
     return (
         <div className="col-4 col-lg-2">
             <input type="checkbox" name="freq-suscr-dia" className="btn-check" id={day.key} autoComplete="off" onChange={handleSetSelectedDay}/>
-            <label className="btn btn-outline-form" htmlFor="freq-suscr-dia-ju">{day.value}</label>
+            <label className="btn btn-outline-form" htmlFor={day.key}>{day.value}</label>
         </div>
     );
 }
 
-const SuscriptionSection = ({handleSuscriptionDays, handleSuscriptionDate, isFlexibleSuscription, handleSuscriptionTimeZone}) => {
+const SuscriptionSection = ({isNewUser, handleSuscriptionDays, handleSuscriptionDate, isFlexibleSuscription, handleSuscriptionTimeZone}) => {
     return (
         <div className="frequency-form active" id="freq-suscripcion">
             <p><strong>Seleccioná los días de la semana que necesitás el servicio:</strong></p>
@@ -56,7 +56,7 @@ const SuscriptionSection = ({handleSuscriptionDays, handleSuscriptionDate, isFle
             <div className="row">
                 { days.map((day) => {return <Day handleDay={handleSuscriptionDays} day={day} key={day.key}/>}) }
             </div>
-            <Schedule handleDate={handleSuscriptionDate} isFlexible={isFlexibleSuscription} handleTimeZone={handleSuscriptionTimeZone}/>  // TODO primera visita de texto
+            <Schedule isNewUser={isNewUser} handleDate={handleSuscriptionDate} isFlexible={isFlexibleSuscription} handleTimeZone={handleSuscriptionTimeZone}/>
         </div>
     );
 }

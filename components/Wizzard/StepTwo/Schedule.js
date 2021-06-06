@@ -1,9 +1,9 @@
-const Schedule = ({handleDate, isFlexible, handleTimeZone}) => {
+const Schedule = ({isNewUser, handleDate, isFlexible, handleTimeZone}) => {
     return (
         <>
             <div className="row dia-visita">
                 <div className="col-lg-2 col-3 col-label">
-                    <label htmlFor="freq-unica-dia" className="h4">Día</label>
+                    <label htmlFor="freq-unica-dia" className="h4">{isNewUser ? "Día" : "Primera visita"}</label>
                 </div>
                 <div className="col col-field">
                     {/*Contemplar posibilidad de incluir un datepicker de react*/}

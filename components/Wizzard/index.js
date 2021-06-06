@@ -34,7 +34,7 @@ const Wizzard = () => {
         	<Wizzard.Steps/>
             <div className="wizard-content card-page-content">
                 {step === 1 ? <Wizzard.StepOne handleNext={handleNext} loguedIn={loguedIn}/> : <></>}
-                {step === 2 ? <Wizzard.StepTwo handleNext={handleNext}/> : <></>}
+                {step === 2 ? <Wizzard.StepTwo handleNext={handleNext} loguedIn={loguedIn}/> : <></>}
                 {step === 3 ? <Wizzard.StepThree/> : <></>}
             </div>
             <Wizzard.Footer enableNext={enableNext} incrementStep={incrementStep}/>
@@ -71,7 +71,7 @@ const StepOne = ({handleNext, loguedIn}) => {
 }
 Wizzard.StepOne = StepOne;
 
-const StepTwo = ({handleNext}) => {
+const StepTwo = ({handleNext, loguedIn}) => {
     // If no select, ant this value is any distinct of 'unique', 'selection' or 'urgent', then next conditions should be false (in this case 'none')
     const [modality, setModality] = useState('selection');
 
@@ -113,16 +113,17 @@ const StepTwo = ({handleNext}) => {
     const handleSuscriptionDays = (selectedDay, day) => {
         let newDays = [...days];
         const i = newDays.indexOf(day);
-        if(selectedDay) {
-            if(i !== -1) {
-                newDays.push(day);
+        if(i !== -1) {
+            if(!selectedDay) {
+                newDays = newDays.filter(e => e !== day);
+                setDays(newDays);
             }
         } else {
-            if(i !== -1) {
-                newDays = newDays.filter(e => e !== day);
+            if(selectedDay) {
+                newDays.push(day);
+                setDays(newDays);
             }
         }
-        setDays(newDays);
     }
 
     // Inputs from 'urgent'
@@ -165,9 +166,9 @@ const StepTwo = ({handleNext}) => {
             <p>Con nuestro servicio recurrente ahorrá y despreocupate por completo de tus vidrieras.</p>
             <div className="form">
                 <Modalities handleModality={setModality}/>
-                {modality === 'unique' ? <UniqueSection handleUniqueDate={handleUniqueDate} isFlexible={isFlexible} handleUniqueTimeZone={handleUniqueTimeZone}/> : <></>}
-                {modality === 'suscription' ? <SuscriptionSection handleSuscriptionDays={handleSuscriptionDays} handleSuscriptionDate={handleSuscriptionDate} isFlexibleSuscription={isFlexibleSuscription} handleSuscriptionTimeZone={handleSuscriptionTimeZone}/> : <></>}
-                {modality === 'urgent' ? <UrgentSection handleUrgentDate={handleUrgentDate} isFlexibleUrgent={isFlexibleUrgent} handleUrgentTimeZone={handleUrgentTimeZone}/> : <></>}
+                {modality === 'unique' ? <UniqueSection isNewUser={!loguedIn} handleUniqueDate={handleUniqueDate} isFlexible={isFlexible} handleUniqueTimeZone={handleUniqueTimeZone}/> : <></>}
+                {modality === 'suscription' ? <SuscriptionSection isNewUser={!loguedIn} handleSuscriptionDays={handleSuscriptionDays} handleSuscriptionDate={handleSuscriptionDate} isFlexibleSuscription={isFlexibleSuscription} handleSuscriptionTimeZone={handleSuscriptionTimeZone}/> : <></>}
+                {modality === 'urgent' ? <UrgentSection isNewUser={!loguedIn} handleUrgentDate={handleUrgentDate} isFlexibleUrgent={isFlexibleUrgent} handleUrgentTimeZone={handleUrgentTimeZone}/> : <></>}
             </div>
         </div>
     );
