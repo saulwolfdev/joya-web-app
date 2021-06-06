@@ -1,10 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import InputLocal from './StepOne/InputLocal'
-import InputDirection from './StepOne/InputDirection'
-import InputLocalName from './StepOne/InputLocalName'
-import InputAdditionalIndications from './StepOne/InputAdditionalIndications'
-import WindowSizeSection from './StepOne/WindowSizeSection'
-import Features from './StepOne/Features'
+import StepOneNewUser from './StepOne/StepOneNewUser'
 import CleanType from './StepOne/CleanType'
 import Modalities from './StepTwo/Modalities'
 import UniqueSection from './StepTwo/UniqueSection'
@@ -28,9 +23,9 @@ const Wizzard = () => {
         <>
         	<Wizzard.Steps/>
             <div className="wizard-content">
-                {step === 1 ? <Wizzard.StepOne loguedIn={loguedIn}/> : <></> }
-                {step === 2 ? <Wizzard.StepTwo/> : <></> }
-                {step === 3 ? <Wizzard.StepThree/> : <></> }
+                {step === 1 ? <Wizzard.StepOne loguedIn={loguedIn}/> : <></>}
+                {step === 2 ? <Wizzard.StepTwo/> : <></>}
+                {step === 3 ? <Wizzard.StepThree/> : <></>}
             </div>
             <Wizzard.Footer/>
         </>
@@ -43,15 +38,7 @@ const StepOne = ({loguedIn}) => {
             <h4>Detalles de Local {loguedIn ? " - Logueado" : "- No logueado"}</h4>
             <p>Seleccioná el local que necesita de nuestro servicio o agregá un local nuevo a tu lista.</p>
             <div className="form">
-                <InputLocal/>
-                <div className="localnuevo block-alternative">
-                    <InputDirection/>
-                    <InputLocalName/>
-                    <InputAdditionalIndications/>
-                    <WindowSizeSection/>
-                </div>
-                <Features/>
-                <CleanType/>
+                {loguedIn ? <CleanType/> : <StepOneNewUser/>}
             </div>
         </div>
     );
