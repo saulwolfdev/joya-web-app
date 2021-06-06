@@ -110,8 +110,19 @@ const StepTwo = ({handleNext}) => {
         setSuscriptionTimeZone(e.target.value);
     }
 
-    const handleSuscriptionDays = (e) => {
-        // TODO
+    const handleSuscriptionDays = (selectedDay, day) => {
+        let newDays = [...days];
+        const i = newDays.indexOf(day);
+        if(selectedDay) {
+            if(i !== -1) {
+                newDays.push(day);
+            }
+        } else {
+            if(i !== -1) {
+                newDays = newDays.filter(e => e !== day);
+            }
+        }
+        setDays(newDays);
     }
 
     // Inputs from 'urgent'
