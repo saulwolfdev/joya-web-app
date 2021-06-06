@@ -20,6 +20,11 @@ const Wizzard = () => {
         userLogin.onAuthStateChanged(prepareUserInfo(setLoguedIn, setUser));    
     });
 
+    const incrementStep = (e) => {
+        setStep(step + 1);
+        setEnableNext(false);
+    }
+
     const handleNext = (enable) => {
         setEnableNext(enable);
     }
@@ -32,7 +37,7 @@ const Wizzard = () => {
                 {step === 2 ? <Wizzard.StepTwo/> : <></>}
                 {step === 3 ? <Wizzard.StepThree/> : <></>}
             </div>
-            <Wizzard.Footer enableNext={enableNext}/>
+            <Wizzard.Footer enableNext={enableNext} incrementStep={incrementStep}/>
         </>
     );
 }
@@ -166,11 +171,11 @@ const Steps = () => {
 }
 Wizzard.Steps = Steps;
 
-const Footer = ({enableNext}) => {
+const Footer = ({enableNext, incrementStep}) => {
     return (
         <div className="wizard-footer card-page-footer">
             <div className="inner-container">
-                <button className="btn btn-primary" disabled={!enableNext}>Siguiente</button>	
+                <button className="btn btn-primary" onClick={incrementStep} disabled={!enableNext}>Siguiente</button>	
             </div>
         </div>
     );
