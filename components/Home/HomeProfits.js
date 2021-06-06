@@ -68,20 +68,20 @@ const Profit = ({profit}) => {
 const HomeProfits = () => {
     return (
         <div className="home-beneficios section">
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col-md-7 col-lg-6 beneficios">
-                    <h3>¿Por qué elegir Joya?</h3>
-                    <div className="row">
-                        { profits.map((profit) => {return <Profit profit={profit} key={profit.key}/>}) }
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-md-7 col-lg-6 beneficios">
+                        <h3>¿Por qué elegir Joya?</h3>
+                        <div className="row">
+                            { profits.map((profit) => {return <Profit profit={profit} key={profit.key}/>}) }
+                        </div>
                     </div>
-                </div>
-                <div className="col-md-5 offset-lg-1 miscelaneas">
-                    <Img src="/beneficios-side.jpg" alt="Joya se ocupa de que tu vidriera esté siempre limpia" width={495} height={784} />          	    				
+                    <div className="col-md-5 offset-lg-1 miscelaneas">
+                        <Img src="/beneficios-side.jpg" alt="Joya se ocupa de que tu vidriera esté siempre limpia" width={495} height={784} />          	    				
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     );
 }
  
