@@ -92,6 +92,28 @@ const StepTwo = ({handleNext}) => {
         setUniqueTimeZone(e.target.value);
     }
 
+    // Inputs from 'suscription'
+    const [days, setDays] = useState([]);
+    const [suscriptionDate, setSuscriptionDate] = useState('none');
+    const [suscriptionIsFlexible, setSuscriptionIsFlexible] = useState(false);
+    const [suscriptionTimeZone, setSuscriptionTimeZone] = useState('none');
+
+    const handleSuscriptionDate = (e) => {
+        setSuscriptionDate(e.target.value);
+    }
+
+    const isFlexibleSuscription = (flexible) => {
+        setSuscriptionIsFlexible(flexible);
+    }
+
+    const handleSuscriptionTimeZone = (e) => {
+        setSuscriptionTimeZone(e.target.value);
+    }
+
+    const handleSuscriptionDays = (e) => {
+        // TODO
+    }
+
     // Inputs from 'urgent'
     const [urgentDate, setUrgentDate] = useState('none');
     const [urgentIsFlexible, setUrgentIsFlexible] = useState(false);
@@ -110,9 +132,19 @@ const StepTwo = ({handleNext}) => {
     }
 
     useEffect(() => {
-        const validUnique = modality === 'unique' && uniqueDate !== 'none' &&  (uniqueIsFlexible || (!uniqueIsFlexible && uniqueTimeZone !== 'none' && uniqueTimeZone !== '0'));
-        const validSuscription = false;
-        const validUrgent = modality === 'urgent' && urgentDate !== 'none' &&  (urgentIsFlexible || (!urgentIsFlexible && urgentTimeZone !== 'none' && urgentTimeZone !== '0'));
+        const validUnique = 
+            modality === 'unique' && 
+            uniqueDate !== 'none' &&  
+            (uniqueIsFlexible || (!uniqueIsFlexible && uniqueTimeZone !== 'none' && uniqueTimeZone !== '0'));
+        const validSuscription = 
+            modality === 'suscription' && 
+            days.length > 0 &&
+            suscriptionDate !== 'none' &&  
+            (suscriptionIsFlexible || (!suscriptionIsFlexible && suscriptionTimeZone !== 'none' && suscriptionTimeZone !== '0'));
+        const validUrgent = 
+            modality === 'urgent' && 
+            urgentDate !== 'none' &&  
+            (urgentIsFlexible || (!urgentIsFlexible && urgentTimeZone !== 'none' && urgentTimeZone !== '0'));
         handleNext(validUnique || validSuscription || validUrgent);
     });
 
@@ -123,7 +155,7 @@ const StepTwo = ({handleNext}) => {
             <div className="form">
                 <Modalities handleModality={setModality}/>
                 {modality === 'unique' ? <UniqueSection handleUniqueDate={handleUniqueDate} isFlexible={isFlexible} handleUniqueTimeZone={handleUniqueTimeZone}/> : <></>}
-                {modality === 'suscription' ? <SuscriptionSection/> : <></>}
+                {modality === 'suscription' ? <SuscriptionSection handleSuscriptionDays={handleSuscriptionDays} handleSuscriptionDate={handleSuscriptionDate} isFlexibleSuscription={isFlexibleSuscription} handleSuscriptionTimeZone={handleSuscriptionTimeZone}/> : <></>}
                 {modality === 'urgent' ? <UrgentSection handleUrgentDate={handleUrgentDate} isFlexibleUrgent={isFlexibleUrgent} handleUrgentTimeZone={handleUrgentTimeZone}/> : <></>}
             </div>
         </div>

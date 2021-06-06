@@ -1,6 +1,6 @@
 import Schedule from './Schedule'
 
-const SuscriptionSection = () => {
+const SuscriptionSection = ({handleSuscriptionDays, handleSuscriptionDate, isFlexibleSuscription, handleSuscriptionTimeZone}) => {
     return (
         <div className="frequency-form active" id="freq-suscripcion">
             <p><strong>Seleccioná los días de la semana que necesitás el servicio:</strong></p>
@@ -31,7 +31,7 @@ const SuscriptionSection = () => {
                     <label className="btn btn-outline-form" htmlFor="freq-suscr-dia-sa">Sab</label>
                 </div>
             </div>
-            <Schedule/>
+            <Schedule handleDate={handleSuscriptionDate} isFlexible={isFlexibleSuscription} handleTimeZone={handleSuscriptionTimeZone}/>  // TODO primera visita de texto
         </div>
     );
 }
