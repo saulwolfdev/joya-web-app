@@ -1,4 +1,4 @@
-import GlazierSuscription from '../GlazierSuscription'
+import GlazierSuscription from './GlazierSuscription'
 import Img from '../Img';
 
 const GlazierPostulate = () => {

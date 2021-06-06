@@ -1,4 +1,4 @@
-/* import '../assets/styles/globals.css'; */
+import '../assets/styles/globals.css';
 import '../assets/fontawesome/css/all.css';
 import "../assets/styles/main.scss";
 
