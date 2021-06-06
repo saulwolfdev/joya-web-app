@@ -19,8 +19,8 @@ class InputLocalName extends Component {
     render() {
         return (
             <div className="form-element">
-                <label htmlFor="nombre_local" className="form-label">Nombre del local</label>
-                <select className="form-control" placeholder="Nombre del local..." name="nombre_local" aria-label="Nombre del local...">
+                <label htmlFor="local" className="form-label">Nombre del local</label>
+                <select className="form-control" placeholder="Nombre del local..." name="local" aria-label="Nombre del local...">
                     <option defaultValue>Seleccioná un local</option>
                     <option value="1">+Nuevo local</option>
                 </select>
