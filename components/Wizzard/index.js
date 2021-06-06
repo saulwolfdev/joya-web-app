@@ -50,13 +50,13 @@ const StepOne = ({handleNext, loguedIn}) => {
         setLocal(e.target.value)
     }
 
-    const handleChange = (e) => {
+    useEffect(() => {
         console.log("accept :" + accept + ", local: " + local)
         handleNext(accept && (local != "0") && (local != "N"))
-    }
+    });
 
     return (
-        <div className="step1 inner-container" onChange={handleChange}>
+        <div className="step1 inner-container">
             <h4>Detalles de Local {loguedIn ? " - Logueado" : "- No logueado"}</h4>
             <p>Seleccioná el local que necesita de nuestro servicio o agregá un local nuevo a tu lista.</p>
             <div className="form">
@@ -170,7 +170,7 @@ const Footer = ({enableNext}) => {
     return (
         <div className="wizard-footer card-page-footer">
             <div className="inner-container">
-                <button className="btn btn-primary" disabled={enableNext}>Siguiente</button>	
+                <button className="btn btn-primary" disabled={!enableNext}>Siguiente</button>	
             </div>
         </div>
     );
