@@ -1,9 +1,9 @@
 import Schedule from './Schedule'
 
-const UniqueSection = () => {
+const UniqueSection = ({handleUniqueDate, isFlexible, handleUniqueTimeZone}) => {
     return (
         <div className="frequency-form active" id="freq-unica">
-            <Schedule/>
+            <Schedule handleUniqueDate={handleUniqueDate} isFlexible={isFlexible} handleUniqueTimeZone={handleUniqueTimeZone}/>
         </div>
     );
 }

@@ -34,7 +34,7 @@ const Wizzard = () => {
         	<Wizzard.Steps/>
             <div className="wizard-content card-page-content">
                 {step === 1 ? <Wizzard.StepOne handleNext={handleNext} loguedIn={loguedIn}/> : <></>}
-                {step === 2 ? <Wizzard.StepTwo/> : <></>}
+                {step === 2 ? <Wizzard.StepTwo handleNext={handleNext}/> : <></>}
                 {step === 3 ? <Wizzard.StepThree/> : <></>}
             </div>
             <Wizzard.Footer enableNext={enableNext} incrementStep={incrementStep}/>
@@ -56,8 +56,7 @@ const StepOne = ({handleNext, loguedIn}) => {
     }
 
     useEffect(() => {
-        console.log("accept :" + accept + ", local: " + local)
-        handleNext(accept && (local != "0") && (local != "N"))
+        handleNext(accept && (local != "none") && (local != "0") && (local != "N"))
     });
 
     return (
@@ -72,16 +71,41 @@ const StepOne = ({handleNext, loguedIn}) => {
 }
 Wizzard.StepOne = StepOne;
 
-const StepTwo = () => {
+const StepTwo = ({handleNext}) => {
     // If no select, ant this value is any distinct of 'unique', 'selection' or 'urgent', then next conditions should be false (in this case 'none')
     const [modality, setModality] = useState('selection');
+
+    // Inputs from 'unique'
+    const [uniqueDate, setUniqueDate] = useState('none');
+    const [uniqueIsFlexible, setUniqueIsFlexible] = useState(false);
+    const [uniqueTimeZone, setUniqueTimeZone] = useState('none');
+
+    const handleUniqueDate = (e) => {
+        setUniqueDate(e.target.value);
+    }
+
+    const isFlexible = (flexible) => {
+        setUniqueIsFlexible(flexible);
+    }
+
+    const handleUniqueTimeZone = (e) => {
+        setUniqueTimeZone(e.target.value);
+    }
+
+    useEffect(() => {
+        console.log('uniqueDate: ' + uniqueDate);
+        console.log('uniqueIsFlexible: ' + uniqueIsFlexible);
+        console.log('uniqueTimeZone: ' + uniqueTimeZone);
+        handleNext(modality === 'unique' && uniqueDate !== 'none' &&  (uniqueIsFlexible || (!uniqueIsFlexible && uniqueTimeZone !== 'none' && uniqueTimeZone !== '0')))
+    });
+
     return (
         <div className="step2 inner-container">
             <h4>Frecuencia</h4>
             <p>Con nuestro servicio recurrente ahorrá y despreocupate por completo de tus vidrieras.</p>
             <div className="form">
                 <Modalities handleModality={setModality}/>
-                {modality === 'unique' ? <UniqueSection/> : <></>}
+                {modality === 'unique' ? <UniqueSection handleUniqueDate={handleUniqueDate} isFlexible={isFlexible} handleUniqueTimeZone={handleUniqueTimeZone}/> : <></>}
                 {modality === 'suscription' ? <SuscriptionSection/> : <></>}
                 {modality === 'urgent' ? <UrgentSection/> : <></>}
             </div>
