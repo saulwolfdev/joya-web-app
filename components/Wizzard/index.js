@@ -70,18 +70,21 @@ const StepOne = ({handleNext, loguedIn}) => {
     });
 
     return (
+        <>
         <div className="step1 inner-container">
             <h4>Detalles de Local</h4>
             <p>{ loguedIn ?
                 "Seleccioná el local que necesita de nuestro servicio o agregá un local nuevo a tu lista." :
                 "Completá la información de tu vidriera. Ya tenés un local registrado? "}
                 { loguedIn ? <></> : <a href="#" className="link-text">Iniciá sesión.</a>}</p>
+                
             <div className="form">
                 {loguedIn ? 
                 <CleanType handleAccept={handleAccept} handleLocal={handleLocal}/> : 
                 <StepOneNewUser/>}
             </div>
         </div>
+        </>
     );
 }
 Wizzard.StepOne = StepOne;
