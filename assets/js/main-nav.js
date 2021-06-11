@@ -20,7 +20,7 @@ module.exports = {
                 },
             self);
         });
-        if (null != this.dropdown) {     //innecesario si se modulariza bien
+        if (null != document.querySelectorAll('.dropdown')) {     //innecesario si se modulariza bien
             this.initSubmenu();
         }
     },
@@ -54,7 +54,8 @@ module.exports = {
         });
     },
     initSubmenu: function() {
-        this.dropdown.forEach((dropdown) => {
+        
+        document.querySelectorAll('.dropdown').forEach((dropdown) => {
             dropdown.addEventListener('mouseenter', (e) => {
                 if (dropdown.classList.contains('closed')) {
                     dropdown.classList.remove('closed');

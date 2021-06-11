@@ -1,3 +1,6 @@
+import { getAuth, signOut } from 'firebase/auth';
+import { prepareUserInfo } from '../../helpers';
+
 import Link from 'next/link'
 
 const NavBarLoguedIn = ({user}) => {
@@ -14,6 +17,12 @@ const NavBarLoguedIn = ({user}) => {
 }
 
 const Menu = ({user}) => {
+
+    function logOut(e){
+        e.preventDefault(e);
+        const auth = getAuth();
+        signOut(auth);
+    }
 
     return (
         <nav className="navbar navbar-inverse navbar-fixed-top" id="main-menu" role="navigation">
@@ -36,7 +45,7 @@ const Menu = ({user}) => {
                         <ul className="sub-menu">
                             <li><a href="#">Tus pedidos</a></li>
                             <li><a href="#">Configuración de cuenta</a></li>
-                            <li><a href="#">Salir</a></li>
+                            <li><a onClick={logOut} href="#">Salir</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -33,7 +33,7 @@ const steps = [
 const Step = ({step}) => {
     return (
         <div className="col step">
-            <div className="num">{step.step}</div>
+            <div className="num">{step.key}</div>
             <div className="img-block">
                 <Img className="img-fluid" src={step.image} alt={step.description} width={step.width} height={step.height}/>       
             </div>

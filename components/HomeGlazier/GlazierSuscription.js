@@ -1,6 +1,24 @@
+import Glazier from '../../Entities/glazier.ts'
+
 const GlazierSuscription = () => {
+
+    async function registerGlazier(e){
+        e.preventDefault(e);
+        const email = e.target.email.value;
+        const celular = e.target.celular.value;
+        const nombre = e.target.nombre.value;
+        const apellido = e.target.apellido.value;
+
+        var newGlazier = new Glazier(email,apellido,nombre,"Postulante",celular,null);
+        newGlazier.Insert(newGlazier);
+
+        Array.from(document.querySelectorAll("input")).forEach(
+           input => (input.value = "")
+        );
+
+    };
     return (
-        <div className="subscription-form form">
+        <form className="subscription-form form" onSubmit={registerGlazier}>
             <div className="form-element">
                 <label htmlFor="email" className="form-label sr-only">Email</label>
                 <div className="input-group">
@@ -34,9 +52,9 @@ const GlazierSuscription = () => {
                 <p>Al continuar, aceptás nuestra <a href="#">política de privacidad</a>.</p>
             </div>
             <div className="btn-set">
-                <button className="btn btn-primary">Enviar</button>
+                <button type="submit" className="btn btn-primary">Enviar</button>
             </div>
-        </div>
+        </form>
     );
 }
 

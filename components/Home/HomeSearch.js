@@ -23,9 +23,8 @@ const DirectionSearch = () => {
             <div className="input-group-btn">
                 <input type="text" className="form-control" id="direccion" aria-describedby="direccionHelp" placeholder="Dirección de tu vidriera"/>
                 <Link href='/apply'>
-                    <a className="btn btn-primary btn-round" aria-label="Solicitar limpieza ya">
+                    <a className="btn btn-secondary btn-round" aria-label="Solicitar limpieza ya">
                         <i className="far fa-arrow-right"/>
-                        Servicio para Capital Federal únicamente. Pronto tendremos más cobertura.
                     </a>
                 </Link>
             </div>
