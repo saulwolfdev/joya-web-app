@@ -2,23 +2,33 @@ import React,{useState, useEffect} from 'react';
 
 const Window = () => {
 
-    const DEFAULT_W = 2;
-    const MIN_W = 1;
-    const MAX_W = 4;
+    const DEFAULT = 2;
+    const MIN = 1;
+    const MAX = 4;
 
-    const [sizeH, setSizeH] = useState(DEFAULT_W);
+    const [sizeH, setSizeH] = useState(DEFAULT);
+    const [sizeW, setSizeW] = useState(DEFAULT);
 
     const handleSizeH = (e) => {
         let newValue = Number.parseFloat(e.target.value);
-       
         setSizeH(newValue);
     }
 
+    const handleSizeW = (e) => {
+        let newValue = Number.parseFloat(e.target.value);
+        setSizeW(newValue);
+    }
+
     useEffect(()=>{
-        if(sizeH > MAX_W) {
-            setSizeH(MAX_W);
-        } else if (sizeH < MIN_W) {
-            setSizeH(MIN_W);
+        if(sizeH > MAX) {
+            setSizeH(MAX);
+        } else if (sizeH < MIN) {
+            setSizeH(MIN);
+        }
+        if(sizeW > MAX) {
+            setSizeW(MAX);
+        } else if (sizeW < MIN) {
+            setSizeW(MIN);
         }
     }); 
 
@@ -32,11 +42,11 @@ const Window = () => {
                             <i className="far fa-arrows-v"/>
                         </div>
                         <div className="col">
-                            <input type="range" className="form-range" id="altura1" min={MIN_W} max={MAX_W} step="0.5" value={sizeH} onChange={handleSizeH} data-vidriera="1" data-variable="alto"/>
+                            <input type="range" className="form-range" id="altura1" min={MIN} max={MAX} step="0.5" value={sizeH} onChange={handleSizeH} data-vidriera="1" data-variable="alto"/>
                         </div>
                         <div className="col-auto">
                             <div className="input-group">
-                                <input type="text" className="form-control form-aux" min={MIN_W} max={MAX_W} name="altura1" data-vidriera="1" data-variable="alto" onKeyUp={handleSizeH} defaultValue={DEFAULT_W}/>
+                                <input type="text" className="form-control form-aux" name="altura1" data-vidriera="1" data-variable="alto" onKeyUp={handleSizeH} defaultValue={DEFAULT}/>
                                 <span className="input-group-text">m</span>
                             </div>
                         </div>
@@ -44,11 +54,11 @@ const Window = () => {
                     <div className="row">
                         <div className="col-auto"><i className="far fa-arrows-h"/></div>
                         <div className="col">
-                            <input type="range" className="form-range" id="ancho1" min="1" max="4" step="0.5" value="2" data-vidriera="1" data-variable="ancho"/>
+                            <input type="range" className="form-range" id="ancho1" min={MIN} max={MAX}  step="0.5" value={sizeW}  onChange={handleSizeW} data-vidriera="1" data-variable="ancho"/>
                         </div>
                         <div className="col-auto">
                             <div className="input-group">
-                                <input type="text" className="form-control form-aux" name="ancho1" data-vidriera="1" data-variable="ancho" value="2"/>
+                                <input type="text" className="form-control form-aux" name="ancho1" data-vidriera="1" data-variable="ancho" onKeyUp={handleSizeW} defaultValue={DEFAULT}/>
                                 <span className="input-group-text">m</span>
                             </div>
                         </div>
