@@ -42,11 +42,11 @@ const Window = ({n}) => {
                             <i className="far fa-arrows-v"/>
                         </div>
                         <div className="col">
-                            <input type="range" className="form-range" id="altura1" min={MIN} max={MAX} step="0.5" value={sizeH} onChange={handleSizeH} data-vidriera="1" data-variable="alto"/>
+                            <input type="range" className="form-range" id={"altura"+n} min={MIN} max={MAX} step="0.5" value={sizeH} onChange={handleSizeH} data-vidriera={n} data-variable="alto"/>
                         </div>
                         <div className="col-auto">
                             <div className="input-group">
-                                <input type="text" className="form-control form-aux" name="altura1" data-vidriera="1" data-variable="alto" onKeyUp={handleSizeH} defaultValue={DEFAULT}/>
+                                <input type="text" className="form-control form-aux" name={"altura"+n} data-vidriera={n} data-variable="alto" onKeyUp={handleSizeH} defaultValue={DEFAULT}/>
                                 <span className="input-group-text">m</span>
                             </div>
                         </div>
@@ -54,11 +54,11 @@ const Window = ({n}) => {
                     <div className="row">
                         <div className="col-auto"><i className="far fa-arrows-h"/></div>
                         <div className="col">
-                            <input type="range" className="form-range" id="ancho1" min={MIN} max={MAX}  step="0.5" value={sizeW} onChange={handleSizeW} data-vidriera="1" data-variable="ancho"/>
+                            <input type="range" className="form-range" id={"ancho"+n} min={MIN} max={MAX}  step="0.5" value={sizeW} onChange={handleSizeW} data-vidriera={n} data-variable="ancho"/>
                         </div>
                         <div className="col-auto">
                             <div className="input-group">
-                                <input type="text" className="form-control form-aux" name="ancho1" data-vidriera="1" data-variable="ancho" onKeyUp={handleSizeW} defaultValue={DEFAULT}/>
+                                <input type="text" className="form-control form-aux" name={"ancho"+n} data-vidriera={n} data-variable="ancho" onKeyUp={handleSizeW} defaultValue={DEFAULT}/>
                                 <span className="input-group-text">m</span>
                             </div>
                         </div>
@@ -66,7 +66,7 @@ const Window = ({n}) => {
                 </div>
                 
                 <div className="col-sm-4 representacion">
-                    <div className="vidriera" id="vidriera1" data-maxwidth="4" data-maxheight="4" style={{width: '50%', height: '50%'}} data-ancho="2" data-alto="2">
+                    <div className="vidriera" id={"vidriera"+n} data-maxwidth="4" data-maxheight="4" style={{width: '50%', height: '50%'}} data-ancho="2" data-alto="2">
                         <p className="value">4m<sup>2</sup></p>
                     </div>
                 </div>
