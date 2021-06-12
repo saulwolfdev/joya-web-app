@@ -1,0 +1,13 @@
+
+.cliente-sintesis, .more-content .menu {
+	@include bg-light-1; 
+}
+.cliente-sintesis {
+	border-bottom: none; 
+	h3 {padding-left: $side-padding; }
+	.btn-set {justify-self: flex-end; margin-left: auto; }
+	.row.stats {
+		border-top: 1px solid $border-color; 
+		border-bottom: 1px solid $border-color; 
+	}
+}
