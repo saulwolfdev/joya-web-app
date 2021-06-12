@@ -7,6 +7,8 @@ import SuscriptionSection from './StepTwo/SuscriptionSection'
 import UrgentSection from './StepTwo/UrgentSection'
 import CardData from './StepThree/CardData'
 import PurchaseDetails from './StepThree/PurchaseDetails';
+import SignInModal from './../SignInModal'
+import SignUpModal from './../SignUpModal'
 import { getAuth } from 'firebase/auth';
 import { prepareUserInfo } from '../../helpers'
 
@@ -16,6 +18,13 @@ const Wizzard = () => {
     const [loguedIn, setLoguedIn] = useState(false);
     const [user,setUser] = useState(null);
     const [enableNext,setEnableNext] = useState(true);
+
+    const [showSingnIn, setShowSingnIn] = useState(false);
+    const [showSingnUp, setShowSingnUp] = useState(false);
+
+    const closeSignInModalHandler = (close) => setShowSingnIn(!close);
+    const closeSignUpModalHandler = (close) => setShowSingnUp(!close);
+    const onSuccessSignIn = () => setLoguedIn(true);
 
     useEffect(()=>{
         const wizard = require('../../assets/js/solicitud-limpieza');
@@ -38,16 +47,18 @@ const Wizzard = () => {
         <>
         	<Wizzard.Steps/>
             <div className="wizard-content card-page-content">
-                {step === 1 ? <Wizzard.StepOne handleNext={handleNext} loguedIn={loguedIn}/> : <></>}
+                {step === 1 ? <Wizzard.StepOne handleNext={handleNext} loguedIn={loguedIn} close={closeSignInModalHandler}/> : <></>}
                 {step === 2 ? <Wizzard.StepTwo handleNext={handleNext} loguedIn={loguedIn}/> : <></>}
                 {step === 3 ? <Wizzard.StepThree/> : <></>}
             </div>
             <Wizzard.Footer enableNext={enableNext} incrementStep={incrementStep}/>
+            <SignInModal onSuccess={onSuccessSignIn} show={showSingnIn} close={closeSignInModalHandler} showSignUp={setShowSingnUp}/>
+            <SignUpModal show={showSingnUp} close={closeSignUpModalHandler} showSignIn={setShowSingnIn}/>
         </>
     );
 }
 
-const StepOne = ({handleNext, loguedIn}) => {
+const StepOne = ({handleNext, loguedIn, close}) => {
 
     // User
 
@@ -66,7 +77,7 @@ const StepOne = ({handleNext, loguedIn}) => {
 
     // TODO
 
-    useEffect(() => {
+    useEffect(() => { 
         const validIsLoguedIn = loguedIn && accept && (local != "none") && (local != "0") && (local != "N");
         const validIsLoguedOut = true;
         handleNext(validIsLoguedIn || validIsLoguedOut);
@@ -79,12 +90,12 @@ const StepOne = ({handleNext, loguedIn}) => {
             <p>{ loguedIn ?
                 "Seleccioná el local que necesita de nuestro servicio o agregá un local nuevo a tu lista." :
                 "Completá la información de tu vidriera. Ya tenés un local registrado? "}
-                { loguedIn ? <></> : <a href="#" className="link-text">Iniciá sesión.</a>}</p>
+                { loguedIn ? <></> : <a href="#" onClick={() => close(false)} className="link-text">Iniciá sesión.</a>}</p>
                 
             <div className="form">
                 {loguedIn ? 
                 <CleanType handleAccept={handleAccept} handleLocal={handleLocal}/> : 
-                <StepOneNewUser/>}
+                <StepOneNewUser close={close}/>}
             </div>
         </div>
         </>
