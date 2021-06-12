@@ -5,6 +5,7 @@ const CleanType = ({handleAccept, handleLocal}) => {
     return (
         <>
             <InputLocalName handleLocal={handleLocal}/>
+            
             <div className="form-group row">
                 <div className="col-auto d-none d-md-block">
                     <Img src="/ico-balde-form.jpg" alt="Limpiamos tu vidriera" className="img-fluid"/>
