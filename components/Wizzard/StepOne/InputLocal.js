@@ -1,4 +1,4 @@
-const InputLocal = () => {
+const InputLocal = ({close}) => {
     return (
         <div className="form-element">
             <label htmlFor="local" className="form-label">Local</label>
@@ -8,7 +8,7 @@ const InputLocal = () => {
                 <option value="local1">Local 1</option>
                 <option value="local2">Local 2</option>
             </select>
-            <p className="form-text importante">Ya tenés cuenta en Joya? <a href="#" className="link-text">Iniciá sesión.</a></p> 
+            <p className="form-text importante">Ya tenés cuenta en Joya? <a href="#" onClick={() => close(false)} className="link-text">Iniciá sesión.</a></p> 
         </div>  
     );
 }
