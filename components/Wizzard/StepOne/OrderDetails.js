@@ -57,10 +57,12 @@ const OrderDetails = () => {
 }
 
 const Detail = ({info}) => {
-    <div className="col panio">
-        <p className="label">Ventana #{info.key}</p>
-        <p className="value">{info.size}m<sup>2</sup></p>
-    </div>
+    return (
+        <div className="col panio">
+            <p className="label">Ventana #{info.key}</p>
+            <p className="value">{info.size}m<sup>2</sup></p>
+        </div>
+    );
 }
 OrderDetails.Detail = Detail;
 
