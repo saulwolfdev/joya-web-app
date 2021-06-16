@@ -12,7 +12,7 @@ import SignUpModal from './../SignUpModal'
 import { getAuth } from 'firebase/auth';
 import { prepareUserInfo } from '../../helpers'
 
-const Wizzard = () => {
+const Wizzard = ({direction}) => {
     const [step, setStep] = useState(1);
 
     const [loguedIn, setLoguedIn] = useState(false);
@@ -47,7 +47,7 @@ const Wizzard = () => {
         <>
         	<Wizzard.Steps/>
             <div className="wizard-content card-page-content">
-                {step === 1 ? <Wizzard.StepOne handleNext={handleNext} loguedIn={loguedIn} close={closeSignInModalHandler}/> : <></>}
+                {step === 1 ? <Wizzard.StepOne direction={direction} handleNext={handleNext} loguedIn={loguedIn} close={closeSignInModalHandler}/> : <></>}
                 {step === 2 ? <Wizzard.StepTwo handleNext={handleNext} loguedIn={loguedIn}/> : <></>}
                 {step === 3 ? <Wizzard.StepThree/> : <></>}
             </div>
@@ -58,7 +58,7 @@ const Wizzard = () => {
     );
 }
 
-const StepOne = ({handleNext, loguedIn, close}) => {
+const StepOne = ({handleNext, loguedIn, close, direction}) => {
 
     // User
 
@@ -95,7 +95,7 @@ const StepOne = ({handleNext, loguedIn, close}) => {
             <div className="form">
                 {loguedIn ? 
                 <CleanType handleAccept={handleAccept} handleLocal={handleLocal}/> : 
-                <StepOneNewUser close={close}/>}
+                <StepOneNewUser close={close} direction={direction}/>}
             </div>
         </div>
         </>

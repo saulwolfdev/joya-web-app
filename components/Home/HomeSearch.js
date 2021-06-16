@@ -22,7 +22,7 @@ const DirectionSearch = () => {
             <label htmlFor="direccion" className="form-label sr-only">Dirección de tu vidriera</label>
             <div className="input-group-btn">
                 <input type="text" className="form-control" id="direccion" aria-describedby="direccionHelp" placeholder="Dirección de tu vidriera"/>
-                <Link href='/apply'>
+                <Link href={'/apply/new'}>
                     <a className="btn btn-secondary btn-round" aria-label="Solicitar limpieza ya">
                         <i className="far fa-arrow-right"/>
                     </a>

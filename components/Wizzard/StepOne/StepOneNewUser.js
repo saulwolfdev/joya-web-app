@@ -6,7 +6,7 @@ import InputAdditionalIndications from './InputAdditionalIndications'
 import WindowSizeSection from './WindowSizeSection'
 import Features from './Features'
 
-const StepOneNewUser = ({close}) => {
+const StepOneNewUser = ({close, direction}) => {
 
     // Posible values: 'select a location', 'new local', and custom options with uuid?
     const [localOption, setLocalOption] = useState('select a location');
@@ -14,7 +14,10 @@ const StepOneNewUser = ({close}) => {
         setLocalOption(e.target.value)
     }
 
-    useEffect(() => { 
+    useEffect(() => {
+        if(direction !== 'new') {
+            setLocalOption('new local');
+        }
         console.log(localOption);
     });
 
