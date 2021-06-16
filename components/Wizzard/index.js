@@ -75,7 +75,11 @@ const StepOne = ({handleNext, loguedIn, close, direction}) => {
 
     // New User
 
-    // TODO
+    const [inputLocalName, setInputLocalName] = useState('');
+
+    const handleInputLocalName = (e) => {
+        setInputLocalName(e.target.value);
+    }
 
     useEffect(() => { 
         const validIsLoguedIn = loguedIn && accept && (local != "none") && (local != "0") && (local != "N");
@@ -94,8 +98,8 @@ const StepOne = ({handleNext, loguedIn, close, direction}) => {
                 
             <div className="form">
                 {loguedIn ? 
-                <CleanType handleAccept={handleAccept} handleLocal={handleLocal}/> : 
-                <StepOneNewUser close={close} direction={direction}/>}
+                <CleanType handleAccept={handleAccept} direction={direction} handleLocal={handleLocal} inputLocalName={inputLocalName} handleInputLocalName={handleInputLocalName}/> : 
+                <StepOneNewUser close={close} direction={direction} inputLocalName={inputLocalName} handleInputLocalName={handleInputLocalName}/>}
             </div>
         </div>
         </>

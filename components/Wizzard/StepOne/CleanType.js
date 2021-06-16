@@ -1,10 +1,19 @@
 import Img from '../../Img';
 import InputLocalName from './InputLocalName'
 
-const CleanType = ({handleAccept, handleLocal}) => {
+const CleanType = ({handleAccept, direction, inputLocalName, handleInputLocalName}) => {
+
+    const [inputDirection, setInputDirection] = useState('');
+
+    useEffect(() => {
+        if(direction !== 'new') {
+            setInputDirection(direction);
+        }
+    });
+
     return (
         <>
-            <InputLocalName handleLocal={handleLocal}/>
+            <InputLocalName inputDirection={inputDirection} inputLocalName={inputLocalName} handleInputLocalName={handleInputLocalName}/>
             
             <div className="form-group row">
                 <div className="col-auto d-none d-md-block">

@@ -1,15 +1,20 @@
 import OrderDetails from './OrderDetails'
 
-const InputLocalName = ({handleLocal, inputDirection}) => {
+const InputLocalName = ({inputDirection, inputLocalName, handleInputLocalName}) => {
     return (
         <>
             <div className="form-element">
                 <label htmlFor="local" className="form-label">Nombre del local</label>
-                <select className="form-control" onChange={handleLocal} placeholder="Nombre del local..." name="local" aria-label="Nombre del local...">
-                    <option defaultValue="0">Seleccioná un local</option>
-                    <option defaultValue="1">Correcto</option>
-                    <option defaultValue="N">+Nuevo local</option>
-                </select>
+                <input type="text" 
+                    className="form-control" 
+                    id="inputLocalName" 
+                    aria-describedby="direccionHelp" 
+                    aria-label="Nombre del local..."
+                    placeholder="Nombre del local..." 
+                    name="local" 
+                    value={inputLocalName} 
+                    onChange={handleInputLocalName}
+                />
             </div>
             <OrderDetails inputDirection={inputDirection}/>
         </>

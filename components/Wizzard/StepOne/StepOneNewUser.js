@@ -5,7 +5,7 @@ import InputLocalName from './InputLocalName'
 import InputAdditionalIndications from './InputAdditionalIndications'
 import WindowSizeSection from './WindowSizeSection'
 
-const StepOneNewUser = ({close, direction}) => {
+const StepOneNewUser = ({close, direction, inputLocalName, handleInputLocalName}) => {
 
     // Posible values: 'select a location', 'new local', and custom options with uuid?
     const [localOption, setLocalOption] = useState('select a location');
@@ -24,7 +24,6 @@ const StepOneNewUser = ({close, direction}) => {
             setLocalOption('new local');
             setInputDirection(direction);
         }
-        console.log(localOption);
     });
 
     return (
@@ -35,7 +34,7 @@ const StepOneNewUser = ({close, direction}) => {
                 <>
                     <div className="localnuevo block-alternative">
                         <InputDirection inputDirection={inputDirection} handleInputDirection={handleInputDirection}/>
-                        <InputLocalName inputDirection={inputDirection} />
+                        <InputLocalName inputDirection={inputDirection} inputLocalName={inputLocalName} handleInputLocalName={handleInputLocalName}/>
                         <InputAdditionalIndications/>
                         <WindowSizeSection/>
                     </div>
