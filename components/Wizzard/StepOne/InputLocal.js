@@ -6,7 +6,7 @@ const InputLocal = ({close, handleOptionLocal}) => {
         ["select a location", "Seleccioná un local"],
         ["new local", "+ Nuevo local"],
         ["local1", "Local 1"],
-        ["local2", "Local 2"],
+        ["local2", "Local 2"]
     ]
 
     return (

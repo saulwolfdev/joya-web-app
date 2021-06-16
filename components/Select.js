@@ -3,13 +3,13 @@ const Select = ({ values, handleOptionLocal, selected, disabled}) => {
         <select
             disabled={disabled}
             defaultValue={selected}
-            onChange={({ target: { value } }) => handleOptionLocal(value)}
+            onChange={e => handleOptionLocal(e)}
             className="form-select"
         >
             {values.map(([value, text]) => (
-            <option value={value}>
-                {text}
-            </option>
+                <option key={value} value={value}>
+                    {text}
+                </option>
             ))}
         </select>
     );
