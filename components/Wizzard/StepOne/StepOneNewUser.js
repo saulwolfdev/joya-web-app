@@ -4,7 +4,6 @@ import InputDirection from './InputDirection'
 import InputLocalName from './InputLocalName'
 import InputAdditionalIndications from './InputAdditionalIndications'
 import WindowSizeSection from './WindowSizeSection'
-import Features from './Features'
 
 const StepOneNewUser = ({close, direction}) => {
 
@@ -36,11 +35,10 @@ const StepOneNewUser = ({close, direction}) => {
                 <>
                     <div className="localnuevo block-alternative">
                         <InputDirection inputDirection={inputDirection} handleInputDirection={handleInputDirection}/>
-                        <InputLocalName/>
+                        <InputLocalName inputDirection={inputDirection} />
                         <InputAdditionalIndications/>
                         <WindowSizeSection/>
                     </div>
-                    <Features/>
                 </>
                 :
                 <>

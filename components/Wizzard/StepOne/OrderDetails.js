@@ -1,4 +1,4 @@
-const OrderDetails = () => {
+const OrderDetails = ({inputDirection}) => {
 
     const windowInfo = [
         {
@@ -26,7 +26,7 @@ const OrderDetails = () => {
                 <div className="caracteristicas-local">
                     <div className="form-element">
                         <p className="label">Dirección</p>
-                        <p className="value">Av. Santa Fe 2702, C1425, CABA</p>
+                        <p className="value">{inputDirection}</p>
                     </div>
                     <div className="form-element row">
                         <div className="col-md-4 col-xl-3 superficie">

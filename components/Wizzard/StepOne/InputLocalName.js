@@ -1,6 +1,6 @@
 import OrderDetails from './OrderDetails'
 
-const InputLocalName = ({handleLocal}) => {
+const InputLocalName = ({handleLocal, inputDirection}) => {
     return (
         <>
             <div className="form-element">
@@ -11,7 +11,7 @@ const InputLocalName = ({handleLocal}) => {
                     <option defaultValue="N">+Nuevo local</option>
                 </select>
             </div>
-            <OrderDetails/>
+            <OrderDetails inputDirection={inputDirection}/>
         </>
     );
 }
