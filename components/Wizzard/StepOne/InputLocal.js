@@ -1,13 +1,18 @@
+import Select from '../../Select'
+
 const InputLocal = ({close, handleOptionLocal}) => {
+
+    const values = [
+        ["select a location", "Seleccioná un local"],
+        ["new local", "+ Nuevo local"],
+        ["local1", "Local 1"],
+        ["local2", "Local 2"],
+    ]
+
     return (
         <div className="form-element">
             <label htmlFor="local" className="form-label">Local</label>
-            <select name="local" id="" className="form-select" onChange={handleOptionLocal}>
-                <option defaultValue="select a location">Seleccioná un local</option>
-                <option value="new local">+ Nuevo local</option>
-                <option value="local1">Local 1</option>
-                <option value="local2">Local 2</option>
-            </select>
+            <Select name="local" handleOptionLocal={handleOptionLocal} values={values} selected={"select a location"} disabled={false}/>
             <p className="form-text importante">Ya tenés cuenta en Joya? <a href="#" onClick={() => close(false)} className="link-text">Iniciá sesión.</a></p> 
         </div>  
     );
