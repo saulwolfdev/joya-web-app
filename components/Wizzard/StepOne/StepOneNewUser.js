@@ -28,7 +28,7 @@ const StepOneNewUser = ({close, direction, inputLocalName, handleInputLocalName}
 
     return (
         <>
-            <InputLocal close={close} handleOptionLocal={handleOptionLocal}/>
+            <InputLocal close={close} handleOptionLocal={handleOptionLocal} direction={direction}/>
             {
                 localOption === 'new local' ? 
                 <>
