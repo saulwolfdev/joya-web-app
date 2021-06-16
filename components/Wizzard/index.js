@@ -98,7 +98,7 @@ const StepOne = ({handleNext, loguedIn, close, direction}) => {
                 
             <div className="form">
                 {loguedIn ? 
-                <CleanType handleAccept={handleAccept} direction={direction} handleLocal={handleLocal} inputLocalName={inputLocalName} handleInputLocalName={handleInputLocalName}/> : 
+                <CleanType close={close} handleAccept={handleAccept} direction={direction} handleLocal={handleLocal} inputLocalName={inputLocalName} handleInputLocalName={handleInputLocalName}/> : 
                 <StepOneNewUser close={close} direction={direction} inputLocalName={inputLocalName} handleInputLocalName={handleInputLocalName}/>}
             </div>
         </div>

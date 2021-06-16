@@ -1,13 +1,6 @@
 import Select from '../../Select'
 
-const InputLocal = ({close, handleOptionLocal, direction}) => {
-
-    const values = [
-        ["select a location", "Seleccioná un local"],
-        ["new local", "+ Nuevo local"],
-        ["local1", "Local 1"],
-        ["local2", "Local 2"]
-    ]
+const InputLocal = ({values, close, handleOptionLocal, direction}) => {
 
     return (
         <div className="form-element">

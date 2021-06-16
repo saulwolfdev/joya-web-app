@@ -1,20 +1,31 @@
+import React,{useState, useEffect} from 'react';
 import Img from '../../Img';
-import InputLocalName from './InputLocalName'
-import { useState, useEffect } from 'react';
+import InputLocal from './InputLocal'
 
-const CleanType = ({handleAccept, direction, inputLocalName, handleInputLocalName}) => {
+const CleanType = ({close, handleAccept, direction, inputLocalName, handleInputLocalName}) => { // TODO review
 
-    const [inputDirection, setInputDirection] = useState('');
+    const [localOption, setLocalOption] = useState('select a location');
+
+    const handleOptionLocal = (e) => {
+        setLocalOption(e.target.value)
+    }
+
+    const mockValues = [
+        ["select a location", "Seleccioná un local"],
+        ["local1", "Local 1"],
+        ["local2", "Local 2"],
+        ["new local", "+ Nuevo local"]
+    ]
 
     useEffect(() => {
         if(direction !== 'new') {
-            setInputDirection(direction);
+            setLocalOption('new local');
         }
     });
 
     return (
         <>
-            <InputLocalName inputDirection={inputDirection} inputLocalName={inputLocalName} handleInputLocalName={handleInputLocalName}/>
+            <InputLocal close={close} handleOptionLocal={handleOptionLocal} direction={direction} values={mockValues}/>
             
             <div className="form-group row">
                 <div className="col-auto d-none d-md-block">

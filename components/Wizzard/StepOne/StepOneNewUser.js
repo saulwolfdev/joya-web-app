@@ -19,6 +19,11 @@ const StepOneNewUser = ({close, direction, inputLocalName, handleInputLocalName}
         setInputDirection(e.target.value)
     }
 
+    const values = [
+        ["select a location", "Seleccioná un local"],
+        ["new local", "+ Nuevo local"]
+    ]
+
     useEffect(() => {
         if(direction !== 'new') {
             setLocalOption('new local');
@@ -28,7 +33,7 @@ const StepOneNewUser = ({close, direction, inputLocalName, handleInputLocalName}
 
     return (
         <>
-            <InputLocal close={close} handleOptionLocal={handleOptionLocal} direction={direction}/>
+            <InputLocal close={close} handleOptionLocal={handleOptionLocal} direction={direction} values={values}/>
             {
                 localOption === 'new local' ? 
                 <>
