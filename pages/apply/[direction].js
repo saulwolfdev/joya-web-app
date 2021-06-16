@@ -24,6 +24,7 @@ const WizzardContainer = ({direction}) => {
 export default function Apply() {
     const router = useRouter();
     const direction = router.query.direction;
+    // const email = router.query.email; // At the moment it is not used
 
     return (
         <Container>
