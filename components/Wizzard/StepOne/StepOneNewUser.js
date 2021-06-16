@@ -10,13 +10,20 @@ const StepOneNewUser = ({close, direction}) => {
 
     // Posible values: 'select a location', 'new local', and custom options with uuid?
     const [localOption, setLocalOption] = useState('select a location');
+    const [inputDirection, setInputDirection] = useState('');
+
     const handleOptionLocal = (e) => {
         setLocalOption(e.target.value)
+    }
+
+    const handleInputDirection = (e) => {
+        setInputDirection(e.target.value)
     }
 
     useEffect(() => {
         if(direction !== 'new') {
             setLocalOption('new local');
+            setInputDirection(direction);
         }
         console.log(localOption);
     });
@@ -28,7 +35,7 @@ const StepOneNewUser = ({close, direction}) => {
                 localOption === 'new local' ? 
                 <>
                     <div className="localnuevo block-alternative">
-                        <InputDirection/>
+                        <InputDirection inputDirection={inputDirection} handleInputDirection={handleInputDirection}/>
                         <InputLocalName/>
                         <InputAdditionalIndications/>
                         <WindowSizeSection/>
