@@ -1,5 +1,6 @@
 import Img from '../../Img';
 import InputLocalName from './InputLocalName'
+import { useState, useEffect } from 'react';
 
 const CleanType = ({handleAccept, direction, inputLocalName, handleInputLocalName}) => {
 
