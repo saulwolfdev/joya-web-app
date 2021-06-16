@@ -1,7 +1,4 @@
-//React
-import React from 'react'
-import {useState } from 'react';
-//Firebase
+import { useState } from 'react';
 import { createUserWithEmailAndPassword, getAuth, updateProfile } from 'firebase/auth';
 
 

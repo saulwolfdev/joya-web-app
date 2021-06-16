@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useState } from 'react';
 
 const HomeSearch = () => {
     return (
@@ -17,12 +18,19 @@ const HomeSearch = () => {
 }
 
 const DirectionSearch = () => {
+
+    const[direction,setDirection] = useState('');
+
+    const handleDirection = (e) => {
+        setDirection(e.currentTarget.value);
+    }
+
     return (
         <div className="form form-rounded">
-            <label htmlFor="direccion" className="form-label sr-only">Dirección de tu vidriera</label>
+            <label htmlFor="direction" className="form-label sr-only">Dirección de tu vidriera</label>
             <div className="input-group-btn">
-                <input type="text" className="form-control" id="direccion" aria-describedby="direccionHelp" placeholder="Dirección de tu vidriera"/>
-                <Link href={'/apply/new'}>
+                <input type="text" className="form-control" id="direction" aria-describedby="direccionHelp" placeholder="Dirección de tu vidriera" value={direction} onChange={handleDirection}/>
+                <Link href={'/apply/' + (direction === '' ? 'new' : direction)}>
                     <a className="btn btn-secondary btn-round" aria-label="Solicitar limpieza ya">
                         <i className="far fa-arrow-right"/>
                     </a>
