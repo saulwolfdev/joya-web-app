@@ -7,16 +7,36 @@ import WindowSizeSection from './WindowSizeSection'
 import Features from './Features'
 
 const StepOneNewUser = ({close}) => {
+
+    // Posible values: 'select a location', 'new local', and custom options with uuid?
+    const [localOption, setLocalOption] = useState('select a location');
+    const handleOptionLocal = (e) => {
+        setLocalOption(e.target.value)
+    }
+
+    useEffect(() => { 
+        console.log(localOption);
+    });
+
     return (
         <>
-            <InputLocal close={close}/>
-                <div className="localnuevo block-alternative">
-                    <InputDirection/>
-                    <InputLocalName/>
-                    <InputAdditionalIndications/>
-                    <WindowSizeSection/>
-                </div>
-            <Features/>
+            <InputLocal close={close} handleOptionLocal={handleOptionLocal}/>
+            {
+                localOption === 'new local' ? 
+                <>
+                    <div className="localnuevo block-alternative">
+                        <InputDirection/>
+                        <InputLocalName/>
+                        <InputAdditionalIndications/>
+                        <WindowSizeSection/>
+                    </div>
+                    <Features/>
+                </>
+                :
+                <>
+                </>
+            }
+            
         </>
     );
 }
