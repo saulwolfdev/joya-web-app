@@ -1,6 +1,4 @@
-import OrderDetails from './OrderDetails'
-
-const InputLocalName = ({inputDirection, inputLocalName, handleInputLocalName}) => {
+const InputLocalName = ({inputLocalName, handleInputLocalName}) => {
     return (
         <>
             <div className="form-element">
@@ -16,7 +14,6 @@ const InputLocalName = ({inputDirection, inputLocalName, handleInputLocalName}) 
                     onChange={handleInputLocalName}
                 />
             </div>
-            <OrderDetails inputDirection={inputDirection}/>
         </>
     );
 }

@@ -5,6 +5,7 @@ import InputLocalName from './InputLocalName'
 import InputAdditionalIndications from './InputAdditionalIndications'
 import WindowSizeSection from './WindowSizeSection'
 import CleanType from './CleanType'
+import OrderDetails from './OrderDetails'
 
 const StepOneNewUser = ({close, direction, inputLocalName, handleInputLocalName, handleAccept, loguedIn}) => {
 
@@ -49,15 +50,14 @@ const StepOneNewUser = ({close, direction, inputLocalName, handleInputLocalName,
                 <>
                     <div className="localnuevo block-alternative">
                         <InputDirection inputDirection={inputDirection} handleInputDirection={handleInputDirection}/>
-                        <InputLocalName inputDirection={inputDirection} inputLocalName={inputLocalName} handleInputLocalName={handleInputLocalName}/>
+                        <InputLocalName inputLocalName={inputLocalName} handleInputLocalName={handleInputLocalName}/>
                         <InputAdditionalIndications/>
                         <WindowSizeSection/>
                     </div>
                 </>
                 :
                 (localOption !== 'select a location' ? 
-                    <>
-                    </>
+                    <OrderDetails inputDirection={inputDirection}/>
                     :
                     <>
                     </>
