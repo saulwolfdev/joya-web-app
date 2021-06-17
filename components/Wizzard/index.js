@@ -97,9 +97,14 @@ const StepOne = ({handleNext, loguedIn, close, direction}) => {
                 { loguedIn ? <></> : <a href="#" onClick={() => close(false)} className="link-text">Iniciá sesión.</a>}</p>
                 
             <div className="form">
-                {loguedIn ? 
-                <CleanType close={close} handleAccept={handleAccept} direction={direction} handleLocal={handleLocal} inputLocalName={inputLocalName} handleInputLocalName={handleInputLocalName}/> : 
-                <StepOneNewUser close={close} direction={direction} inputLocalName={inputLocalName} handleInputLocalName={handleInputLocalName}/>}
+                <StepOneNewUser 
+                    loguedIn={loguedIn} 
+                    close={close} 
+                    handleAccept={handleAccept} 
+                    direction={direction} 
+                    inputLocalName={inputLocalName} 
+                    handleInputLocalName={handleInputLocalName}
+                />
             </div>
         </div>
         </>
