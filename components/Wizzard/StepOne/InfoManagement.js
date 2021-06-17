@@ -7,13 +7,18 @@ import WindowSizeSection from './WindowSizeSection'
 import CleanType from './CleanType'
 import OrderDetails from './OrderDetails'
 
-const InfoManagement = ({close, direction, inputLocalName, handleInputLocalName, handleAccept, loguedIn}) => {
+const InfoManagement = ({close, direction, inputLocalName, handleInputLocalName, handleInfo, loguedIn}) => {
 
     // Posible values: 'select a location', 'new local', and custom options with uuid?
     const [localOption, setLocalOption] = useState('select a location');
     const [inputDirection, setInputDirection] = useState('');
     const [interactiveFlag, setInteractiveFlag] = useState(false);
     const [statusEdit, setStatusEdit] = useState(false);
+    const [accept, setAccept] = useState(false);
+
+    const handleAccept = (e) => {
+        setAccept(e.target.value);
+    }
 
     const handleOptionLocal = (e) => {
         setLocalOption(e.target.value)

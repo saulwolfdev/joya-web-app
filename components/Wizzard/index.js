@@ -59,13 +59,14 @@ const Wizzard = ({direction}) => {
 
 const StepOne = ({handleNext, loguedIn, close, direction}) => {
 
-    // Info Local
+    const [info, setInfo] = useState(
+        {
 
-    const [accept, setAccept] = useState(false);
-    const [local, setLocal] = useState("none");
+        }
+    );
 
-    const handleAccept = (e) => {
-        setAccept(e.target.checked)
+    const handleInfo = (value) => {
+        setInfo(value)
     }
 
     const [inputLocalName, setInputLocalName] = useState('');
@@ -75,7 +76,7 @@ const StepOne = ({handleNext, loguedIn, close, direction}) => {
     }
 
     useEffect(() => { 
-        const flag = loguedIn && accept && (local != "none") && (local != "0") && (local != "N");
+        const flag = false;
         handleNext(flag);
     });
 
@@ -92,7 +93,7 @@ const StepOne = ({handleNext, loguedIn, close, direction}) => {
                 <InfoManagement 
                     loguedIn={loguedIn} 
                     close={close} 
-                    handleAccept={handleAccept} 
+                    handleInfo={handleInfo} 
                     direction={direction} 
                     inputLocalName={inputLocalName} 
                     handleInputLocalName={handleInputLocalName}
