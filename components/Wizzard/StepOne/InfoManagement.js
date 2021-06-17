@@ -7,7 +7,7 @@ import WindowSizeSection from './WindowSizeSection'
 import CleanType from './CleanType'
 import OrderDetails from './OrderDetails'
 
-const StepOneNewUser = ({close, direction, inputLocalName, handleInputLocalName, handleAccept, loguedIn}) => {
+const InfoManagement = ({close, direction, inputLocalName, handleInputLocalName, handleAccept, loguedIn}) => {
 
     // Posible values: 'select a location', 'new local', and custom options with uuid?
     const [localOption, setLocalOption] = useState('select a location');
@@ -75,4 +75,4 @@ const StepOneNewUser = ({close, direction, inputLocalName, handleInputLocalName,
     );
 }
 
-export default StepOneNewUser;
+export default InfoManagement;

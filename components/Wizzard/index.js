@@ -1,6 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import StepOneNewUser from './StepOne/StepOneNewUser'
-import CleanType from './StepOne/CleanType'
+import InfoManagement from './StepOne/InfoManagement'
 import Modalities from './StepTwo/Modalities'
 import UniqueSection from './StepTwo/UniqueSection'
 import SuscriptionSection from './StepTwo/SuscriptionSection'
@@ -97,7 +96,7 @@ const StepOne = ({handleNext, loguedIn, close, direction}) => {
                 { loguedIn ? <></> : <a href="#" onClick={() => close(false)} className="link-text">Iniciá sesión.</a>}</p>
                 
             <div className="form">
-                <StepOneNewUser 
+                <InfoManagement 
                     loguedIn={loguedIn} 
                     close={close} 
                     handleAccept={handleAccept} 
