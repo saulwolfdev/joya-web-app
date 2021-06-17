@@ -13,6 +13,7 @@ const StepOneNewUser = ({close, direction, inputLocalName, handleInputLocalName,
     const [localOption, setLocalOption] = useState('select a location');
     const [inputDirection, setInputDirection] = useState('');
     const [interactiveFlag, setInteractiveFlag] = useState(false);
+    const [statusEdit, setStatusEdit] = useState(false);
 
     const handleOptionLocal = (e) => {
         setLocalOption(e.target.value)
@@ -20,6 +21,12 @@ const StepOneNewUser = ({close, direction, inputLocalName, handleInputLocalName,
 
     const handleInputDirection = (e) => {
         setInputDirection(e.target.value)
+    }
+
+    const handleEdit = (infoLocal) => {
+        setStatusEdit(true);
+        setLocalOption(infoLocal.name);
+        console.log(infoLocal);
     }
 
     const values = [
@@ -57,7 +64,7 @@ const StepOneNewUser = ({close, direction, inputLocalName, handleInputLocalName,
                 </>
                 :
                 (localOption !== 'select a location' ? 
-                    <OrderDetails inputDirection={inputDirection}/>
+                    <OrderDetails inputDirection={inputDirection} handleEdit={handleEdit}/>
                     :
                     <>
                     </>

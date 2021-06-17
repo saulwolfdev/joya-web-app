@@ -1,4 +1,8 @@
-const OrderDetails = ({inputDirection}) => {
+const OrderDetails = ({inputDirection, handleEdit}) => {
+
+    const info = {
+        name: "Wathever"
+    }
 
     const windowInfo = [
         {
@@ -42,7 +46,7 @@ const OrderDetails = ({inputDirection}) => {
                     </div>
                     <div className="btn-set row">
                         <div className="col-md-4 col-xl-3">
-                            <button className="btn btn-primary btn-small">
+                            <button className="btn btn-primary btn-small" onClick={() => {handleEdit(info)}}>
                                 Editar
                             </button>
                         </div>
