@@ -43,7 +43,7 @@ const StepOneNewUser = ({close, direction, inputLocalName, handleInputLocalName,
 
     return (
         <>
-            <InputLocal close={close} handleOptionLocal={handleOptionLocal} direction={direction} values={loguedIn ? mockValues : values}/>
+            <InputLocal loguedIn={loguedIn} close={close} handleOptionLocal={handleOptionLocal} direction={direction} values={loguedIn ? mockValues : values}/>
             {
                 localOption === 'new local' ? 
                 <>
@@ -53,7 +53,6 @@ const StepOneNewUser = ({close, direction, inputLocalName, handleInputLocalName,
                         <InputAdditionalIndications/>
                         <WindowSizeSection/>
                     </div>
-                    <CleanType handleAccept={handleAccept} />
                 </>
                 :
                 (localOption !== 'select a location' ? 
@@ -63,9 +62,8 @@ const StepOneNewUser = ({close, direction, inputLocalName, handleInputLocalName,
                     <>
                     </>
                 )
-                
             }
-            
+            <CleanType handleAccept={handleAccept} />
         </>
     );
 }
