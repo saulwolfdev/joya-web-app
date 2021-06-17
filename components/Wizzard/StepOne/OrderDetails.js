@@ -1,7 +1,7 @@
 const OrderDetails = ({inputDirection, handleEdit}) => {
 
     const info = {
-        name: "Wathever"
+        direction: "Wathever"
     }
 
     const windowInfo = [

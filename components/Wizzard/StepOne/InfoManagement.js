@@ -25,7 +25,7 @@ const InfoManagement = ({close, direction, inputLocalName, handleInputLocalName,
 
     const handleEdit = (infoLocal) => {
         setStatusEdit(true);
-        setLocalOption(infoLocal.name);
+        setInputDirection(infoLocal.direction)
         console.log(infoLocal);
     }
 
@@ -53,7 +53,7 @@ const InfoManagement = ({close, direction, inputLocalName, handleInputLocalName,
         <>
             <InputLocal loguedIn={loguedIn} close={close} handleOptionLocal={handleOptionLocal} direction={direction} values={loguedIn ? mockValues : values}/>
             {
-                localOption === 'new local' ? 
+                localOption === 'new local' || statusEdit ? 
                 <>
                     <div className="localnuevo block-alternative">
                         <InputDirection inputDirection={inputDirection} handleInputDirection={handleInputDirection}/>

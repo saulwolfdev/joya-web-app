@@ -59,7 +59,7 @@ const Wizzard = ({direction}) => {
 
 const StepOne = ({handleNext, loguedIn, close, direction}) => {
 
-    // User
+    // Info Local
 
     const [accept, setAccept] = useState(false);
     const [local, setLocal] = useState("none");
@@ -68,12 +68,6 @@ const StepOne = ({handleNext, loguedIn, close, direction}) => {
         setAccept(e.target.checked)
     }
 
-    const handleLocal = (e) => {
-        setLocal(e.target.value)
-    }
-
-    // New User
-
     const [inputLocalName, setInputLocalName] = useState('');
 
     const handleInputLocalName = (e) => {
@@ -81,9 +75,8 @@ const StepOne = ({handleNext, loguedIn, close, direction}) => {
     }
 
     useEffect(() => { 
-        const validIsLoguedIn = loguedIn && accept && (local != "none") && (local != "0") && (local != "N");
-        const validIsLoguedOut = true;
-        handleNext(validIsLoguedIn || validIsLoguedOut);
+        const flag = loguedIn && accept && (local != "none") && (local != "0") && (local != "N");
+        handleNext(flag);
     });
 
     return (
