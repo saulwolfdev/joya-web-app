@@ -11,6 +11,7 @@ const StepOneNewUser = ({close, direction, inputLocalName, handleInputLocalName,
     // Posible values: 'select a location', 'new local', and custom options with uuid?
     const [localOption, setLocalOption] = useState('select a location');
     const [inputDirection, setInputDirection] = useState('');
+    const [interactiveFlag, setInteractiveFlag] = useState(false);
 
     const handleOptionLocal = (e) => {
         setLocalOption(e.target.value)
@@ -33,9 +34,10 @@ const StepOneNewUser = ({close, direction, inputLocalName, handleInputLocalName,
     ]
 
     useEffect(() => {
-        if(direction !== 'new') {
+        if(direction !== 'new' && localOption === 'select a location' && !interactiveFlag) {
             setLocalOption('new local');
             setInputDirection(direction);
+            setInteractiveFlag(true);
         }
     });
 
