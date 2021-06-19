@@ -76,7 +76,7 @@ const StepOne = ({handleNext, loguedIn, close, direction}) => {
     }
 
     useEffect(() => { 
-        const flag = false;
+        const flag = true;
         handleNext(flag);
     });
 
