@@ -61,7 +61,7 @@ const StepOne = ({handleNext, loguedIn, close, direction}) => {
 
     const [info, setInfo] = useState(
         {
-
+            
         }
     );
 

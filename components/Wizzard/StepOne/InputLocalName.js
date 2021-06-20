@@ -1,4 +1,4 @@
-const InputLocalName = ({inputLocalName, handleInputLocalName}) => {
+const InputLocalName = ({handleInputLocalName}) => {
     return (
         <>
             <div className="form-element">
@@ -9,8 +9,7 @@ const InputLocalName = ({inputLocalName, handleInputLocalName}) => {
                     aria-describedby="direccionHelp" 
                     aria-label="Nombre del local..."
                     placeholder="Nombre del local..." 
-                    name="local" 
-                    value={inputLocalName} 
+                    name="local"
                     onChange={handleInputLocalName}
                 />
             </div>

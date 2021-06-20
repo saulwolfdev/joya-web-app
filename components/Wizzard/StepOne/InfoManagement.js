@@ -16,6 +16,11 @@ const InfoManagement = ({close, direction, inputLocalName, handleInputLocalName,
     const [statusEdit, setStatusEdit] = useState(false);
     const [accept, setAccept] = useState(false);
 
+    const [localExtraIndication, setLocalExtraIndication] = useState('');
+    const handleLocalExtraIndication = (e) => {
+        setLocalExtraIndication(e.target.value);
+    }
+
     const handleAccept = (e) => {
         setAccept(e.target.value);
     }
@@ -52,6 +57,13 @@ const InfoManagement = ({close, direction, inputLocalName, handleInputLocalName,
             setInputDirection(direction);
             setInteractiveFlag(true);
         }
+        handleInfo({
+            localOption,
+            inputDirection,
+            inputLocalName,
+            localExtraIndication,
+            windowsSize: {}
+        })
     });
 
     return (
@@ -62,8 +74,8 @@ const InfoManagement = ({close, direction, inputLocalName, handleInputLocalName,
                 <>
                     <div className="localnuevo block-alternative">
                         <InputDirection inputDirection={inputDirection} handleInputDirection={handleInputDirection}/>
-                        <InputLocalName inputLocalName={inputLocalName} handleInputLocalName={handleInputLocalName}/>
-                        <InputAdditionalIndications/>
+                        <InputLocalName handleInputLocalName={handleInputLocalName}/>
+                        <InputAdditionalIndications handleLocalExtraIndication={handleLocalExtraIndication}/>
                         <WindowSizeSection/>
                     </div>
                 </>
