@@ -26,7 +26,6 @@ const Wizzard = ({direction}) => {
     const onSuccessSignIn = () => setLoguedIn(true);
 
     useEffect(()=>{
-              
         const userLogin = getAuth();
         userLogin.onAuthStateChanged(prepareUserInfo(setLoguedIn, setUser));    
     });
