@@ -1,8 +1,37 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import Img from '../../Img';
 
 const Modalities = ({handleModality}) => {
     const [selectedOption, setSelectedOption] = useState('suscription');
+
+    const subscriptionFrequency = () => {
+        let frequencyContainer = document.querySelector('.modalidades');
+        let modalidades = frequencyContainer.querySelectorAll('.modalidad');
+        modalidades.forEach( (modalidad) => {
+            modalidad.addEventListener('click',  (e) => {
+                modalidades.forEach((mod) => {
+                    mod.classList.remove('active');
+                });
+                let active = (e.target.matches('.modalidad')) ? e.target : e.target.closest('.modalidad');
+                active.classList.add('active');
+
+                let activeForm = active.dataset.form;
+                let frequencyForms = document.querySelectorAll('.frequency-form');
+
+                frequencyForms.forEach((form) => {
+                    if (form.matches(activeForm)) {
+                        form.classList.add('active');
+                    } else {
+                        form.classList.remove('active');
+                    }
+                });
+            });
+        });
+    };
+
+    useEffect(()=>{
+        subscriptionFrequency();
+    });
 
     return (
         <div className="row modalidades">

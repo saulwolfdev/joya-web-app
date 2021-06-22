@@ -83,6 +83,61 @@ const WindowSizeSection = () => {
         setInputList(inputList.concat(<Window key={inputList.length+1} n={inputList.length+1}/>));
     };
 
+    const vidrieraRange= () => {
+        let ventanaContainer = document.querySelector('.ventanas');
+        let rangeSelector = 'input[type=range]';
+        ventanaContainer.addEventListener('change', function(event) {
+            let possibleTargets = ventanaContainer.querySelectorAll(rangeSelector);
+            let target = event.target;
+
+            for (let i = 0, l = possibleTargets.length; i < l; i++) {
+              let el = target;
+              let p = possibleTargets[i];
+
+              while (el && el !== ventanaContainer) {
+                if (el === p) {
+                    let modificacion = [];
+                    modificacion.vidriera = target.dataset.vidriera;
+                    modificacion.variable = target.dataset.variable;
+                    modificacion.value = target.value;
+                    updateTextInput(modificacion);
+                    updateVidriera(modificacion);
+                }
+                el = el.parentNode;
+              }
+            }
+          });
+    };
+
+    const updateTextInput = (modificacion) => {
+        document.querySelector('input.form-aux[data-vidriera="' + modificacion.vidriera + '"][data-variable="' + modificacion.variable + '"]').value = modificacion.value;
+    };
+    
+    const updateVidriera = (modificacion) => {
+        let vidriera = document.querySelector('#vidriera' + modificacion.vidriera);
+        let maxWidth = vidriera.dataset.maxwidth;
+        let maxHeight = vidriera.dataset.maxheight;
+
+        if ('alto' == modificacion.variable) {
+            vidriera.dataset.alto = modificacion.value;
+            vidriera.style.height = (100 * modificacion.value / maxHeight)  + '%';
+        }
+        if ('ancho' == modificacion.variable) {
+            vidriera.dataset.ancho = modificacion.value;
+            vidriera.style.width = (100 * modificacion.value / maxWidth) + '%';
+        }
+        vidrieraMetrosCuadrados(modificacion.vidriera);
+    };
+
+    const vidrieraMetrosCuadrados = (numVidriera) => {
+        let vidriera = document.querySelector('#vidriera' + numVidriera);
+        let metroscuadrados = vidriera.dataset.alto * vidriera.dataset.ancho;
+        vidriera.querySelector('.value').innerHTML = metroscuadrados + 'm<sup>2</sup>';
+    };
+
+    useEffect(()=>{
+        vidrieraRange();
+    });
     return (
         <div className="ventanas"> 
             <h4>Tamaño de la vidriera</h4>
