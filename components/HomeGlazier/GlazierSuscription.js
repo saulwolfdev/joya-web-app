@@ -5,11 +5,11 @@ const GlazierSuscription = () => {
     async function registerGlazier(e){
         e.preventDefault(e);
         const email = e.target.email.value;
-        const celular = e.target.celular.value;
-        const nombre = e.target.nombre.value;
-        const apellido = e.target.apellido.value;
+        const cel = e.target.celular.value;
+        const firstName = e.target.nombre.value;
+        const lastName = e.target.apellido.value;
 
-        var newGlazier = new Glazier(email,apellido,nombre,"Postulante",celular,null);
+        var newGlazier = new Glazier(email,lastName,firstName,"Postulante",cel,null);
         newGlazier.Insert(newGlazier);
 
         Array.from(document.querySelectorAll("input")).forEach(
