@@ -33,7 +33,7 @@ const Menu = ({user}) => {
                         {user? user.displayName? user.displayName : user.email : ""}
                     </span></li>
                     <li className="ayuda"><a href="#">Ayuda</a></li>
-                    <li><Link href='/apply'><a className="destacado">Solicitar limpieza de vidriera</a></Link></li>
+                    <li><Link href='/apply/new'><a className="destacado">Solicitar limpieza de vidriera</a></Link></li>
                     <li className="separator"></li>
                     <li className="user-item"><a href="#">Tus pedidos</a></li>
                     <li className="user-options dropdown closed">
