@@ -6,10 +6,10 @@ const Modalities = ({handleModality}) => {
 
     const subscriptionFrequency = () => {
         let frequencyContainer = document.querySelector('.modalidades');
-        let modalidades = frequencyContainer.querySelectorAll('.modalidad');
-        modalidades.forEach( (modalidad) => {
-            modalidad.addEventListener('click',  (e) => {
-                modalidades.forEach((mod) => {
+        let modalities = frequencyContainer.querySelectorAll('.modalidad');
+        modalities.forEach( (modality) => {
+            modality.addEventListener('click',  (e) => {
+                modalities.forEach((mod) => {
                     mod.classList.remove('active');
                 });
                 let active = (e.target.matches('.modalidad')) ? e.target : e.target.closest('.modalidad');

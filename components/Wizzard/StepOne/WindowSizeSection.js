@@ -83,25 +83,25 @@ const WindowSizeSection = () => {
         setInputList(inputList.concat(<Window key={inputList.length+1} n={inputList.length+1}/>));
     };
 
-    const vidrieraRange= () => {
-        let ventanaContainer = document.querySelector('.ventanas');
+    const windowRange= () => {
+        let windowContainer = document.querySelector('.ventanas');
         let rangeSelector = 'input[type=range]';
-        ventanaContainer.addEventListener('change', function(event) {
-            let possibleTargets = ventanaContainer.querySelectorAll(rangeSelector);
+        windowContainer.addEventListener('change', function(event) {
+            let possibleTargets = windowContainer.querySelectorAll(rangeSelector);
             let target = event.target;
 
             for (let i = 0, l = possibleTargets.length; i < l; i++) {
               let el = target;
               let p = possibleTargets[i];
 
-              while (el && el !== ventanaContainer) {
+              while (el && el !== windowContainer) {
                 if (el === p) {
-                    let modificacion = [];
-                    modificacion.vidriera = target.dataset.vidriera;
-                    modificacion.variable = target.dataset.variable;
-                    modificacion.value = target.value;
-                    updateTextInput(modificacion);
-                    updateVidriera(modificacion);
+                    let modification = [];
+                    modification.window = target.dataset.vidriera;
+                    modification.variable = target.dataset.variable;
+                    modification.value = target.value;
+                    updateTextInput(modification);
+                    updateVidriera(modification);
                 }
                 el = el.parentNode;
               }
@@ -109,34 +109,34 @@ const WindowSizeSection = () => {
           });
     };
 
-    const updateTextInput = (modificacion) => {
-        document.querySelector('input.form-aux[data-vidriera="' + modificacion.vidriera + '"][data-variable="' + modificacion.variable + '"]').value = modificacion.value;
+    const updateTextInput = (modification) => {
+        document.querySelector('input.form-aux[data-vidriera="' + modification.window + '"][data-variable="' + modification.variable + '"]').value = modification.value;
     };
     
-    const updateVidriera = (modificacion) => {
-        let vidriera = document.querySelector('#vidriera' + modificacion.vidriera);
-        let maxWidth = vidriera.dataset.maxwidth;
-        let maxHeight = vidriera.dataset.maxheight;
+    const updateVidriera = (modification) => {
+        let window = document.querySelector('#vidriera' + modification.window);
+        let maxWidth = window.dataset.maxwidth;
+        let maxHeight = window.dataset.maxheight;
 
-        if ('alto' == modificacion.variable) {
-            vidriera.dataset.alto = modificacion.value;
-            vidriera.style.height = (100 * modificacion.value / maxHeight)  + '%';
+        if ('alto' == modification.variable) {
+            window.dataset.alto = modification.value;
+            window.style.height = (100 * modification.value / maxHeight)  + '%';
         }
-        if ('ancho' == modificacion.variable) {
-            vidriera.dataset.ancho = modificacion.value;
-            vidriera.style.width = (100 * modificacion.value / maxWidth) + '%';
+        if ('ancho' == modification.variable) {
+            window.dataset.ancho = modification.value;
+            window.style.width = (100 * modification.value / maxWidth) + '%';
         }
-        vidrieraMetrosCuadrados(modificacion.vidriera);
+        windowSquareMeter(modification.window);
     };
 
-    const vidrieraMetrosCuadrados = (numVidriera) => {
-        let vidriera = document.querySelector('#vidriera' + numVidriera);
-        let metroscuadrados = vidriera.dataset.alto * vidriera.dataset.ancho;
-        vidriera.querySelector('.value').innerHTML = metroscuadrados + 'm<sup>2</sup>';
+    const windowSquareMeter = (windowKey) => {
+        let window = document.querySelector('#vidriera' + windowKey);
+        let squareMeter = window.dataset.alto * window.dataset.ancho;
+        window.querySelector('.value').innerHTML = squareMeter + 'm<sup>2</sup>';
     };
 
     useEffect(()=>{
-        vidrieraRange();
+        windowRange();
     });
     return (
         <div className="ventanas"> 
