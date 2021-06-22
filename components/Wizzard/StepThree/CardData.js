@@ -18,7 +18,7 @@ const CardData = () => {
 
     const handleClick = (e) => {
         if(!loguedIn) {
-            //setShowSingnUp(true);
+            setShowSingnUp(true);
         }
     }
 

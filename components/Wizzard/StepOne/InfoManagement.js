@@ -57,13 +57,13 @@ const InfoManagement = ({close, direction, inputLocalName, handleInputLocalName,
             setInputDirection(direction);
             setInteractiveFlag(true);
         }
-        handleInfo({
+        /*handleInfo({
             localOption,
             inputDirection,
             inputLocalName,
             localExtraIndication,
             windowsSize: {}
-        })
+        })*/
     });
 
     return (
