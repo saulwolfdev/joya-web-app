@@ -41,7 +41,7 @@ const Wizzard = ({direction}) => {
 
     return (
         <>
-        	<Wizzard.Steps/>
+        	<Wizzard.Steps step={step}/>
             <div className="wizard-content card-page-content">
                 {step === 1 ? <Wizzard.StepOne direction={direction} handleNext={handleNext} loguedIn={loguedIn} close={closeSignInModalHandler}/> : <></>}
                 {step === 2 ? <Wizzard.StepTwo handleNext={handleNext} loguedIn={loguedIn}/> : <></>}
@@ -218,16 +218,16 @@ const StepThree = () => {
 }
 Wizzard.StepThree = StepThree;
 
-const Steps = () => {
+const Steps = ({step}) => {
     return (
         <div className="wizard-steps card-page-header">
             <ul className="inner-container">
                 <li className="title"><span className="d-none d-md-inline">Tu solicitud:</span><span className="d-md-none">Pasos:</span></li>
-                <li className="step step1"><i className="fal fa-store"/><span className="d-none d-lg-inline">Detalles del local</span><span className="d-none d-md-inline d-lg-none">El local</span></li>
-                <li className="arrow">&rsaquo;</li>
-                <li className="step step2"><i className="fal fa-calendar-alt"/><span className="d-none d-md-inline">Día y hora</span></li>
-                <li className="arrow">&rsaquo;</li>
-                <li className="step step3"><i className="fal fa-credit-card"/><span className="d-none d-md-inline">Pago</span></li>
+                <li className={"step " + (step === 1 ? "step1" : "")}><i className="fal fa-store"/><span className={step === 1 ? "d-none d-lg-inline" : "d-none d-md-inline"}>Detalles del local</span></li>
+                <li className="arrow"></li>
+                <li className={"step " + (step === 2 ? "step2" : "")}><i className="fal fa-calendar-alt"/><span className={step === 2 ? "d-none d-lg-inline" : "d-none d-md-inline"}>Día y hora</span></li>
+                <li className="arrow"></li>
+                <li className={"step " + (step === 3 ? "step3" : "")}><i className="fal fa-credit-card"/><span className={step === 3 ? "d-none d-lg-inline" : "d-none d-md-inline"}>Pago</span></li>
             </ul>
         </div>
     );
