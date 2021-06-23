@@ -1,3 +1,5 @@
+import React,{useState} from 'react';
+
 const faqs = [
     {
         key: "headingOne",
@@ -29,14 +31,18 @@ const GlazierFaq = () => { // TODO review: styles
                             <h3>Preguntas frecuentes</h3>
                             <div className="accordion accordion-flush" id="accordionFaq">
                                 { faqs.map((faq) => {
+                                    const [collapsed, setCollapsed] = useState(true);
+                                    const handleCollapsed = (e) => {
+                                        setCollapsed(!collapsed);
+                                    }
                                     return (
                                         <div className="accordion-item" key={faq.key}>
                                             <h2 className="accordion-header" id={faq.key}>
-                                                <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={"#" + faq.target} aria-expanded="true" aria-controls="collapseOne">
+                                                <button onClick={handleCollapsed} className={"accordion-button " + (collapsed? "collapsed" : "")} type="button" data-bs-toggle="collapse" data-bs-target={"#" + faq.target} aria-expanded="true" aria-controls="">
                                                     {faq.question}
                                                 </button>
                                             </h2>
-                                            <div id={faq.target} className="accordion-collapse collapse show" aria-labelledby={faq.key} data-bs-parent="#accordionFaq">
+                                            <div id={faq.target} className={"accordion-collapse collapse" + (collapsed? "" : "show")} aria-labelledby={faq.key} data-bs-parent="#accordionFaq">
                                                 <div className="accordion-body">
                                                     <p>{faq.answer}</p>
                                                 </div>
