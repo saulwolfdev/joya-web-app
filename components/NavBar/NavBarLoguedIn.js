@@ -35,7 +35,7 @@ const Menu = ({user}) => {
                     <li className="ayuda"><a href="#">Ayuda</a></li>
                     <li><Link href='/apply/new'><a className="destacado">Solicitar limpieza de vidriera</a></Link></li>
                     <li className="separator"></li>
-                    <li className="user-item"><a href="#">Tus pedidos</a></li>
+                    <li className="user-item"><Link href='/orders'><a>Tus pedidos</a></Link></li>
                     <li className="user-options dropdown closed">
                         <span className="a user-item">
                             <i className="far fa-user-circle"/>
