@@ -1,4 +1,15 @@
+import React,{useState} from 'react';
+import Orders from './Orders'
+
 const HomeOrders = () => {
+
+    const mockTotalPages = 3; // TODO
+
+    const [past, setPast] = useState(false);
+    const handlePast = (value) => {
+        setPast(value);
+    }
+
     return (
         <div className="main-content">
             <div className="mis-pedidos">
@@ -98,7 +109,7 @@ const Info = () => {
 }
 HomeOrders.Info = Info;
 
-const Header = () => {
+const Header = ({past}) => {
     return (
         <>
             <div className="d-md-none menu-header-mobile">
@@ -116,10 +127,10 @@ const Header = () => {
             </div>
             <div className="row menu-header d-none d-md-flex">
                 <div className="col-auto menu-item">
-                    <a href="pedidos-proximos.html" className>Visitas próximas</a>
+                    <a href="pedidos-proximos.html" className={past ? "" : "active"}>Visitas próximas</a>
                 </div>
                 <div className="col-auto menu-item">
-                    <a href="pedidos-pasados.html" className="active">Visitas pasadas</a>
+                    <a href="pedidos-pasados.html" className={past ? "active" : ""}>Visitas pasadas</a>
                 </div>
                 <div className="col-auto btn-set">
                     <a href="#" className="btn btn-primary btn-round">
@@ -134,7 +145,7 @@ const Header = () => {
 }
 HomeOrders.Header = Header;
 
-const Footer = () => {
+const Footer = ({totalPages}) => {
     return (
         <div className="btn-set">
             <nav aria-label="..." className="table-pagination">
