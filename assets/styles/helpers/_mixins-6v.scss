@@ -103,7 +103,6 @@
 	.breadcrumb {
 		*, a {
 			color: $text-dark-secondary; 
-			padding-left: 15px; 
 			&:hover, &:focus, &:active {
 				color: $text-dark; 
 			}

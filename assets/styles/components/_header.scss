@@ -194,6 +194,7 @@ header {
 			width: auto;
 			height: 42px;
 			transition: all .3s linear;
+			&:active, &:focus, &:hover {color: transparent !important; text-shadow: none; }
 		}
 		a.alt-logo {
 			display: none;
@@ -230,6 +231,9 @@ header {
 	
 		&.sticky {
 			min-height: 57px;
+			li.dropdown .sub-menu {
+				top: 47px; 
+			}
 		}
 
 	}
@@ -344,7 +348,7 @@ header {
 				top: 28px; right: 0; 
 
 
-				background: #fff; box-shadow: 0 53px 8px rgba(#000, 0.06);
+				background: #fff; box-shadow: 0 8px 18px rgba(#000, 0.06);
 
 	  			//grid-area: menu;
 				transition: all 0.2s ease-in-out;

@@ -4,11 +4,10 @@ const HomeOrders = () => {
             <div className="mis-pedidos">
                 <div className="container-fluid">
                     <div className="row">
-                        <HomeOrders.Header/>
                         <div className="col-12 card-page-container">
                             <div className="card-page-content">
                                 <div className="inner-container">
-                                    <HomeOrders.Header/>
+                                   <HomeOrders.Header/>
                                     <div className="pedidos-pasados">
                                         <div className="visita-pasada row">
                                             <div className="col nombre-local">

@@ -15,6 +15,8 @@
 @import "./helpers/general"; 
 @import "./helpers/text"; 
 @import "./helpers/color-blocks";
+@import "./helpers/warnings";
+@import "./components/notifications";
 @import "./components/buttons";
 @import "./components/forms";
 @import "./components/modal";
@@ -37,6 +39,8 @@
 @import "./cliente/solicitud-limpieza/paso2";
 @import "./cliente/solicitud-limpieza/paso3";
 @import "./cliente/solicitud-limpieza";
+@import "./cliente/pedidos";
+@import "./cliente/locales";
 
 
 ///////////VIDRERISTA///////////////
@@ -46,9 +50,9 @@
  ////////ADMIN/////////////
 @import "./admin/header";
 @import "./admin/footer";
-@import "./admin/warnings";
-@import "./admin/variables";
-@import "./admin/general";
+
+@import "./admin/helpers/variables";
+@import "./admin/helpers/general";
 
 //Secciones
 @import "./admin/modules/sintesis";
@@ -59,3 +63,6 @@
 @import "./admin/clientes-lista";
 @import "./admin/cliente-individual";
 @import "./admin/local-individual";
+@import "./admin/locales-lista";
+@import "./admin/vidrieristas-lista";
+@import "./admin/vidrierista-individual";
