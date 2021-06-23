@@ -6,7 +6,8 @@ const HomeOrders = () => {
     const mockTotalPages = 3; // TODO
 
     const [past, setPast] = useState(false);
-    const handlePast = (value) => {
+    const handlePast = (event, value) => {
+        event.preventDefault();
         setPast(value);
     }
 
@@ -18,7 +19,7 @@ const HomeOrders = () => {
                         <div className="col-12 card-page-container">
                             <div className="card-page-content">
                                 <div className="inner-container">
-                                    <HomeOrders.Header past={past}/>
+                                    <HomeOrders.Header past={past} handlePast={handlePast}/>
                                     <Orders/>
                                     <HomeOrders.Footer totalPages={mockTotalPages}/>
                                 </div>
@@ -48,7 +49,12 @@ const Info = () => {
 }
 HomeOrders.Info = Info;
 
-const Header = ({past}) => {
+const Header = ({past, handlePast}) => {
+
+    const handleVisit = () => {
+        // TODO
+    }
+
     return (
         <>
             <div className="d-md-none menu-header-mobile">
@@ -66,15 +72,15 @@ const Header = ({past}) => {
             </div>
             <div className="row menu-header d-none d-md-flex">
                 <div className="col-auto menu-item">
-                    <a href="pedidos-proximos.html" className={past ? "" : "active"}>Visitas próximas</a>
+                    <a  href="#" className={past ? "" : "active"} onClick={(e) => {handlePast(e, false)}}>Visitas próximas</a> {/*TODO Deberia ser un div*/}
                 </div>
                 <div className="col-auto menu-item">
-                    <a href="pedidos-pasados.html" className={past ? "active" : ""}>Visitas pasadas</a>
+                    <a href="#" className={past ? "active" : ""} onClick={(e) => {handlePast(e, true)}}>Visitas pasadas</a> {/*TODO Deberia ser un div*/}
                 </div>
                 <div className="col-auto btn-set">
-                    <a href="#" className="btn btn-primary btn-round">
+                    <a href="#" className="btn btn-primary btn-round" onClick={() => {handleVisit()}}>
                         +
-                        <span className="d-lg-inline d-none"> Agendar visita</span>
+                        <span className="d-lg-inline d-none"> Nueva visita</span>
                         <span className="d-none d-md-inline d-lg-none"> Visita</span>
                     </a>
                 </div>
