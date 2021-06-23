@@ -1,4 +1,4 @@
-const Orders = () => {
+const PastVisits = () => {
     return (
         <div className="pedidos-pasados">
             <div className="visita-pasada row">
@@ -65,4 +65,4 @@ const Orders = () => {
     );
 }
 
-export default Orders;
+export default PastVisits;

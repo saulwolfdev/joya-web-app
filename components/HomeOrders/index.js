@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
-import Orders from './Orders'
+import PastVisits from './PastVisits';
+import UpcomingVisits from './UpcomingVisits';
 
 const HomeOrders = () => {
 
@@ -20,8 +21,8 @@ const HomeOrders = () => {
                             <div className="card-page-content">
                                 <div className="inner-container">
                                     <HomeOrders.Header past={past} handlePast={handlePast}/>
-                                    <Orders/>
-                                    <HomeOrders.Footer totalPages={mockTotalPages}/>
+                                    { past ? <PastVisits/> : <UpcomingVisits/>}
+                                    <HomeOrders.Footer totalPages={past ? mockTotalPages : 1}/>
                                 </div>
                             </div>
                         </div>
@@ -93,26 +94,32 @@ HomeOrders.Header = Header;
 const Footer = ({totalPages}) => {
     return (
         <div className="btn-set">
-            <nav aria-label="..." className="table-pagination">
-                <ul className="pagination">
-                    <li className="page-item disabled"></li>
-                    <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Anterior">
-                        <span aria-hidden="true">«</span>
-                        </a>
-                    </li>
-                    <li className="page-item"><a className="page-link" href="#">1</a></li>
-                    <li className="page-item active" aria-current="page">
-                        <a className="page-link" href="#">2</a>
-                    </li>
-                    <li className="page-item"><a className="page-link" href="#">3</a></li>
-                    <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Siguiente">
-                            <span aria-hidden="true">»</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            {
+                totalPages === 1 ?
+                    <></>
+                :
+                    <nav aria-label="..." className="table-pagination">
+                        <ul className="pagination">
+                            <li className="page-item disabled"></li>
+                            <li className="page-item">
+                                <a className="page-link" href="#" aria-label="Anterior">
+                                <span aria-hidden="true">«</span>
+                                </a>
+                            </li>
+                            <li className="page-item"><a className="page-link" href="#">1</a></li>
+                            <li className="page-item active" aria-current="page">
+                                <a className="page-link" href="#">2</a>
+                            </li>
+                            <li className="page-item"><a className="page-link" href="#">3</a></li>
+                            <li className="page-item">
+                                <a className="page-link" href="#" aria-label="Siguiente">
+                                    <span aria-hidden="true">»</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+            }
+            
         </div>
     );
 }
