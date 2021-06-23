@@ -43,7 +43,7 @@ const Menu = ({user}) => {
                             <i className="far fa-chevron-down"/>
                         </span>
                         <ul className="sub-menu">
-                            <li><a href="#">Tus pedidos</a></li>
+                            <li><Link href='/orders'><a>Tus pedidos</a></Link></li>
                             <li><a href="#">Configuración de cuenta</a></li>
                             <li><a onClick={logOut} href="#">Salir</a></li>
                         </ul>
