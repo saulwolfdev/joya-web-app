@@ -21,7 +21,7 @@ const HomeOrders = () => {
                             <div className="card-page-content">
                                 <div className="inner-container">
                                     <HomeOrders.Header past={past} handlePast={handlePast}/>
-                                    { past ? <PastVisits/> : <UpcomingVisits/>}
+                                    { past ? <PastVisits/> : <UpcomingVisits handlePast={handlePast}/>}
                                     <HomeOrders.Footer totalPages={past ? mockTotalPages : 1}/>
                                 </div>
                             </div>

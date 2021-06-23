@@ -1,4 +1,4 @@
-const UpcomingVisits = () => {
+const UpcomingVisits = ({handlePast}) => {
     return (
         <div className="pedidos-proximos">
             <div className="local-pedido row">
@@ -69,7 +69,7 @@ const UpcomingVisits = () => {
                     </div>
                 </div>
             </div>
-            <a href="pedidos-pasados.html">Ver visitas pasadas</a>
+            <a href="#" onClick={(e) => {handlePast(e, true)}}>Ver visitas pasadas</a>
       </div>
     );
 }
