@@ -10,7 +10,7 @@ const Body = ({changeToEditLocal}) => {
                             <p className="direccion">Av. Santa Fe 2702, Palermo, Comuna 12</p>
                         </div>
                         <div className="col-auto">
-                            <div className="imagen-local local-verificado" style={{backgroundImage: 'url(/img/beneficios-side.jpg)'}}/>
+                            <div className="imagen-local local-verificado" style={{backgroundImage: 'url(/beneficios-side.jpg)'}}/>
                         </div>
                     </div>
                     <div className="data-table row">
@@ -74,7 +74,7 @@ const Body = ({changeToEditLocal}) => {
                                 <p className="direccion">Av. Santa Fe 2702, Palermo, Comuna 12</p>
                             </div>
                             <div className="col-auto">
-                                <div className="imagen-local" style={{backgroundImage: 'url(/img/beneficios-side.jpg)'}} />
+                                <div className="imagen-local" style={{backgroundImage: 'url(/beneficios-side.jpg)'}} />
                             </div>
                         </div>
                         <div className="data-table row">
