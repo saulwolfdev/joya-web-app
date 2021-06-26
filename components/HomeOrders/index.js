@@ -16,7 +16,7 @@ const HomeOrders = () => {
     return (
         <UserOrderContainer>
             <HomeOrders.Header past={past} handlePast={handlePast}/>
-                { past ? <PastVisits/> : <UpcomingVisits handlePast={handlePast}/>}
+            { past ? <PastVisits/> : <UpcomingVisits handlePast={handlePast}/>}
             <HomeOrders.Footer totalPages={past ? mockTotalPages : 1}/>
         </UserOrderContainer>
     );
