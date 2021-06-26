@@ -6,7 +6,7 @@ const UserOrderContainer = (props) => {
             <div className="mis-locales">
                 <div className="container-fluid">
                     <div className="row">
-                        <Info/>
+                        <Info title={props.title}/>
                         <div className="col-12 card-page-container">
                             <div className="card-page-content">
                                 <div className="inner-container">

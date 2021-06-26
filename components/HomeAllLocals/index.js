@@ -11,7 +11,7 @@ const HomeAllLocals = () => {
     }
 
     return (
-        <UserOrderContainer>
+        <UserOrderContainer title="Tus Locales">
             {editLocal ? 
                 <EditLocal/> 
                 :
