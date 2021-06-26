@@ -2,7 +2,6 @@ import UserOrderContainer from '../UserOrderContainer'
 import Body from './Body'
 
 const HomeProfile = () => {
-
     return (
         <UserOrderContainer title="Tu cuenta">
             <Body/>

@@ -44,7 +44,7 @@ const Menu = ({user}) => {
                         <ul className="sub-menu">
                             <li><Link href='/orders'><a>Tus pedidos</a></Link></li>
                             <li><Link href='/all-locals'><a>Tus locales</a></Link></li>
-                            <li><a href="#">Configuración de cuenta</a></li>
+                            <li><Link href='/profile'><a>Configuración de cuenta</a></Link></li>
                             <li><a onClick={logOut} href="#">Salir</a></li>
                         </ul>
                     </li>
