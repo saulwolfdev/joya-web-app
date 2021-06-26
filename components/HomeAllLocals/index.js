@@ -1,11 +1,12 @@
 import React,{useState} from 'react';
 import UserOrderContainer from '../UserOrderContainer'
+import Body from "./Body"
 
 const HomeAllLocals = () => {
     return (
         <UserOrderContainer>
             <HomeAllLocals.Header/>
-            
+            <Body/>
             <HomeAllLocals.Footer totalPages={1}/>
         </UserOrderContainer>
     );
