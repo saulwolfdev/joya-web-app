@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import PastVisits from './PastVisits';
 import UpcomingVisits from './UpcomingVisits';
+import UserOrderContainer from '../UserOrderContainer'
 
 const HomeOrders = () => {
 
@@ -13,43 +14,13 @@ const HomeOrders = () => {
     }
 
     return (
-        <div className="main-content">
-            <div className="mis-pedidos">
-                <div className="container-fluid">
-                    <div className="row">
-                        <HomeOrders.Info/>
-                        <div className="col-12 card-page-container">
-                            <div className="card-page-content">
-                                <div className="inner-container">
-                                    <HomeOrders.Header past={past} handlePast={handlePast}/>
-                                    { past ? <PastVisits/> : <UpcomingVisits handlePast={handlePast}/>}
-                                    <HomeOrders.Footer totalPages={past ? mockTotalPages : 1}/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <UserOrderContainer>
+            <HomeOrders.Header past={past} handlePast={handlePast}/>
+                { past ? <PastVisits/> : <UpcomingVisits handlePast={handlePast}/>}
+            <HomeOrders.Footer totalPages={past ? mockTotalPages : 1}/>
+        </UserOrderContainer>
     );
 }
-
-const Info = () => {
-    return (
-        <div className="section-header row">
-            <div className="col col-md-12">
-                <h4>Tus pedidos</h4>
-                <h3 className="d-md-block d-none">Tus vidrieras siempre limpias</h3>
-            </div>
-            <div className="col-auto btn-set d-md-none">
-                <a href="#" className="btn btn-primary btn-small">
-                + Visita
-                </a>
-            </div>
-        </div>
-    );
-}
-HomeOrders.Info = Info;
 
 const Header = ({past, handlePast}) => {
 
