@@ -12,8 +12,14 @@ const HomeAllLocals = () => {
 
     return (
         <UserOrderContainer>
-            {editLocal ? <></> : <HomeAllLocals.Header/>}
-            {editLocal ? <EditLocal/> : <Body changeToEditLocal={changeToEditLocal}/>}
+            {editLocal ? 
+                <EditLocal/> 
+                :
+                <>
+                    <HomeAllLocals.Header/>
+                    <Body changeToEditLocal={changeToEditLocal}/>
+                </>
+            }
             <HomeAllLocals.Footer totalPages={1}/>
         </UserOrderContainer>
     );
