@@ -1,12 +1,19 @@
 import React,{useState} from 'react';
 import UserOrderContainer from '../UserOrderContainer'
-import Body from "./Body"
+import Body from './Body'
+import EditLocal from './EditLocal';
 
 const HomeAllLocals = () => {
+
+    const [editLocal, setEditLocal] = useState(false);
+    const changeToEditLocal = (e) => {
+        setEditLocal(true);
+    }
+
     return (
         <UserOrderContainer>
             <HomeAllLocals.Header/>
-            <Body/>
+            {editLocal ? <EditLocal/> : <Body changeToEditLocal={changeToEditLocal}/>}
             <HomeAllLocals.Footer totalPages={1}/>
         </UserOrderContainer>
     );
