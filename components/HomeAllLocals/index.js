@@ -14,9 +14,9 @@ const HomeAllLocals = () => {
 
 const Header = () => {
     return (
-        <div class="header-row">
+        <div className="header-row">
             <h3>Locales</h3>
-            <a href="#" class="btn btn-primary">+ Nuevo local</a>
+            <a href="#" className="btn btn-primary">+ Nuevo local</a>
         </div>
     );
 }
