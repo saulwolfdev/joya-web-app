@@ -1,17 +1,17 @@
 import Container from '../../components/Container'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import HomeAllLocals from '../../components/HomeAllLocals'
+import HomeProfile from '../../components/HomeProfile'
 import Head from 'next/head'
 
-export default function AllLocals() {
+export default function Profile() {
   return (
     <Container>
         <Head>
             <title>Joya - Pedidos</title>
         </Head>
         <Header glazier={false} />
-        <HomeAllLocals/>
+        <HomeProfile/>
         <Footer glazier={false} />
     </Container>
   )
