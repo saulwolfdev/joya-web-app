@@ -1,5 +1,4 @@
 import { getAuth, signOut } from 'firebase/auth';
-import { prepareUserInfo } from '../../helpers';
 
 import Link from 'next/link'
 

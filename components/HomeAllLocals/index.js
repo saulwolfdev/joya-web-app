@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import UserOrderContainer from '../UserOrderContainer'
 import Body from './Body'
 import EditLocal from './EditLocal';
+import Link from 'next/link'
 
 const HomeAllLocals = () => {
 
@@ -29,7 +30,7 @@ const Header = () => {
     return (
         <div className="header-row">
             <h3>Locales</h3>
-            <a href="#" className="btn btn-primary">+ Nuevo local</a>
+            <Link href='/apply/new'><a className="btn btn-primary">+ Nuevo local</a></Link>
         </div>
     );
 }
