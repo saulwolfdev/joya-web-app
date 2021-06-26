@@ -1,3 +1,5 @@
+import Img from '../../Img'
+
 const EditLocal = () => {
     return (
         <div>
@@ -26,7 +28,7 @@ const EditLocal = () => {
                     </div>
                 </div>
                 <div className="col-md-6 local-imagen">
-                    <img src="img/kentucky.jpg" alt="" className="img-fluid" />
+                    <Img src="kentucky.jpg" alt="" className="img-fluid" />
                 </div>
             </div>
             <div className="row info-block">
