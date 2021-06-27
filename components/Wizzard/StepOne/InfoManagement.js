@@ -1,4 +1,3 @@
-import React,{useState, useEffect} from 'react';
 import InputLocal from './InputLocal'
 import InputDirection from './InputDirection'
 import InputLocalName from './InputLocalName'
@@ -23,10 +22,6 @@ const InfoManagement = (
         handleStatusEdit,
         handleInputDirection
     }) => {
-    
-    useEffect(() => {
-        
-    });
 
     return (
         <>

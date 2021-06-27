@@ -68,7 +68,13 @@ const StepOne = ({handleNext, loguedIn, close, direction}) => {
 
     const [localOption, setLocalOption] = useState('select a location');
     const handleOptionLocal = (e) => {
-        setLocalOption(e.target.value)
+        let option = e.target.value;
+        setLocalOption(option)
+    }
+
+    const mockInfo = (windowId) => { // TODO This method should be replaced by the firebase calling method
+        // Right now this method will always return the same information
+
     }
 
     const [localExtraIndication, setLocalExtraIndication] = useState('');
@@ -111,6 +117,9 @@ const StepOne = ({handleNext, loguedIn, close, direction}) => {
             setLocalOption('new local');
             setInputDirection(direction);
             setInteractiveFlag(true);
+        }
+        if(localOption !== 'new local' && localOption !== 'select a location') {
+            mockInfo(localOption)
         }
     });
 
