@@ -137,6 +137,7 @@ const StepOne = ({handleNext, loguedIn, close, direction}) => {
                     inputDirection={inputDirection}
                     statusEdit={statusEdit}
                     handleStatusEdit={handleStatusEdit}
+                    localOption={localOption}
                 />
             </div>
         </div>

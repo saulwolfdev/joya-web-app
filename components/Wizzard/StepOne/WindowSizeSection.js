@@ -80,6 +80,7 @@ const WindowSizeSection = () => {
     const [inputList, setInputList] = useState([<Window key={1} n={1}/>]);
 
     const onAddBtnClick = event => {
+        event.preventDefault();
         setInputList(inputList.concat(<Window key={inputList.length+1} n={inputList.length+1}/>));
     };
 
@@ -144,7 +145,7 @@ const WindowSizeSection = () => {
             <p>A continuación especificá el tamaño aproximado de tu vidriera. 
             <br/><strong>El alto y ancho máximo de cada paño de ventana es de 4 metros.</strong></p>
             {inputList}
-            <button className="btn-set" onClick={onAddBtnClick}>+ Agregar otro paño de ventana</button>
+            <a href="#" className="btn-set" onClick={onAddBtnClick}>+ Agregar otro paño de ventana</a>
         </div>
     );
 }
