@@ -56,25 +56,62 @@ const Wizzard = ({direction}) => {
 
 const StepOne = ({handleNext, loguedIn, close, direction}) => {
 
-    const [info, setInfo] = useState(
-        {
-            
-        }
-    );
-
-    const handleInfo = (value) => {
-        setInfo(value)
+    const [accept, setAccept] = useState(false);
+    const handleAccept = (e) => {
+        setAccept(e.target.value);
     }
 
     const [inputLocalName, setInputLocalName] = useState('');
-
     const handleInputLocalName = (e) => {
         setInputLocalName(e.target.value);
     }
 
+    const [localOption, setLocalOption] = useState('select a location');
+    const handleOptionLocal = (e) => {
+        setLocalOption(e.target.value)
+    }
+
+    const [localExtraIndication, setLocalExtraIndication] = useState('');
+    const handleLocalExtraIndication = (e) => {
+        setLocalExtraIndication(e.target.value);
+    }
+
+    const [statusEdit, setStatusEdit] = useState(false);
+    const handleStatusEdit = (value) => {
+        setStatusEdit(value);
+    }
+
+    // Posible values: 'select a location', 'new local', and custom options with uuid?
+    const [inputDirection, setInputDirection] = useState('');
+    const handleInputDirection = (e) => {
+        setInputDirection(e.target.value)
+    }
+
+    const [interactiveFlag, setInteractiveFlag] = useState(false);
+    const handleInteractiveFlag = (value) => {
+        setInteractiveFlag(value);
+    }
+
+    const values = [
+        ["select a location", "Seleccioná un local"],
+        ["new local", "+ Nuevo local"]
+    ]
+
+    const mockValues = [
+        ["select a location", "Seleccioná un local"],
+        ["local1", "Local 1"],
+        ["local2", "Local 2"],
+        ["new local", "+ Nuevo local"]
+    ]
+
     useEffect(() => { 
         const flag = true;
         handleNext(flag);
+        if(direction !== 'new' && localOption === 'select a location' && !interactiveFlag) {
+            setLocalOption('new local');
+            setInputDirection(direction);
+            setInteractiveFlag(true);
+        }
     });
 
     return (
@@ -90,10 +127,16 @@ const StepOne = ({handleNext, loguedIn, close, direction}) => {
                 <InfoManagement 
                     loguedIn={loguedIn} 
                     close={close} 
-                    handleInfo={handleInfo} 
-                    direction={direction} 
-                    inputLocalName={inputLocalName} 
+                    direction={direction}
                     handleInputLocalName={handleInputLocalName}
+                    directions={loguedIn ? mockValues : values}
+                    currentDirection={direction}
+                    handleOptionLocal={handleOptionLocal}
+                    handleLocalExtraIndication={handleLocalExtraIndication}
+                    handleInputDirection={handleInputDirection}
+                    inputDirection={inputDirection}
+                    statusEdit={statusEdit}
+                    handleStatusEdit={handleStatusEdit}
                 />
             </div>
         </div>

@@ -1,4 +1,4 @@
-const OrderDetails = ({inputDirection, handleEdit}) => {
+const OrderDetails = ({inputDirection, handleStatusEdit}) => {
 
     const info = {
         direction: "Wathever"
@@ -46,7 +46,7 @@ const OrderDetails = ({inputDirection, handleEdit}) => {
                     </div>
                     <div className="btn-set row">
                         <div className="col-md-4 col-xl-3">
-                            <button className="btn btn-primary btn-small" onClick={() => {handleEdit(info)}}>
+                            <button className="btn btn-primary btn-small" onClick={() => {handleStatusEdit(info)}}>
                                 Editar
                             </button>
                         </div>
