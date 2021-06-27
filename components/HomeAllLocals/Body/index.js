@@ -115,7 +115,7 @@ const Local = ({changeToEditLocal, local}) => {
                             local.surfaceBefore !== "" ? <div className="alertas"><i className="far fa-exclamation-triangle" />Superficie a confirmar</div> : <></>
                         }
                     </div>
-                    <a className="btn btn-outline btn-small" onClick={() => changeToEditLocal()}>Editar</a>
+                    <a className="btn btn-outline btn-small" onClick={() => changeToEditLocal("example")}>Editar</a>
                 </div>
             </div>
         </div>
