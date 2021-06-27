@@ -12,7 +12,7 @@ const HomeAllLocals = () => {
     }
 
     return (
-        <UserOrderContainer title="Tus Locales">
+        <UserOrderContainer title="Tus Locales" style="mis-locales">
             {editLocal ? 
                 <EditLocal/> 
                 :

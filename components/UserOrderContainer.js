@@ -3,7 +3,7 @@ import Info from './Info'
 const UserOrderContainer = (props) => {
     return (
         <div className="main-content">
-            <div className="mis-locales">
+            <div className={props.style}>
                 <div className="container-fluid">
                     <div className="row">
                         <Info title={props.title}/>
