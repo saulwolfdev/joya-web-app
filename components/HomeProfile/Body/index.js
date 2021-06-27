@@ -1,4 +1,34 @@
+import React,{useState} from 'react';
+
 const Body = () => {
+
+    // TODO with firebase fill fields
+
+    // Dont use form
+
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState(''); // fill with firebase
+    const [password, setPassword] = useState(''); // dont fill with firebase
+    const [repeatPassword, setRepeatPassword] = useState(''); // dont fill with firebase
+    const [businessName, setBusinessName] = useState('');
+    const [cuit, setCuit] = useState('');
+    const [direction, setDirection] = useState('');
+
+    const handleFirstName = (e) => setFirstName(e.currentTarget.value);
+    const handleLastName = (e) => setLastName(e.currentTarget.value);
+    const handlePhone = (e) => setPhone(e.currentTarget.value);
+    const handlePassword = (e) => setPassword(e.currentTarget.value);
+    const handleRepeatPassword = (e) => setRepeatPassword(e.currentTarget.value);
+    const handleBusinessName = (e) => setBusinessName(e.currentTarget.value);
+    const handleCuit = (e) => setCuit(e.currentTarget.value);
+    const handleDirection = (e) => setDirection(e.currentTarget.value);
+    
+    const saveChanges = () => {
+        // TODO use states with firebase
+    }
+
     return (
         <div className="row">
             <div className="col-xl-9">
@@ -7,17 +37,17 @@ const Body = () => {
                     <div className="row">
                         <div className="col form-element">
                             <label htmlFor="nombre" className="form-label">Nombre</label>
-                            <input type="text" className="form-control" name="nombre" defaultValue="Carolina" />
+                            <input type="text" className="form-control" name="nombre" value={firstName} onChange={handleFirstName}/>
                         </div>
                         <div className="col form-element">
                             <label htmlFor="apellido" className="form-label">Apellido</label>
-                            <input type="text" className="form-control" name="apellido" defaultValue="Fernández" />
+                            <input type="text" className="form-control" name="apellido" value={lastName} onChange={handleLastName}/>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col form-element">
                             <label htmlFor="telefono" className="form-label">Teléfono</label>
-                            <input type="text" className="form-control" name="telefono" defaultValue={+5491151234567} />
+                            <input type="text" className="form-control" name="telefono" value={phone} onChange={handlePhone}/>
                         </div>
                         <div className="col form-element">
                             <label htmlFor="email" className="form-label">Email</label>
@@ -27,11 +57,11 @@ const Body = () => {
                     <div className="row">
                         <div className="col form-element">
                             <label htmlFor="contrasenia" className="form-label">Contraseña</label>
-                            <input type="password" className="form-control" name="contrasenia" />
+                            <input type="password" className="form-control" name="contrasenia" value={password} onChange={handlePassword}/>
                         </div>
                         <div className="col form-element">
                             <label htmlFor="repetircontrasenia" className="form-label">Repetir contraseña</label>
-                            <input type="text" className="form-control" name="repetircontrasenia" />
+                            <input type="text" className="form-control" name="repetircontrasenia" value={repeatPassword} onChange={handleRepeatPassword}/>
                         </div>
                     </div>
                 </div>	
@@ -39,19 +69,19 @@ const Body = () => {
                     <h4>Datos de facturación:</h4>
                     <div className="form-element">
                         <label htmlFor="razonsocial" className="form-label">Razón social</label>
-                        <input type="text" className="form-control" name="razonsocial" defaultValue="Kentucky S.A." />
+                        <input type="text" className="form-control" name="razonsocial" value={businessName} onChange={handleBusinessName}/>
                     </div>
                     <div className="form-element">
                         <label htmlFor="cuit" className="form-label">CUIT</label>
-                        <input type="text" className="form-control" name="cuit" defaultValue="94-75213547-5" />
+                        <input type="text" className="form-control" name="cuit" value={cuit} onChange={handleCuit}/>
                     </div>
                     <div className="form-element">
                         <label htmlFor="direccion" className="form-label">Dirección</label>
-                        <input type="text" className="form-control" name="direccion" defaultValue="Av. Santa Fe 2565" />
+                        <input type="text" className="form-control" name="direccion" value={direction} onChange={handleDirection}/>
                     </div>
                 </div>	
                 <div className="btn-set">
-                    <button className="btn btn-primary">Guardar cambios</button>
+                    <button className="btn btn-primary" onClick={saveChanges}>Guardar cambios</button>
                 </div>
             </div>
         </div>
