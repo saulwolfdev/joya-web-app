@@ -52,7 +52,7 @@ const Wizzard = ({direction}) => {
             <div className="wizard-content card-page-content">
                 {step === 1 ? <Wizzard.StepOne direction={direction} handleNext={handleNext} loguedIn={loguedIn} close={closeSignInModalHandler} handleSurfaceAprox={handleSurfaceAprox}/> : <></>}
                 {step === 2 ? <Wizzard.StepTwo handleNext={handleNext} loguedIn={loguedIn}/> : <></>}
-                {step === 3 ? <Wizzard.StepThree subtotal={surfaceAprox} discount={0} percent={0} total={surfaceAprox}/> : <></> /*TODO percent*/}
+                {step === 3 ? <Wizzard.StepThree subtotal={"150"} discount={0} percent={0} total={"150"}/> : <></> /*TODO percent*/}
             </div>
             <Wizzard.Footer enableNext={enableNext} incrementStep={incrementStep} step={step} surfaceAprox={surfaceAprox}/>
             <SignInModal onSuccess={onSuccessSignIn} show={showSingnIn} close={closeSignInModalHandler} showSignUp={setShowSingnUp}/>
