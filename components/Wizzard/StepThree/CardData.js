@@ -1,31 +1,25 @@
-import React,{useState, useEffect} from 'react';
-import { getAuth } from 'firebase/auth';
-import { prepareUserInfo } from '../../../helpers'
-import SignInModal from './../../SignInModal'
-import SignUpModal from './../../SignUpModal'
+import React,{useState} from 'react';
 
 const CardData = () => {
+    
+    const [cardNumber, setCardNumber] = useState('')
+    const handleCardNumber = (e) => {setCardNumber(e.target.value)} 
 
-    const [loguedIn, setLoguedIn] = useState(false);
-    const [user,setUser] = useState(null);
+    const [name, setName] = useState('')
+    const handleName = (e) => {setName(e.target.value)} 
 
-    const [showSingnIn, setShowSingnIn] = useState(false);
-    const [showSingnUp, setShowSingnUp] = useState(false);
+    const [expiredDate, setExpiredDate] = useState('')
+    const handleExpiredDate = (e) => {setExpiredDate(e.target.value)} 
 
-    const closeSignInModalHandler = (close) => setShowSingnIn(!close);
-    const closeSignUpModalHandler = (close) => setShowSingnUp(!close);
-    const onSuccessSignIn = () => setLoguedIn(true);
+    const [code, setCode] = useState('')
+    const handleCode = (e) => {setCode(e.target.value)} 
+
+    const [dni, setDni] = useState('')
+    const handleDni = (e) => {setDni(e.target.value)} 
 
     const handleClick = (e) => {
-        if(!loguedIn) {
-            setShowSingnUp(true);
-        }
+        // TODO use states with firebase
     }
-
-    useEffect(()=>{
-        const userLogin = getAuth();
-        userLogin.onAuthStateChanged(prepareUserInfo(setLoguedIn, setUser));    
-    });
 
     return (
         <>
@@ -36,25 +30,25 @@ const CardData = () => {
                     <div className="form">
                         <div className="form-element">
                             <label htmlFor="tarjeta" className="form-label">Número de la tarjeta</label>
-                            <input type="text" className="form-control" name="tarjeta"/>
+                            <input type="text" className="form-control" name="tarjeta" value={cardNumber} onChange={handleCardNumber}/>
                         </div>
                         <div className="form-element">
                             <label htmlFor="titular" className="form-label">Nombre y apellido del titular de la tarjeta</label>
-                            <input type="text" className="form-control" name="titular"/>
+                            <input type="text" className="form-control" name="titular" value={name} onChange={handleName}/>
                         </div>
                         <div className="row">
                             <div className="col form-element">
                                 <label htmlFor="expiracion" className="form-label">Fecha de expiración</label>
-                                <input type="text" className="form-control" name="expiracion"/>
+                                <input type="text" className="form-control" name="expiracion" value={expiredDate} onChange={handleExpiredDate}/>
                             </div>
                             <div className="col form-element">
                                 <label htmlFor="seguridad" className="form-label">Código de seguridad</label>
-                                <input type="text" className="form-control" name="seguridad"/>
+                                <input type="text" className="form-control" name="seguridad" value={code} onChange={handleCode}/>
                             </div>
                         </div>
                         <div className="form-element">
                             <label htmlFor="dni" className="form-label">DNI del titular</label>
-                            <input type="text" className="form-control" name="dni"/>
+                            <input type="text" className="form-control" name="dni" value={dni} onChange={handleDni}/>
                         </div>
                         <div className="btn-set">
                             <button className="btn btn-primary" onClick={handleClick}>Confirmar pago</button>
@@ -62,8 +56,6 @@ const CardData = () => {
                     </div>	
                 </div>
             </div>
-            <SignInModal onSuccess={onSuccessSignIn} show={showSingnIn} close={closeSignInModalHandler} showSignUp={setShowSingnUp}/>
-            <SignUpModal show={showSingnUp} close={closeSignUpModalHandler} showSignIn={setShowSingnIn}/>
         </>
     );
 }
