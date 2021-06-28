@@ -12,7 +12,6 @@ const SignUpModal = ({show, close, showSignIn}) => {
         showSignIn(true);
     }
 
-
     async function registerUser(e){
         e.preventDefault(e);
         const email = e.target.email.value;
@@ -21,7 +20,7 @@ const SignUpModal = ({show, close, showSignIn}) => {
         const apellido = e.target.apellido.value;
 
         const auth = getAuth();
-        const user = await createUserWithEmailAndPassword(auth, email, password)
+        await createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             //encapsular metodo para blanquear formularios
             Array.from(document.querySelectorAll("input")).forEach(
@@ -30,15 +29,12 @@ const SignUpModal = ({show, close, showSignIn}) => {
             
             updateProfile(userCredential.user,{
                 displayName: apellido + ", "  + nombre
-                
             });
             close(true);  
           })
           .catch((error) => {
             setErrorMsg(error.code);
           });
-            
-
     };
 
     return (
