@@ -114,7 +114,6 @@ const StepOne = ({handleNext, loguedIn, close, direction, handleSurfaceAprox}) =
     ]
 
     useEffect(() => {
-        handleSurfaceAprox("64")
         let flag = false;
         if(localOption === 'new local') {
             flag = inputDirection !== '' && inputLocalName !== '' && accept;
@@ -159,6 +158,7 @@ const StepOne = ({handleNext, loguedIn, close, direction, handleSurfaceAprox}) =
                     handleStatusEdit={handleStatusEdit}
                     localOption={localOption}
                     handleAccept={handleAccept}
+                    handleSurfaceAprox={handleSurfaceAprox}
                 />
             </div>
         </div>
