@@ -126,6 +126,7 @@
 			.mes {text-transform: uppercase; color: $text-dark-secondary;}
 		}
 		.acciones {
+			cursor: pointer;
 			i {color: $text-dark-secondary;}
 			position: relative;
 			.options-visits{
@@ -134,8 +135,10 @@
 				padding: 8px;
 				width: 265px;
 				position:relative;background-color: #F7F7F7;
+				cursor: pointer;
 		}
 			&:hover .options-visits{
+				cursor: pointer;
 				display: block;
 				position: absolute;
 				right: 0;
