@@ -127,6 +127,23 @@
 		}
 		.acciones {
 			i {color: $text-dark-secondary;}
+			position: relative;
+			.options-visits{
+				display: none;
+			    list-style: none;
+				padding: 8px;
+				width: 265px;
+				position:relative;background-color: #F7F7F7;
+		}
+			&:hover .options-visits{
+				display: block;
+				position: absolute;
+				right: 0;
+				top: -70px;
+				.options-visits-list{
+					padding: 0 10px;
+				}
+		}
 		}
 	}
 	.pedidos-pasados {

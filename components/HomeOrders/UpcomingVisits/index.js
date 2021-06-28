@@ -18,6 +18,10 @@ const UpcomingVisits = ({handlePast}) => {
                         </div>
                         <div className="col-auto acciones">
                             <i className="far fa-ellipsis-h" />
+                            <ul className="options-visits">
+                                <li className="options-visits-list">reprogramar proxima visita</li>
+                                <li className="options-visits-list">cancelar suscripcion</li>
+                            </ul>
                         </div>
                     </div>
                     <div className="pedido row">
