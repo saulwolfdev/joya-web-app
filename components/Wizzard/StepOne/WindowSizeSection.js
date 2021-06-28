@@ -158,7 +158,6 @@ const WindowSizeSection = ({handleSurfaceAprox}) => {
     useEffect(()=>{
         // It must not happen that the array is of size 0
         let total = windowTotalSize.length === 0 ? 0 : windowTotalSize.map(i => i.total).reduce((a, b) => a + b);
-        console.log(windowTotalSize)
         handleSurfaceAprox(total) // TODO as String
         windowRange();
     });

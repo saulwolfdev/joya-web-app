@@ -1,4 +1,13 @@
 const UpcomingVisits = ({handlePast}) => {
+
+    const rescheduleNextVisit = () => {
+        // TODO firebase
+    }
+
+    const cancelSuscription = () => {
+        // TODO firebase
+    }
+
     return (
         <div className="pedidos-proximos">
             <div className="local-pedido row">
@@ -19,8 +28,8 @@ const UpcomingVisits = ({handlePast}) => {
                         <div className="col-auto acciones">
                             <i className="far fa-ellipsis-h" />
                             <ul className="options-visits">
-                                <li className="options-visits-list">reprogramar proxima visita</li>
-                                <li className="options-visits-list">cancelar suscripcion</li>
+                                <li onClick={() => rescheduleNextVisit()} className="options-visits-list">reprogramar proxima visita</li>
+                                <li onClick={() => cancelSuscription()} className="options-visits-list">cancelar suscripcion</li>
                             </ul>
                         </div>
                     </div>
