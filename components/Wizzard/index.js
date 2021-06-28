@@ -328,7 +328,7 @@ const Footer = ({enableNext, incrementStep, step, surfaceAprox}) => {
                     :
                         <></>
                 }
-                <button className="btn btn-primary" onClick={incrementStep} disabled={!enableNext}>Siguiente</button>	
+                { step !== 3 ? <button className="btn btn-primary" onClick={incrementStep} disabled={!enableNext}>Siguiente</button> : <></> }	
             </div>
         </div>
     );
