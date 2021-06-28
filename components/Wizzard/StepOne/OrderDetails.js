@@ -1,4 +1,8 @@
-const OrderDetails = ({inputDirection, handleStatusEdit}) => {
+import React,{useState, useEffect} from 'react';
+
+const OrderDetails = ({inputDirection, handleStatusEdit, handleSurfaceAprox}) => {
+
+    const [total, setTotal] = useState('0')
 
     const mockInfo = { // TODO replace with firebase
         direction: "Wathever",
@@ -22,6 +26,11 @@ const OrderDetails = ({inputDirection, handleStatusEdit}) => {
         ]
     }
 
+    useEffect(()=>{
+        setTotal(mockInfo.windowInfo.length === 0 ? 0 : mockInfo.windowInfo.map(i => i.size).reduce((a, b) => a + b));
+        handleSurfaceAprox(total)
+    });
+
     return (
         <div className="localexistente block-alternative" style={{ display: "block" }}>
             <div className="form-element">
@@ -34,7 +43,7 @@ const OrderDetails = ({inputDirection, handleStatusEdit}) => {
                     <div className="form-element row">
                         <div className="col-md-4 col-xl-3 superficie">
                             <p className="label">Vidriera</p>
-                            <p className="value">Sup. aproximada: {mockInfo.windowInfo.length === 0 ? 0 : mockInfo.windowInfo.map(i => i.size).reduce((a, b) => a + b)}m<sup>2</sup></p>
+                            <p className="value">Sup. aproximada: {total}m<sup>2</sup></p>
                         </div>
                         <div className="col-md-8 col-xl-9 panios">
                             <div className="row">

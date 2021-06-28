@@ -39,7 +39,7 @@ const InfoManagement = (
                 </>
                 :
                 (localOption !== 'select a location' ? 
-                    <OrderDetails inputDirection={inputDirection} handleStatusEdit={handleStatusEdit}/>
+                    <OrderDetails inputDirection={inputDirection} handleStatusEdit={handleStatusEdit} handleSurfaceAprox={handleSurfaceAprox}/>
                     :
                     <>
                     </>

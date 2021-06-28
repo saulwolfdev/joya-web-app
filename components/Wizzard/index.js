@@ -119,6 +119,8 @@ const StepOne = ({handleNext, loguedIn, close, direction, handleSurfaceAprox}) =
             flag = inputDirection !== '' && inputLocalName !== '' && accept;
         } else if (localOption !== 'select a location') {
             flag = accept;
+        } else {
+            handleSurfaceAprox(0);
         }
 
         handleNext(flag);
