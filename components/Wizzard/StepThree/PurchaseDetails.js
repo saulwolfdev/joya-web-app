@@ -1,4 +1,5 @@
-const PurchaseDetails = () => {
+const PurchaseDetails = ({subtotal, withDiscount, discount, percent, total}) => {
+
     return (
         <div className="col-xl-4 col-md-5 col-detalle">
             <h4>Detalle de compra</h4>
@@ -6,17 +7,22 @@ const PurchaseDetails = () => {
                 <tbody>
                     <tr className="item">
                         <td className="descripcion">Subtotal</td>
-                        <td className="valor"><span className="currency">$</span><span className="price">150</span></td>
+                        <td className="valor"><span className="currency">$</span><span className="price">{subtotal}</span></td>
                     </tr>
                     <tr className="item">
                         <td className="descripcion">Descuentos</td>
-                        <td className="valor destacado">-<span className="currency">$</span><span className="price">37,50</span><span className="percent">(25%)</span></td>
+                        {
+                            withDiscount ?
+                                <td className="valor destacado">-<span className="currency">$</span><span className="price">{discount}</span><span className="percent">{"(" + percent + ")"}</span></td>
+                            :
+                                <></>
+                        }
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr className="total">
                         <td className="descripcion">Total</td>
-                        <td className="valor"><span className="currency">$</span><span className="price">112,50</span></td>
+                        <td className="valor"><span className="currency">$</span><span className="price">{total}</span></td>
                     </tr>
                 </tfoot>
             </table>

@@ -52,7 +52,7 @@ const Wizzard = ({direction}) => {
             <div className="wizard-content card-page-content">
                 {step === 1 ? <Wizzard.StepOne direction={direction} handleNext={handleNext} loguedIn={loguedIn} close={closeSignInModalHandler} handleSurfaceAprox={handleSurfaceAprox}/> : <></>}
                 {step === 2 ? <Wizzard.StepTwo handleNext={handleNext} loguedIn={loguedIn}/> : <></>}
-                {step === 3 ? <Wizzard.StepThree/> : <></>}
+                {step === 3 ? <Wizzard.StepThree subtotal={surfaceAprox} discount={0} percent={0} total={surfaceAprox}/> : <></> /*TODO percent*/}
             </div>
             <Wizzard.Footer enableNext={enableNext} incrementStep={incrementStep} step={step} surfaceAprox={surfaceAprox}/>
             <SignInModal onSuccess={onSuccessSignIn} show={showSingnIn} close={closeSignInModalHandler} showSignUp={setShowSingnUp}/>
@@ -277,13 +277,16 @@ const StepTwo = ({handleNext, loguedIn}) => {
 }
 Wizzard.StepTwo = StepTwo;
 
-const StepThree = () => {
+const StepThree = ({subtotal, discount, percent, total}) => {
+
+    const withDiscount = false; // TODO, mock, calculate from discount 0%
+
     return (
             <div className="step3 inner-container">
                 <div className="row">
                     <CardData/>
-                    <PurchaseDetails/>
                 </div>
+                    <PurchaseDetails subtotal={subtotal} withDiscount={withDiscount} discount={discount} percent={percent} total={total}/>
             </div>
     );
 }
