@@ -34,8 +34,12 @@ const Wizzard = ({direction}) => {
     });
 
     const incrementStep = (e) => {
-        setStep(step + 1);
-        setEnableNext(false);
+        if(!loguedIn && step == 2) {
+            setShowSingnUp(true)
+        } else {
+            setStep(step + 1);
+            setEnableNext(false);
+        }
     }
 
     const handleNext = (enable) => {
