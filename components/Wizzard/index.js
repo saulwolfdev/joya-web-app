@@ -21,6 +21,9 @@ const Wizzard = ({direction}) => {
     const [showSingnIn, setShowSingnIn] = useState(false);
     const [showSingnUp, setShowSingnUp] = useState(false);
 
+    const [surfaceAprox, setSurfaceAprox] = useState('64');
+    const handleSurfaceAprox = (value) => setSurfaceAprox(value);
+
     const closeSignInModalHandler = (close) => setShowSingnIn(!close);
     const closeSignUpModalHandler = (close) => setShowSingnUp(!close);
     const onSuccessSignIn = () => setLoguedIn(true);
@@ -43,18 +46,18 @@ const Wizzard = ({direction}) => {
         <>
         	<Wizzard.Steps step={step}/>
             <div className="wizard-content card-page-content">
-                {step === 1 ? <Wizzard.StepOne direction={direction} handleNext={handleNext} loguedIn={loguedIn} close={closeSignInModalHandler}/> : <></>}
+                {step === 1 ? <Wizzard.StepOne direction={direction} handleNext={handleNext} loguedIn={loguedIn} close={closeSignInModalHandler} handleSurfaceAprox={handleSurfaceAprox}/> : <></>}
                 {step === 2 ? <Wizzard.StepTwo handleNext={handleNext} loguedIn={loguedIn}/> : <></>}
                 {step === 3 ? <Wizzard.StepThree/> : <></>}
             </div>
-            <Wizzard.Footer enableNext={enableNext} incrementStep={incrementStep}/>
+            <Wizzard.Footer enableNext={enableNext} incrementStep={incrementStep} step={step} surfaceAprox={surfaceAprox}/>
             <SignInModal onSuccess={onSuccessSignIn} show={showSingnIn} close={closeSignInModalHandler} showSignUp={setShowSingnUp}/>
             <SignUpModal show={showSingnUp} close={closeSignUpModalHandler} showSignIn={setShowSingnIn}/>
         </>
     );
 }
 
-const StepOne = ({handleNext, loguedIn, close, direction}) => {
+const StepOne = ({handleNext, loguedIn, close, direction, handleSurfaceAprox}) => {
 
     const [accept, setAccept] = useState(false);
     const handleAccept = (e) => {
@@ -110,7 +113,8 @@ const StepOne = ({handleNext, loguedIn, close, direction}) => {
         ["new local", "+ Nuevo local"]
     ]
 
-    useEffect(() => { 
+    useEffect(() => {
+        handleSurfaceAprox("64")
         let flag = false;
         if(localOption === 'new local') {
             flag = inputDirection !== '' && inputLocalName !== '' && accept;
@@ -295,10 +299,26 @@ const Steps = ({step}) => {
 }
 Wizzard.Steps = Steps;
 
-const Footer = ({enableNext, incrementStep}) => {
+const Footer = ({enableNext, incrementStep, step, surfaceAprox}) => {
+
+    const price = "150"; // TODO with firebase
+
     return (
         <div className="wizard-footer card-page-footer">
             <div className="inner-container">
+                {
+                    step === 1 || step === 2 ?
+                        <>
+                            <div className="calc-superficie">
+                                Superficie aprox.: <strong className="superficie">{surfaceAprox}m<sup>2</sup></strong>
+                            </div>
+                            <div className="calc-precio">
+                                <span className="currency">$</span><strong className="precio">{price}</strong> <span className="small">por visita.</span>
+                            </div>
+                        </>
+                    :
+                        <></>
+                }
                 <button className="btn btn-primary" onClick={incrementStep} disabled={!enableNext}>Siguiente</button>	
             </div>
         </div>
