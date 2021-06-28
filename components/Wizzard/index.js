@@ -58,7 +58,7 @@ const StepOne = ({handleNext, loguedIn, close, direction}) => {
 
     const [accept, setAccept] = useState(false);
     const handleAccept = (e) => {
-        setAccept(e.target.value);
+        setAccept(e.target.checked);
     }
 
     const [inputLocalName, setInputLocalName] = useState('');
@@ -111,8 +111,15 @@ const StepOne = ({handleNext, loguedIn, close, direction}) => {
     ]
 
     useEffect(() => { 
-        const flag = true;
+        let flag = false;
+        if(localOption === 'new local') {
+            flag = inputDirection !== '' && inputLocalName !== '' && accept;
+        } else if (localOption !== 'select a location') {
+            flag = accept;
+        }
+
         handleNext(flag);
+        
         if(direction !== 'new' && localOption === 'select a location' && !interactiveFlag) {
             setLocalOption('new local');
             setInputDirection(direction);
@@ -147,6 +154,7 @@ const StepOne = ({handleNext, loguedIn, close, direction}) => {
                     statusEdit={statusEdit}
                     handleStatusEdit={handleStatusEdit}
                     localOption={localOption}
+                    handleAccept={handleAccept}
                 />
             </div>
         </div>
