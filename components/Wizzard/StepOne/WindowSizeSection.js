@@ -80,23 +80,19 @@ const WindowSizeSection = ({handleSurfaceAprox}) => {
 
     const [windowTotalSize, setWindowTotalSize] = useState([]);
     const handleWindowTotalSize = (key, total) => {
-        if(windowTotalSize.length === 0) {
-            setWindowTotalSize([{key, total}]);
-        } else {
-            let copy = [...windowTotalSize];
-            let flag = false;
-            for(let i = 0; i < copy.length; i++) {
-                if(copy[i].key) {
-                    copy[i].total = total;
-                    flag = true;
-                    break;
-                }
+        let copy = [...windowTotalSize];
+        let flag = false;
+        for(let i = 0; i < copy.length; i++) {
+            if(copy[i].key === key) {
+                copy[i].total = total;
+                flag = true;
+                break;
             }
-            if(!flag) {
-                copy.push({key, total});
-            }
-            setWindowTotalSize(copy);
         }
+        if(!flag) {
+            copy.push({key, total});
+        }
+        setWindowTotalSize(copy);
     }
 
     const [inputList, setInputList] = useState([<Window handleWindowTotalSize={handleWindowTotalSize} key={1} n={1}/>]);
@@ -161,7 +157,9 @@ const WindowSizeSection = ({handleSurfaceAprox}) => {
 
     useEffect(()=>{
         // It must not happen that the array is of size 0
-        handleSurfaceAprox(windowTotalSize.length === 0 ? 0 : windowTotalSize.map(i => i.total).reduce((a, b) => a + b)) // TODO as String
+        let total = windowTotalSize.length === 0 ? 0 : windowTotalSize.map(i => i.total).reduce((a, b) => a + b);
+        console.log(windowTotalSize)
+        handleSurfaceAprox(total) // TODO as String
         windowRange();
     });
     return (
