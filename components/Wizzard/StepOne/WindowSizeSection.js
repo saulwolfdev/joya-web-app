@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react';
 
-const Window = ({n}) => {
+const Window = ({n, handleWindowTotalSize}) => {
 
     const DEFAULT = 2;
     const MIN = 1;
@@ -30,6 +30,7 @@ const Window = ({n}) => {
         } else if (sizeW < MIN) {
             setSizeW(MIN);
         }
+        handleWindowTotalSize(n, sizeH*sizeW)
     }); 
 
     return (
@@ -75,13 +76,23 @@ const Window = ({n}) => {
     );
 }
 
-const WindowSizeSection = () => {
+const WindowSizeSection = ({handleSurfaceAprox}) => {
 
-    const [inputList, setInputList] = useState([<Window key={1} n={1}/>]);
+    const [windowTotalSize, setWindowTotalSize] = useState([]);
+    const handleWindowTotalSize = (key, total) => {
+        if(windowTotalSize.length === 0) {
+            setWindowTotalSize([{key, total}]);
+        } else {
+            setWindowTotalSize([{key, total}]); // TODO No, bad code
+        }
+    }
+
+    const [inputList, setInputList] = useState([<Window handleWindowTotalSize={handleWindowTotalSize} key={1} n={1}/>]);
+    
 
     const onAddBtnClick = event => {
         event.preventDefault();
-        setInputList(inputList.concat(<Window key={inputList.length+1} n={inputList.length+1}/>));
+        setInputList(inputList.concat(<Window key={inputList.length+1} n={inputList.length+1} handleWindowTotalSize={handleWindowTotalSize}/>));
     };
 
     const windowRange= () => {
@@ -137,6 +148,7 @@ const WindowSizeSection = () => {
     };
 
     useEffect(()=>{
+        handleSurfaceAprox(windowTotalSize.length === 0 ? 0 : windowTotalSize.map(i => i.total).reduce((a, b) => a + b)) // TODO as String
         windowRange();
     });
     return (

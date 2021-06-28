@@ -20,7 +20,8 @@ const InfoManagement = (
         statusEdit,
         inputDirection,
         handleStatusEdit,
-        handleInputDirection
+        handleInputDirection,
+        handleSurfaceAprox
     }) => {
 
     return (
@@ -33,7 +34,7 @@ const InfoManagement = (
                         <InputDirection inputDirection={inputDirection} handleInputDirection={handleInputDirection}/>
                         <InputLocalName handleInputLocalName={handleInputLocalName}/>
                         <InputAdditionalIndications handleLocalExtraIndication={handleLocalExtraIndication}/>
-                        <WindowSizeSection/>
+                        <WindowSizeSection handleSurfaceAprox={handleSurfaceAprox}/>
                     </div>
                 </>
                 :
