@@ -1,4 +1,4 @@
-.mis-pedidos, .mis-locales, .mi-local {
+.mis-pedidos, .mis-locales, .mi-local, .mi-cuenta {
 	@include card-page; 
 	background: #F7F7F7 url("../../img/pedidos.jpg") no-repeat top center; 
 	.section-header {
@@ -126,27 +126,7 @@
 			.mes {text-transform: uppercase; color: $text-dark-secondary;}
 		}
 		.acciones {
-			cursor: pointer;
 			i {color: $text-dark-secondary;}
-			position: relative;
-			.options-visits{
-				display: none;
-			    list-style: none;
-				padding: 8px;
-				width: 265px;
-				position:relative;background-color: #F7F7F7;
-				cursor: pointer;
-		}
-			&:hover .options-visits{
-				cursor: pointer;
-				display: block;
-				position: absolute;
-				right: 0;
-				top: -70px;
-				.options-visits-list{
-					padding: 0 10px;
-				}
-		}
 		}
 	}
 	.pedidos-pasados {
