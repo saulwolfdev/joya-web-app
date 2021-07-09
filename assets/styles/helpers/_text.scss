@@ -22,7 +22,7 @@ font-family
 	font: 700  20px/1.35em $font-display;
 }
 @mixin h5 {
-	font: 600  16px/1.38em $font-display;	
+	font: 600  15px/1.38em $font-display;	
 }
 
 
@@ -63,10 +63,27 @@ strong	{font-weight: 600; }
 .c-success {
 	@include c-success;
 }
+@mixin c-warning {
+	color: $c-warning; 
+}
+.c-warning {
+	@include c-warning;
+}
 
 
 .supertitulo {
 	color: $text-dark-secondary; 
 	margin-bottom: 0; 
 	font-size: 0.87rem; 
+}
+
+.breadcrumb {
+	font-size: 0.86rem; 
+	*, a {
+		color: $text-dark-secondary; 
+		&:hover, &:focus, &:active {
+			color: $text-dark; 
+		}
+	}
+	i {margin-right: 8px; font-size: 0.9em; }
 }

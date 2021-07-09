@@ -6,7 +6,7 @@ import GlazierPostulateWithinForm from './GlazierPostulateWithinForm'
 
 const HomeGlazier = () => {
     return (
-        <div className="main-content">
+        <div className="main-content vidrieristas-seccion-home">
             <BeGlazier/>
             <GlazierProfits/>
             <GlazierPostulate/>

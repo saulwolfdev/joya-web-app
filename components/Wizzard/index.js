@@ -1,33 +1,45 @@
 import React,{useState, useEffect} from 'react';
-import StepOneNewUser from './StepOne/StepOneNewUser'
-import CleanType from './StepOne/CleanType'
+import InfoManagement from './StepOne/InfoManagement'
 import Modalities from './StepTwo/Modalities'
 import UniqueSection from './StepTwo/UniqueSection'
 import SuscriptionSection from './StepTwo/SuscriptionSection'
 import UrgentSection from './StepTwo/UrgentSection'
 import CardData from './StepThree/CardData'
 import PurchaseDetails from './StepThree/PurchaseDetails';
+import SignInModal from './../SignInModal'
+import SignUpModal from './../SignUpModal'
 import { getAuth } from 'firebase/auth';
 import { prepareUserInfo } from '../../helpers'
 
-const Wizzard = () => {
+const Wizzard = ({direction}) => {
     const [step, setStep] = useState(1);
 
     const [loguedIn, setLoguedIn] = useState(false);
     const [user,setUser] = useState(null);
     const [enableNext,setEnableNext] = useState(true);
 
+    const [showSingnIn, setShowSingnIn] = useState(false);
+    const [showSingnUp, setShowSingnUp] = useState(false);
+
+    const [surfaceAprox, setSurfaceAprox] = useState('64');
+    const handleSurfaceAprox = (value) => setSurfaceAprox(value);
+
+    const closeSignInModalHandler = (close) => setShowSingnIn(!close);
+    const closeSignUpModalHandler = (close) => setShowSingnUp(!close);
+    const onSuccessSignIn = () => setLoguedIn(true);
+
     useEffect(()=>{
-        const wizard = require('../../assets/js/solicitud-limpieza');
-        wizard.init();
-              
         const userLogin = getAuth();
         userLogin.onAuthStateChanged(prepareUserInfo(setLoguedIn, setUser));    
     });
 
     const incrementStep = (e) => {
-        setStep(step + 1);
-        setEnableNext(false);
+        if(!loguedIn && step == 2) {
+            setShowSingnUp(true)
+        } else {
+            setStep(step + 1);
+            setEnableNext(false);
+        }
     }
 
     const handleNext = (enable) => {
@@ -36,40 +48,95 @@ const Wizzard = () => {
 
     return (
         <>
-        	<Wizzard.Steps/>
+        	<Wizzard.Steps step={step}/>
             <div className="wizard-content card-page-content">
-                {step === 1 ? <Wizzard.StepOne handleNext={handleNext} loguedIn={loguedIn}/> : <></>}
+                {step === 1 ? <Wizzard.StepOne direction={direction} handleNext={handleNext} loguedIn={loguedIn} close={closeSignInModalHandler} handleSurfaceAprox={handleSurfaceAprox}/> : <></>}
                 {step === 2 ? <Wizzard.StepTwo handleNext={handleNext} loguedIn={loguedIn}/> : <></>}
-                {step === 3 ? <Wizzard.StepThree/> : <></>}
+                {step === 3 ? <Wizzard.StepThree subtotal={"150"} discount={0} percent={0} total={"150"}/> : <></> /*TODO percent*/}
             </div>
-            <Wizzard.Footer enableNext={enableNext} incrementStep={incrementStep}/>
+            <Wizzard.Footer enableNext={enableNext} incrementStep={incrementStep} step={step} surfaceAprox={surfaceAprox}/>
+            <SignInModal onSuccess={onSuccessSignIn} show={showSingnIn} close={closeSignInModalHandler} showSignUp={setShowSingnUp}/>
+            <SignUpModal show={showSingnUp} close={closeSignUpModalHandler} showSignIn={setShowSingnIn}/>
         </>
     );
 }
 
-const StepOne = ({handleNext, loguedIn}) => {
-
-    // User
+const StepOne = ({handleNext, loguedIn, close, direction, handleSurfaceAprox}) => {
 
     const [accept, setAccept] = useState(false);
-    const [local, setLocal] = useState("none");
-
     const handleAccept = (e) => {
-        setAccept(e.target.checked)
+        setAccept(e.target.checked);
     }
 
-    const handleLocal = (e) => {
-        setLocal(e.target.value)
+    const [inputLocalName, setInputLocalName] = useState('');
+    const handleInputLocalName = (e) => {
+        setInputLocalName(e.target.value);
     }
 
-    // New User
+    const [localOption, setLocalOption] = useState('select a location');
+    const handleOptionLocal = (e) => {
+        let option = e.target.value;
+        setLocalOption(option)
+    }
 
-    // TODO
+    const mockInfo = (windowId) => { // TODO This method should be replaced by the firebase calling method
+        // Right now this method will always return the same information
+
+    }
+
+    const [localExtraIndication, setLocalExtraIndication] = useState('');
+    const handleLocalExtraIndication = (e) => {
+        setLocalExtraIndication(e.target.value);
+    }
+
+    const [statusEdit, setStatusEdit] = useState(false);
+    const handleStatusEdit = (value) => {
+        setStatusEdit(value);
+    }
+
+    // Posible values: 'select a location', 'new local', and custom options with uuid?
+    const [inputDirection, setInputDirection] = useState('');
+    const handleInputDirection = (e) => {
+        setInputDirection(e.target.value)
+    }
+
+    const [interactiveFlag, setInteractiveFlag] = useState(false);
+    const handleInteractiveFlag = (value) => {
+        setInteractiveFlag(value);
+    }
+
+    const values = [
+        ["select a location", "Seleccioná un local"],
+        ["new local", "+ Nuevo local"]
+    ]
+
+    const mockValues = [
+        ["select a location", "Seleccioná un local"],
+        ["local1", "Local 1"],
+        ["local2", "Local 2"],
+        ["new local", "+ Nuevo local"]
+    ]
 
     useEffect(() => {
-        const validIsLoguedIn = loguedIn && accept && (local != "none") && (local != "0") && (local != "N");
-        const validIsLoguedOut = true;
-        handleNext(validIsLoguedIn || validIsLoguedOut);
+        let flag = false;
+        if(localOption === 'new local') {
+            flag = inputDirection !== '' && inputLocalName !== '' && accept;
+        } else if (localOption !== 'select a location') {
+            flag = accept;
+        } else {
+            handleSurfaceAprox(0);
+        }
+
+        handleNext(flag);
+        
+        if(direction !== 'new' && localOption === 'select a location' && !interactiveFlag) {
+            setLocalOption('new local');
+            setInputDirection(direction);
+            setInteractiveFlag(true);
+        }
+        if(localOption !== 'new local' && localOption !== 'select a location') {
+            mockInfo(localOption)
+        }
     });
 
     return (
@@ -79,12 +146,26 @@ const StepOne = ({handleNext, loguedIn}) => {
             <p>{ loguedIn ?
                 "Seleccioná el local que necesita de nuestro servicio o agregá un local nuevo a tu lista." :
                 "Completá la información de tu vidriera. Ya tenés un local registrado? "}
-                { loguedIn ? <></> : <a href="#" className="link-text">Iniciá sesión.</a>}</p>
+                { loguedIn ? <></> : <a href="#" onClick={() => close(false)} className="link-text">Iniciá sesión.</a>}</p>
                 
             <div className="form">
-                {loguedIn ? 
-                <CleanType handleAccept={handleAccept} handleLocal={handleLocal}/> : 
-                <StepOneNewUser/>}
+                <InfoManagement 
+                    loguedIn={loguedIn} 
+                    close={close} 
+                    direction={direction}
+                    handleInputLocalName={handleInputLocalName}
+                    directions={loguedIn ? mockValues : values}
+                    currentDirection={direction}
+                    handleOptionLocal={handleOptionLocal}
+                    handleLocalExtraIndication={handleLocalExtraIndication}
+                    handleInputDirection={handleInputDirection}
+                    inputDirection={inputDirection}
+                    statusEdit={statusEdit}
+                    handleStatusEdit={handleStatusEdit}
+                    localOption={localOption}
+                    handleAccept={handleAccept}
+                    handleSurfaceAprox={handleSurfaceAprox}
+                />
             </div>
         </div>
         </>
@@ -196,39 +277,58 @@ const StepTwo = ({handleNext, loguedIn}) => {
 }
 Wizzard.StepTwo = StepTwo;
 
-const StepThree = () => {
+const StepThree = ({subtotal, discount, percent, total}) => {
+
+    const withDiscount = false; // TODO, mock, calculate from discount 0%
+
     return (
             <div className="step3 inner-container">
                 <div className="row">
                     <CardData/>
-                    <PurchaseDetails/>
                 </div>
+                    <PurchaseDetails subtotal={subtotal} withDiscount={withDiscount} discount={discount} percent={percent} total={total}/>
             </div>
     );
 }
 Wizzard.StepThree = StepThree;
 
-const Steps = () => {
+const Steps = ({step}) => {
     return (
         <div className="wizard-steps card-page-header">
             <ul className="inner-container">
                 <li className="title"><span className="d-none d-md-inline">Tu solicitud:</span><span className="d-md-none">Pasos:</span></li>
-                <li className="step step1"><i className="fal fa-store"/><span className="d-none d-lg-inline">Detalles del local</span><span className="d-none d-md-inline d-lg-none">El local</span></li>
-                <li className="arrow">&rsaquo;</li>
-                <li className="step step2"><i className="fal fa-calendar-alt"/><span className="d-none d-md-inline">Día y hora</span></li>
-                <li className="arrow">&rsaquo;</li>
-                <li className="step step3"><i className="fal fa-credit-card"/><span className="d-none d-md-inline">Pago</span></li>
+                <li className={"step " + (step === 1 ? "step1" : "")}><i className="fal fa-store"/><span className={step === 1 ? "d-none d-lg-inline" : "d-none d-md-inline"}>Detalles del local</span></li>
+                <li className="arrow"></li>
+                <li className={"step " + (step === 2 ? "step2" : "")}><i className="fal fa-calendar-alt"/><span className={step === 2 ? "d-none d-lg-inline" : "d-none d-md-inline"}>Día y hora</span></li>
+                <li className="arrow"></li>
+                <li className={"step " + (step === 3 ? "step3" : "")}><i className="fal fa-credit-card"/><span className={step === 3 ? "d-none d-lg-inline" : "d-none d-md-inline"}>Pago</span></li>
             </ul>
         </div>
     );
 }
 Wizzard.Steps = Steps;
 
-const Footer = ({enableNext, incrementStep}) => {
+const Footer = ({enableNext, incrementStep, step, surfaceAprox}) => {
+
+    const price = "150"; // TODO with firebase
+
     return (
         <div className="wizard-footer card-page-footer">
             <div className="inner-container">
-                <button className="btn btn-primary" onClick={incrementStep} disabled={!enableNext}>Siguiente</button>	
+                {
+                    step === 1 || step === 2 ?
+                        <>
+                            <div className="calc-superficie">
+                                Superficie aprox.: <strong className="superficie">{surfaceAprox}m<sup>2</sup></strong>
+                            </div>
+                            <div className="calc-precio">
+                                <span className="currency">$</span><strong className="precio">{price}</strong> <span className="small">por visita.</span>
+                            </div>
+                        </>
+                    :
+                        <></>
+                }
+                { step !== 3 ? <button className="btn btn-primary" onClick={incrementStep} disabled={!enableNext}>Siguiente</button> : <></> }	
             </div>
         </div>
     );

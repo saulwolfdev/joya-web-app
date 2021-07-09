@@ -1,5 +1,6 @@
 $btn-height: 50px;
 $btn-height-small: 40px; 
+$btn-height-mini: 30px; 
 $btn-height-big: 60px; 
 
 @mixin default-focus {
@@ -7,7 +8,9 @@ $btn-height-big: 60px;
 	box-shadow: none;
 }
 
-
+button {
+	padding-top: 0; padding-bottom: 0; 
+}
 .btn, a.btn {
 	
 	font-size: 1rem; 
@@ -76,6 +79,11 @@ a.btn-primary, a.btn-secondary, a.btn-outline {display: inline-block;}
 		border-radius: $btn-height-small/2;
 		padding-left: $btn-height-small; padding-right: $btn-height-small; 
 	}
+	&.btn-mini {
+		height: $btn-height-mini; line-height: $btn-height-mini; 
+		border-radius: $btn-height-mini/2;
+		padding-left: $btn-height-mini; padding-right: $btn-height-mini; 
+	}
 }
 
 .btn-primary, a.btn-primary, a:not([href]).btn-primary {
@@ -110,6 +118,7 @@ a.btn-primary, a.btn-secondary, a.btn-outline {display: inline-block;}
 
 .btn-round {
 	padding: 0; width: $btn-height;
+	text-align: center; 
 }
 
 
@@ -142,6 +151,10 @@ a.btn-primary, a.btn-secondary, a.btn-outline {display: inline-block;}
 	background: transparent;
 	cursor: pointer;
 	color: $text-dark;
+
+	line-height: $btn-height - 2px;  //consider border!
+	&.btn-big { line-height: $btn-height-big - 2px; }
+	&.btn-small { line-height: $btn-height-small - 2px; }
 }
 .btn-outline-form {
 	border-radius: 6px; 

@@ -21,7 +21,7 @@ const NavBar = ({glazier}) => {
 
     useEffect(()=>{
         const mainNav = require('../../assets/js/main-nav');
-        mainNav.initiateNav(false); //Hay diferencias en el menú admin vs usuario
+        mainNav.initiateNav(false); // TODO Hay diferencias en el menú admin vs usuario
         const userLogin = getAuth();
         userLogin.onAuthStateChanged(prepareUserInfo(setLoguedIn, setUser));    
     });
