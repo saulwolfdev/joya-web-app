@@ -10,9 +10,9 @@ export default function Glazier() {
       <Head>
         <title>Joya - Se vidrierista</title>
       </Head>
-      <Header glazier={true} />
+      <Header glazier={true} admin={false}/>
       <HomeGlazier/>
-      <Footer glazier={true} />
+      <Footer glazier={true} admin={false}/>
     </Container>
   )
 }
