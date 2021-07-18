@@ -11,6 +11,7 @@ const RequestService = () => {
     const[direction,setDirection] = useState('');
     const[email,setEmail] = useState('');
     const[errorNotification, setErrorNotification] = useState('');
+    const[viewError, setViewError] = useState(false);
 
     const handleDirection = (e) => {
         setDirection(e.currentTarget.value);
@@ -21,13 +22,20 @@ const RequestService = () => {
     }
 
     const handleClick = (e, path) => {
+        e.preventDefault();
         if(!validateEmail(email)) {
             setErrorNotification('El email no tiene un formato correcto')
+            setViewError(true);
         } else {
             setErrorNotification('')
+            setViewError(false)
             router.push(path);
         }
-     }
+    }
+    
+    const setView = (view) => {
+        setViewError(view);
+    }
 
     return (
         <div className="col-12 col-lg-4 content">
@@ -40,13 +48,13 @@ const RequestService = () => {
                 <label htmlFor="email" className="form-label sr-only">Tu email</label>
                 <input type="email" className="form-control" id="email" placeholder="Tu email..." value={email} onChange={handleEmail}/>
 
-                <button onClick={(e) => handleClick(e, '/apply/' + (direction === '' ? 'new' : direction) + (email === '' ? '' : "?email=" + email))}>
+                <a href="#" onClick={(e) => handleClick(e, '/apply/' + (direction === '' ? 'new' : direction) + (email === '' ? '' : "?email=" + email))}>
                     <a className="btn btn-secondary btn-round" aria-label="¡Comenzar!">
                         <i className="far fa-arrow-right"/>
                     </a>
-                </button>
+                </a>
             </div>
-            <Notification view={errorNotification !== ''} message={errorNotification} type={"warning"}/>
+            <Notification view={viewError} setView={setView} message={errorNotification} type={"warning"}/>
         </div>
     );
 }
