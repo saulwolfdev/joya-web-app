@@ -8,7 +8,7 @@ const Notification = ({view, message, type}) => {
         {view ? 
             <div className={clazz}>
                 <div className="ns-box-inner"><p>{message}</p></div>
-                <span className="ns-close"></span>
+                <span className="ns-close"/>
             </div>
             :
             <></>
