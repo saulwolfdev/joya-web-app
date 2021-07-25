@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+import Notification from './Notification'
+import { validateEmail } from '../helpers';
 import { getAuth, signInWithEmailAndPassword} from 'firebase/auth';
 
 const SignInModal = ({show, close, showSignUp, onSuccess}) => {
@@ -30,10 +32,27 @@ const Footer = ({switchModal, close, onSuccess}) => {
     const[errorMsgEmail,setErrorMsgEmail] = useState("");
     const[errorMsgPassword,setErrorMsgPassword] = useState("");
 
+    const[errorNotification, setErrorNotification] = useState('');
+    const[viewError, setViewError] = useState(false);
+
+    const setView = (view) => {
+        setViewError(view);
+    }
+
     const loginUser = async event => {
         event.preventDefault();
+
         let email = event.target.email.value;
         let password = event.target.password.value;
+
+        if(!validateEmail(email)) {
+            setErrorNotification('El email no tiene un formato correcto')
+            setViewError(true);
+            return;
+        }
+
+        setErrorNotification('')
+        setViewError(false)
 
         const auth = getAuth();
         await signInWithEmailAndPassword(auth,email,password)
@@ -76,6 +95,7 @@ const Footer = ({switchModal, close, onSuccess}) => {
                     </div>
                 </form>
             </div>
+            <Notification view={viewError} setView={setView} message={errorNotification} type={"warning"}/>
         </>
     )
 }

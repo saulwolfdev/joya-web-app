@@ -9,19 +9,13 @@ const RequestService = () => {
     const router = useRouter()
 
     const[direction,setDirection] = useState('');
+
     const[email,setEmail] = useState('');
     const[errorNotification, setErrorNotification] = useState('');
     const[viewError, setViewError] = useState(false);
 
-    const handleDirection = (e) => {
-        setDirection(e.currentTarget.value);
-    }
-
     const handleEmail = (e) => {
         setEmail(e.currentTarget.value);
-    }
-
-    const handleClick = (e, path) => {
         e.preventDefault();
         if(!validateEmail(email)) {
             setErrorNotification('El email no tiene un formato correcto')
@@ -32,9 +26,13 @@ const RequestService = () => {
             router.push(path);
         }
     }
-    
+
     const setView = (view) => {
         setViewError(view);
+    }
+
+    const handleDirection = (e) => {
+        setDirection(e.currentTarget.value);
     }
 
     return (
