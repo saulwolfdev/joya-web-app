@@ -12,3 +12,7 @@ const EMAIL_REGEX = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"
 export function validateEmail(email) {
     return EMAIL_REGEX.test(email);
 }
+
+export function validatePhone(phone) {
+    return phone && parseInt(phone).toString() === phone && phone.length <= 10
+}
