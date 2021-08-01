@@ -1,26 +1,10 @@
+import { useState, useEffect } from 'react';
+import { getFormattedDate, plus} from '../../helpers/dateHelper';
+
 const HomeSchedule = () => {
     return (
         <div className="main-content recorridos-lista">
-            <div className="admin-sintesis">
-                <div className="container-fluid">
-                    <div className="row sintesis-header">
-                        <div className="col-auto info-fecha">
-                            <h3>Lun. 20 de abril</h3>
-                        </div>
-                        <div className="col-auto nav-dias">
-                            <a href="#" className="prev-day">
-                                <i className="far fa-angle-left" />
-                            </a>
-                            <a href="admin-agenda.html" className="next-day">
-                                <i className="far fa-angle-right" />
-                            </a>
-                        </div>
-                        <a href="admin-agenda.html" className="btn-dia col-auto">
-                        Hoy
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <HomeSchedule.DateOfRoute/>
             <div className="more-content">
                 <div className="menu">
                     <div className="container-fluid">
@@ -283,5 +267,58 @@ const HomeSchedule = () => {
         </div>
     )
 }
+
+const DateOfRoute = () => {
+    
+    const [dateOfRoute, setDateOfRoute] = useState(new Date());
+    const [formattedDate, setFormattedDate] = useState('');
+
+    const afterDay = (e) => {
+        e.preventDefault();
+        plus(dateOfRoute, 1)
+        setFormattedDate(getFormattedDate(dateOfRoute));
+    }
+
+    const beforeDay = (e) => {
+        e.preventDefault();
+        plus(dateOfRoute, -1)
+        setFormattedDate(getFormattedDate(dateOfRoute));
+    }
+
+    const today = (e) => {
+        e.preventDefault();
+        setDateOfRoute(new Date());
+        setFormattedDate(getFormattedDate(dateOfRoute));
+
+    }
+    
+    useEffect(()=>{
+        if(formattedDate === '') {
+            setFormattedDate(getFormattedDate(dateOfRoute));
+        }
+    });
+
+    return (
+        <div className="admin-sintesis">
+            <div className="container-fluid">
+                <div className="row sintesis-header">
+                    <div className="col-auto info-fecha">
+                        <h3>{formattedDate}</h3>
+                    </div>
+                    <div className="col-auto nav-dias">
+                        <a href="#" className="prev-day" onClick={beforeDay}>
+                            <i className="far fa-angle-left" />
+                        </a>
+                        <a href="admin-agenda.html" className="next-day" onClick={afterDay}>
+                            <i className="far fa-angle-right" />
+                        </a>
+                    </div>
+                    <a href="admin-agenda.html" className="btn-dia col-auto" onClick={today}>Hoy</a>
+                </div>
+            </div>
+        </div>
+    );
+}
+HomeSchedule.DateOfRoute = DateOfRoute;
 
 export default HomeSchedule;
