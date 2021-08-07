@@ -10,9 +10,9 @@ export default function AllLocals() {
         <Head>
             <title>Joya - Pedidos</title>
         </Head>
-        <Header glazier={false} />
+        <Header glazier={false} admin={false}/>
         <HomeAllLocals/>
-        <Footer glazier={false} />
+        <Footer glazier={false} admin={false}/>
     </Container>
   )
 }

@@ -8,7 +8,7 @@ import NavBarGlazierOptions from './NavBarGlazierOptions';
 import { getAuth } from 'firebase/auth';
 import { prepareUserInfo } from '../../helpers';
 
-const NavBar = ({glazier}) => {
+const NavBar = ({glazier, admin}) => {
     const [showSingnIn, setShowSingnIn] = useState(false);
     const [showSingnUp, setShowSingnUp] = useState(false);
 
@@ -27,18 +27,133 @@ const NavBar = ({glazier}) => {
     });
     
     return (
-            <nav className="navbar">
-                <div className="container-fluid">
-                    <div className="row">
-                        <NavBar.Logo/>
-                        { glazier ? <></> : (loguedIn ? <NavBarLoguedIn user={user} /> : <NavBarLoggedOut edOut close={closeSignInModalHandler}/>) }
-                        { glazier ? <NavBarGlazierOptions/> : <></> }
+            <>
+                <nav className="navbar">
+                    <div className="container-fluid">
+                        <div className="row">
+                            <NavBar.Logo/>
+                            {
+                                    admin ?
+                                    <NavbarAdmin/>
+                                    :
+                                (glazier ? <NavBarGlazierOptions/> : (loguedIn ? <NavBarLoguedIn user={user} /> : <NavBarLoggedOut edOut close={closeSignInModalHandler}/>))
+                            }
+                        </div>
                     </div>
-                </div>
-                { glazier ? <></> : <SignInModal onSuccess={onSuccessSignIn} show={showSingnIn} close={closeSignInModalHandler} showSignUp={setShowSingnUp}/> }
-                { glazier ? <></> : <SignUpModal show={showSingnUp} close={closeSignUpModalHandler} showSignIn={setShowSingnIn}/> }
-            </nav>
+                    { 
+                        glazier ? 
+                            <></> 
+                        : 
+                            <>
+                                <SignInModal onSuccess={onSuccessSignIn} show={showSingnIn} close={closeSignInModalHandler} showSignUp={setShowSingnUp}/>
+                                <SignUpModal show={showSingnUp} close={closeSignUpModalHandler} showSignIn={setShowSingnIn}/>
+                            </>
+                    }
+                </nav>
+            </> 
+            
         );
+}
+
+const NavbarAdmin = () => {
+    return (
+        <div className="nav sidebar-nav col">
+            <ul className="menu admin-menu">
+                <li>
+                    <a href="#">Agenda</a>
+                </li>
+                <li>
+                    <a href="#">Recorridos</a>
+                </li>
+                <li className="user-options dropdown closed">
+                    <span className="a">
+                        Vidrieristas
+                        <i className="far fa-chevron-down" />
+                    </span>
+                    <ul className="sub-menu">
+                        <li>
+                            <a href="#">Tus pedidos</a>
+                        </li>
+                        <li>
+                            <a href="#">Configuración de cuenta</a>
+                        </li>
+                        <li>
+                            <a href="#">Salir</a>
+                        </li>
+                    </ul>
+                </li>
+                <li className="user-options dropdown closed">
+                    <span className="a">
+                        Clientes
+                        <i className="far fa-chevron-down" />
+                    </span>
+                    <ul className="sub-menu">
+                        <li>
+                            <a href="#">Tus pedidos</a>
+                        </li>
+                        <li>
+                            <a href="#">Configuración de cuenta</a>
+                        </li>
+                        <li>
+                            <a href="#">Salir</a>
+                        </li>
+                    </ul>
+                </li>
+                <li className="user-options dropdown closed">
+                    <span className="a">
+                        Locales
+                        <i className="far fa-chevron-down" />
+                    </span>
+                    <ul className="sub-menu">
+                        <li>
+                            <a href="#">Tus pedidos</a>
+                        </li>
+                        <li>
+                            <a href="#">Configuración de cuenta</a>
+                        </li>
+                        <li>
+                            <a href="#">Salir</a>
+                        </li>
+                    </ul>
+                </li>
+                <li className="user-options dropdown closed">
+                    <span className="a user-item">
+                        Balance
+                        <i className="far fa-chevron-down" />
+                    </span>
+                    <ul className="sub-menu">
+                        <li>
+                            <a href="#">Tus pedidos</a>
+                        </li>
+                        <li>
+                            <a href="#">Configuración de cuenta</a>
+                        </li>
+                        <li>
+                            <a href="#">Salir</a>
+                        </li>
+                    </ul>
+                </li>
+                <li className="user-options dropdown closed">
+                    <span className="a">
+                        <i className="far fa-user-circle d-none d-lg-inline" />
+                        <span className="d-none d-xl-block">Carolina</span>
+                        <i className="far fa-chevron-down" />
+                    </span>
+                    <ul className="sub-menu">
+                        <li>
+                            <a href="#">Tus pedidos</a>
+                        </li>
+                        <li>
+                            <a href="#">Configuración de cuenta</a>
+                        </li>
+                        <li>
+                            <a href="#">Salir</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    )
 }
 
 const Logo = () => {

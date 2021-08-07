@@ -10,9 +10,9 @@ export default function LadingPage() {
 		<Head>
 			<title>Joya</title>
 		</Head>
-		<Header glazier={false}/>
+		<Header glazier={false} admin={false}/>
 		<Home/>
-		<Footer glazier={false}/>
+		<Footer glazier={false} admin={false}/>
 	</Container>
   )
 }

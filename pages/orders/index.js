@@ -10,9 +10,9 @@ export default function Order() {
         <Head>
             <title>Joya - Pedidos</title>
         </Head>
-        <Header glazier={false} />
+        <Header glazier={false} admin={false}/>
         <HomeOrders/>
-        <Footer glazier={false} />
+        <Footer glazier={false} admin={false}/>
     </Container>
   )
 }

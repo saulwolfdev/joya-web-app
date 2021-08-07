@@ -1,21 +1,31 @@
 import Link from 'next/link'
 
-const Footer = ({glazier}) => {
+const Footer = ({glazier, admin}) => {
     return (
-        <footer>
-			<div className="container-fluid">
-				<div className="row">
-					<Footer.Logo/>
-					<div className="col-md-10 link-blocks">
-						<div className="row">
-							<Footer.Service/>
-							<Footer.We/>
-							{ glazier ? <></> : <Footer.Contact/> }
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
+        <>
+            {
+                admin ?
+                    <div className="container-fluid">
+                        <p className="copy">© 2021 Joya</p>
+                    </div>
+                :
+                    <footer>
+                        <div className="container-fluid">
+                            <div className="row">
+                                <Footer.Logo/>
+                                <div className="col-md-10 link-blocks">
+                                    <div className="row">
+                                        <Footer.Service/>
+                                        <Footer.We/>
+                                        { glazier ? <></> : <Footer.Contact/> }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+            }
+        </>
+        
     )
 }
 

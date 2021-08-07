@@ -31,9 +31,9 @@ export default function Apply() {
             <Head>
                 <title>Joya - Aplicar</title>
             </Head>
-            <Header glazier={false}/>
+            <Header glazier={false} admin={false}/>
             <WizzardContainer direction={direction}/>
-            <Footer glazier={false}/>
+            <Footer glazier={false} admin={false}/>
         </Container>
     );
 }
