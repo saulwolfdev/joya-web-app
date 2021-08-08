@@ -1,40 +1,12 @@
+
+
 const HomeAllLocalsAdmin = () => {
     return (
         <div className="main-content locales-lista">
             <div className="admin-sintesis">
                 <div className="container-fluid">
-                    <div className="row sintesis-header">
-                        <h3 className="col-auto">Locales</h3>	
-                        <div className="btn-set col-auto">
-                            <button className="btn btn-outline btn-small"><span className="d-md-inline d-none">Descargar</span> CSV</button>
-                        </div>
-                    </div>
-                    <div className="row stats d-none d-md-flex">
-                        <div className="col-auto stat">
-                            <p className="label">Total</p>
-                            <p className="value"><span className="number strong">105</span></p>
-                        </div>
-                        <div className="col-auto stat">
-                            <p className="label">Activos</p>
-                            <p className="value"><span className="number">80</span> </p>
-                        </div>
-                        <div className="col-auto stat">
-                            <p className="label">Nuevos</p>
-                            <div className="row">
-                                <div className="col-auto">
-                                    <p className="value"><span className="number">75</span></p>		
-                                </div>
-                                <div className="col-auto interpretation">
-                                    <p className="value worse">-2%</p>
-                                    <p className="aclaracion">vs. mes anterior</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-auto stat block-start">
-                            <p className="label">Revisión pendiente</p>
-                            <p className="value c-error"><span className="number">25</span></p>
-                        </div>
-                    </div>
+                    <HomeAllLocalsAdmin.Header/>
+                    <HomeAllLocalsAdmin.Metrics/>
                 </div>
             </div>
             <div className="more-content">
@@ -478,5 +450,49 @@ const HomeAllLocalsAdmin = () => {
         </div>
     );
 }
+
+const Header = () => {
+    return (
+        <div className="row sintesis-header">
+            <h3 className="col-auto">Locales</h3>	
+            <div className="btn-set col-auto">
+                <button className="btn btn-outline btn-small"><span className="d-md-inline d-none">Descargar</span> CSV</button>
+            </div>
+        </div>
+    );
+}
+HomeAllLocalsAdmin.Header = Header;
+
+const Metrics = () => {
+    retunrn (
+        <div className="row stats d-none d-md-flex">
+            <div className="col-auto stat">
+                <p className="label">Total</p>
+                <p className="value"><span className="number strong">105</span></p>
+            </div>
+            <div className="col-auto stat">
+                <p className="label">Activos</p>
+                <p className="value"><span className="number">80</span> </p>
+            </div>
+            <div className="col-auto stat">
+                <p className="label">Nuevos</p>
+                <div className="row">
+                    <div className="col-auto">
+                        <p className="value"><span className="number">75</span></p>		
+                    </div>
+                    <div className="col-auto interpretation">
+                        <p className="value worse">-2%</p>
+                        <p className="aclaracion">vs. mes anterior</p>
+                    </div>
+                </div>
+            </div>
+            <div className="col-auto stat block-start">
+                <p className="label">Revisión pendiente</p>
+                <p className="value c-error"><span className="number">25</span></p>
+            </div>
+        </div>
+    );
+}
+HomeAllLocalsAdmin.Metrics = Metrics;
 
 export default HomeAllLocalsAdmin;
