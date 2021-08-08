@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 const HomeAllLocalsAdmin = () => {
     return (
         <div className="main-content locales-lista">
@@ -20,11 +22,17 @@ const HomeAllLocalsAdmin = () => {
 }
 
 const Header = () => {
+    const downloadCSV = (e) => {
+        e.preventDefault();
+
+        // TODO call firebase
+    }
+
     return (
         <div className="row sintesis-header">
             <h3 className="col-auto">Locales</h3>	
             <div className="btn-set col-auto">
-                <button className="btn btn-outline btn-small"><span className="d-md-inline d-none">Descargar</span> CSV</button>
+                <button className="btn btn-outline btn-small" onClick={downloadCSV}><span className="d-md-inline d-none">Descargar</span> CSV</button>
             </div>
         </div>
     );
@@ -64,12 +72,38 @@ const Metrics = () => {
 HomeAllLocalsAdmin.Metrics = Metrics;
 
 const Filter = () => {
+
+    const [date, setDate] = useState("Todas")
+    const [actionState, setActionState] = useState("Todos")
+    const [zone, setZone] = useState("Todos")
+
+    const handleDate = (e) => {
+        e.preventDefault();
+        setDate(e.target.value);
+    }
+
+    const handleActionState = (e) => {
+        e.preventDefault();
+        setActionState(e.target.value);
+    }
+
+    const handleZone= (e) => {
+        e.preventDefault();
+        setZone(e.target.value);
+    }
+
+
+    const search = (e) => {
+        e.preventDefault();
+        // TODO call firebase
+    }
+
     return (
         <div className="filter-row form form-rounded form-small">
             <div className="col-auto title">Filtros:</div>
             <div className="col-auto filtro">
                 <p className="label">Fecha de alta</p>
-                <select className="form-select" aria-label="Fecha de alta" name="alta" id="fechaAlta">
+                <select className="form-select" aria-label="Fecha de alta" name="alta" id="fechaAlta" onClick={handleDate}>
                     <option value="a" selected="selected">Todas</option>
                     <option value="b">Último mes</option>
                     <option value="c">Último año</option>
@@ -77,7 +111,7 @@ const Filter = () => {
             </div>
             <div className="col-auto filtro">
                 <p className="label">Estado</p>
-                <select className="form-select" aria-label="Estado" name="estado" id="estado">
+                <select className="form-select" aria-label="Estado" name="estado" id="estado" onClick={handleActionState}>
                     <option value="a" selected="selected">Todos</option>
                     <option value="b">Acciones pendientes</option>
                     <option value="c">Sin acciones pendientes</option>
@@ -85,14 +119,14 @@ const Filter = () => {
             </div>
             <div className="col-auto filtro">
                 <p className="label">Barrio</p>
-                <select className="form-select" aria-label="Barrio" name="barrio" id="barrio">
+                <select className="form-select" aria-label="Barrio" name="barrio" id="barrio" onClick={handleZone}>
                     <option value="a" selected="selected">Todos</option>
                     <option value="b">Agronomía</option>
                     <option value="c">Almagro</option>
                 </select>
             </div>
             <div className="col-12 col-md expansible-search-right">	
-                <input className="expansible-search" type="search" placeholder="Buscar"/>
+                <input className="expansible-search" type="search" placeholder="Buscar" onClick={search}/>
             </div>
         </div>
     );
@@ -132,6 +166,12 @@ const DataHeader = () => {
 }
 
 const DataField = ({data}) => {
+
+    const edit = (e) => {
+        e.preventDefault();
+        // TODO firebase
+    }
+
     return(
         <tr className="accion-pendiente">
             <td scope="col" className="cell-estado"><i className="circle" /></td>
@@ -150,7 +190,7 @@ const DataField = ({data}) => {
                 {data.state === "toReview" ? <a title="Revisar fachada"><i className="far fa-exclamation-triangle" />Revisar</a> : <></>}
                 </td>
             <td scope="col" className="cell-accion">
-                <a href="#" className="btn btn-outline btn-small">Editar</a>
+                <a href="#" className="btn btn-outline btn-small" onClick={edit}>Editar</a>
             </td>
         </tr>
     );
@@ -488,6 +528,10 @@ const DataBody = () => {
 }
 
 const Pageable = () => {
+
+    const mockTotalPages = 3;
+    const mockCurrentPage = 2;
+
     return (
         <div className="btn-set">
             <nav aria-label="..." className="table-pagination">
@@ -498,11 +542,7 @@ const Pageable = () => {
                             <span aria-hidden="true">«</span>
                         </a>
                     </li>
-                    <li className="page-item"><a className="page-link" href="#">1</a></li>
-                    <li className="page-item active" aria-current="page">
-                        <a className="page-link" href="#">2</a>
-                    </li>
-                    <li className="page-item"><a className="page-link" href="#">3</a></li>
+                    { Array.from({length: mockTotalPages}, (_, index) => index + 1).map(number => {return <Page number={number} currentPage={mockCurrentPage} key={number}/>})}
                     <li className="page-item">
                         <a className="page-link" href="#" aria-label="Siguiente">
                             <span aria-hidden="true">»</span>
@@ -511,6 +551,21 @@ const Pageable = () => {
                 </ul>
             </nav>
         </div>
+    );
+}
+
+const Page = ({number, currentPage}) => {
+    return (
+        <>
+            {
+            number === currentPage ? 
+                <li className="page-item active" aria-current="page">
+                    <a className="page-link" href="#">{number}</a>
+                </li>
+                :
+                <li className="page-item"><a className="page-link" href="#">{number}</a></li>
+            }
+        </>
     );
 }
 
