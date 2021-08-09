@@ -40,31 +40,47 @@ const Header = () => {
 HomeAllLocalsAdmin.Header = Header;
 
 const Metrics = () => {
+
+    // TODO get metrics of Firebase data
+    const mockMetrics = {
+        total: "105",
+        totalActive: "80",
+        totalNew: "75",
+        percentVsLastMonth: "-2",
+        pendings: "25"
+    }
+
     return (
         <div className="row stats d-none d-md-flex">
             <div className="col-auto stat">
                 <p className="label">Total</p>
-                <p className="value"><span className="number strong">105</span></p>
+                <p className="value"><span className="number strong">{mockMetrics.total}</span></p>
             </div>
             <div className="col-auto stat">
                 <p className="label">Activos</p>
-                <p className="value"><span className="number">80</span> </p>
+                <p className="value"><span className="number">{mockMetrics.totalActive}</span> </p>
             </div>
             <div className="col-auto stat">
                 <p className="label">Nuevos</p>
                 <div className="row">
                     <div className="col-auto">
-                        <p className="value"><span className="number">75</span></p>		
+                        <p className="value"><span className="number">{mockMetrics.totalNew}</span></p>		
                     </div>
-                    <div className="col-auto interpretation">
-                        <p className="value worse">-2%</p>
-                        <p className="aclaracion">vs. mes anterior</p>
-                    </div>
+                    {
+                        mockMetrics.percentVsLastMonth === "0" ? 
+                            <>
+                            </>
+                        :
+                        <div className="col-auto interpretation">
+                            <p className="value worse">{mockMetrics.percentVsLastMonth}%</p>
+                            <p className="aclaracion">vs. mes anterior</p>
+                        </div>
+                    }
                 </div>
             </div>
             <div className="col-auto stat block-start">
                 <p className="label">Revisión pendiente</p>
-                <p className="value c-error"><span className="number">25</span></p>
+                <p className="value c-error"><span className="number">{mockMetrics.pendings}</span></p>
             </div>
         </div>
     );
@@ -529,8 +545,23 @@ const DataBody = () => {
 
 const Pageable = () => {
 
+    const [mockCurrentPage, setMockCurrentPage] = useState(2);
+
+    const handleNewActualPage = (newPage) => {
+        setMockCurrentPage(newPage);
+    }
+
     const mockTotalPages = 3;
-    const mockCurrentPage = 2;
+    
+    const increase = (e) => {
+        e.preventDefault();
+        setMockCurrentPage(mockCurrentPage + 1)
+    }
+
+    const decrease = (e) => {
+        e.preventDefault();
+        setMockCurrentPage(mockCurrentPage - 1)
+    }
 
     return (
         <div className="btn-set">
@@ -538,15 +569,36 @@ const Pageable = () => {
                 <ul className="pagination">
                     <li className="page-item disabled"/>
                     <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Anterior">
-                            <span aria-hidden="true">«</span>
-                        </a>
+                        {
+                            mockCurrentPage !== 1 ?
+                                <a className="page-link" href="#" aria-label="Anterior" onClick={decrease}>
+                                    <span aria-hidden="true">«</span>
+                                </a>
+                            :
+                                <>
+                                </>
+                        }
                     </li>
-                    { Array.from({length: mockTotalPages}, (_, index) => index + 1).map(number => {return <Page number={number} currentPage={mockCurrentPage} key={number}/>})}
+                    { 
+                        Array.from({length: mockTotalPages}, (_, index) => index + 1).map(number => 
+                                <Page 
+                                    handleNewActualPage={handleNewActualPage} 
+                                    number={number} 
+                                    currentPage={mockCurrentPage} 
+                                    key={number}
+                                />
+                            )
+                    }
                     <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Siguiente">
-                            <span aria-hidden="true">»</span>
-                        </a>
+                        {
+                            mockCurrentPage !== mockTotalPages ?
+                            <a className="page-link" href="#" aria-label="Siguiente" onClick={increase}>
+                                <span aria-hidden="true">»</span>
+                            </a>
+                        :
+                            <>
+                            </>
+                        }
                     </li>
                 </ul>
             </nav>
@@ -554,7 +606,13 @@ const Pageable = () => {
     );
 }
 
-const Page = ({number, currentPage}) => {
+const Page = ({number, currentPage, handleNewActualPage}) => {
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        handleNewActualPage(number);
+    }
+
     return (
         <>
             {
@@ -563,7 +621,7 @@ const Page = ({number, currentPage}) => {
                     <a className="page-link" href="#">{number}</a>
                 </li>
                 :
-                <li className="page-item"><a className="page-link" href="#">{number}</a></li>
+                <li className="page-item"><a className="page-link" href="#" onClick={handleClick}>{number}</a></li>
             }
         </>
     );
