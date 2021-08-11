@@ -174,13 +174,35 @@ const ActivitySection = ({localId}) => {
 
 const FiltersSection = ({localId}) => {
 
+    const [date, setDate] = useState("Todas")
+    const [actionState, setActionState] = useState("Todos")
+    const [alert, setAlert] = useState("Todos")
 
+    const handleDate = (e) => {
+        e.preventDefault();
+        setDate(e.target.value);
+    }
+
+    const handleActionState = (e) => {
+        e.preventDefault();
+        setActionState(e.target.value);
+    }
+
+    const handleAlert= (e) => {
+        e.preventDefault();
+        setAlert(e.target.value);
+    }
+
+    const search = (e) => {
+        e.preventDefault();
+        // TODO call firebase and use localId
+    }
 
     return (
         <div className="filter-row form form-rounded form-small">				    					
             <div className="col-auto filtro">
                 <p className="label">Fecha</p>
-                <select className="form-select" aria-label="Fecha" name="alta" id="fecha">
+                <select className="form-select" aria-label="Fecha" name="alta" id="fecha" onClick={handleDate}>
                     <option value="a" selected="selected">Todas</option>
                     <option value="b">Último mes</option>
                     <option value="c">Último año</option>
@@ -188,7 +210,7 @@ const FiltersSection = ({localId}) => {
             </div>
             <div className="col-auto filtro">
                 <p className="label">Estado</p>
-                <select className="form-select" aria-label="Estado" name="estado" id="estado">
+                <select className="form-select" aria-label="Estado" name="estado" id="estado" onClick={handleActionState}>
                     <option value="a" selected="selected">Todos</option>
                     <option value="b">Pendiente</option>
                     <option value="c">Completado</option>
@@ -196,14 +218,14 @@ const FiltersSection = ({localId}) => {
             </div>
             <div className="col-auto filtro">
                 <p className="label">Alerta</p>
-                <select className="form-select" aria-label="Estado" name="estado" id="estado">
+                <select className="form-select" aria-label="Alerta" name="alerta" id="alerta" onClick={handleAlert}>
                     <option value="a" selected="selected">Todos</option>
                     <option value="b">Con alertas</option>
                     <option value="c">Sin alertas</option>
                 </select>
             </div>
             <div className="col-12 col-md expansible-search-right">	
-                <input className="expansible-search" type="search" placeholder="Buscar" />
+                <input className="expansible-search" type="search" placeholder="Buscar" onClick={search}/>
             </div>
         </div>
     );

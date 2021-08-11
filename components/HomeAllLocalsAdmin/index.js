@@ -111,7 +111,6 @@ const Filter = () => {
         setZone(e.target.value);
     }
 
-
     const search = (e) => {
         e.preventDefault();
         // TODO call firebase
