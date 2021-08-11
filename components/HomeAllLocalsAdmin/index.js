@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const HomeAllLocalsAdmin = () => {
+const HomeAllLocalsAdmin = ({handleEditLocal, setLocalId}) => {
     return (
         <div className="main-content locales-lista">
             <div className="admin-sintesis">
@@ -13,7 +13,10 @@ const HomeAllLocalsAdmin = () => {
                 <div className="content-block clientes-lista">
                     <div className="container-fluid">
                         <HomeAllLocalsAdmin.Filter/>
-                        <HomeAllLocalsAdmin.Data/>
+                        <HomeAllLocalsAdmin.Data
+                            handleEditLocal={handleEditLocal}
+                            setLocalId={setLocalId}
+                        />
                     </div>
                 </div>
             </div>
@@ -149,13 +152,13 @@ const Filter = () => {
 }
 HomeAllLocalsAdmin.Filter = Filter;
 
-const Data = () => {
+const Data = ({handleEditLocal, setLocalId}) => {
     return (
         <div className="clientes-all">
             <div className="table-responsive">
                 <table className="table admin-table table-hover">
                     <DataHeader/>
-                    <DataBody/>
+                    <DataBody handleEditLocal={handleEditLocal} setLocalId={setLocalId}/>
                 </table>
             </div>
             <Pageable/>
@@ -181,11 +184,12 @@ const DataHeader = () => {
     );
 }
 
-const DataField = ({data}) => {
+const DataField = ({data, handleEditLocal, setLocalId}) => {
 
     const edit = (e) => {
         e.preventDefault();
-        // TODO firebase
+        setLocalId(data.key);
+        handleEditLocal(true);
     }
 
     return(
@@ -535,10 +539,10 @@ const mockData = [
     }
 ];
 
-const DataBody = () => {
+const DataBody = ({handleEditLocal, setLocalId}) => {
     return (
         <tbody>
-            { mockData.map((data) => {return <DataField data={data} key={data.key}/>}) }
+            { mockData.map((data) => {return <DataField data={data} key={data.key} handleEditLocal={handleEditLocal} setLocalId={setLocalId}/>}) }
         </tbody>
     );
 }

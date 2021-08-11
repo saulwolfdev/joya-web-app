@@ -11,10 +11,12 @@ const HomeAllLocals = () => {
         setEditLocal(true);
     }
 
+    const mockLocalId = "ABC";
+
     return (
         <UserOrderContainer title="Tus Locales" style="mis-locales">
             {editLocal ? 
-                <EditLocal/> 
+                <EditLocal localId={mockLocalId} admin={false}/> 
                 :
                 <>
                     <HomeAllLocals.Header/>
