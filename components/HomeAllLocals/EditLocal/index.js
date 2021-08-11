@@ -40,7 +40,9 @@ const EditLocal = ({localId, admin}) => {
         <div>
             <EditLocal.Header local={local}/>
             {
-                admin ? 
+                admin ?
+                    <EditLocal.BodyAdmin localId={localId}/>
+                    :
                     <EditLocal.BodyUser
                         phone={phone} 
                         handlePhone={handlePhone} 
@@ -49,8 +51,6 @@ const EditLocal = ({localId, admin}) => {
                         save={save}
                         local={local}
                     />
-                    :
-                    <EditLocal.BodyUser localId = {localId}/>
             }
             
       </div>
@@ -240,210 +240,247 @@ const BodyAdmin = ({localId}) => {
                 <h5><span>Últimos pedidos</span></h5>
                 <FiltersSection localId={localId}/>
                 <div className="pedidos-all">
-            <div className="table-responsive">
-              <table className="table admin-table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col" className="cell-bullet" />
-                    <th scope="col" className="cell-fecha ordenable">Fecha</th>
-                    <th scope="col" className="cell-hora" />
-                    <th scope="col" className="cell-monto ordenable down">Monto</th>
-                    <th scope="col" className="cell-estado ordenable up">Estado</th>
-                    <th scope="col" className="cell-alerta ordenable">Alertas</th>
-                    <th scope="col" className="cell-vidrierista ordenable">Vidrierista</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="alerta-pendiente">
-                    <td scope="col" className="cell-bullet"><i className="circle" /></td>
-                    <td scope="col" className="cell-fecha">Mie 07/04/2020 {/* que se vea el día de la semana */}</td>
-                    <td scope="col" className="cell-hora">11:00 - 17:00</td>
-                    <td scope="col" className="cell-monto">$7186</td>
-                    <td scope="col" className="cell-estado">Completado</td>
-                    <td scope="col" className="cell-alerta"><a title="Reporte de vidrierista"><i className="far fa-exclamation-triangle" />Reporte</a></td>
-                    <td scope="col" className="cell-vidrierista"><a href>Juan Perez</a></td>
-                  </tr>
-                  <tr className>
-                    <td scope="col" className="cell-bullet"><i className="circle" /></td>
-                    <td scope="col" className="cell-fecha">Mie 07/04/2020 {/* que se vea el día de la semana */}</td>
-                    <td scope="col" className="cell-hora">11:00 - 17:00</td>
-                    <td scope="col" className="cell-monto">$7186</td>
-                    <td scope="col" className="cell-estado">Completado</td>
-                    <td scope="col" className="cell-alerta" />
-                    <td scope="col" className="cell-vidrierista"><a href>Juan Perez</a></td>
-                  </tr>
-                  <tr className>
-                    <td scope="col" className="cell-bullet"><i className="circle" /></td>
-                    <td scope="col" className="cell-fecha">Mie 07/04/2020 {/* que se vea el día de la semana */}</td>
-                    <td scope="col" className="cell-hora">11:00 - 17:00</td>
-                    <td scope="col" className="cell-monto">$7186</td>
-                    <td scope="col" className="cell-estado">Completado</td>
-                    <td scope="col" className="cell-alerta" />
-                    <td scope="col" className="cell-vidrierista"><a href>Juan Perez</a></td>
-                  </tr>
-                  <tr className="alerta-pendiente">
-                    <td scope="col" className="cell-bullet"><i className="circle" /></td>
-                    <td scope="col" className="cell-fecha">Mie 07/04/2020 {/* que se vea el día de la semana */}</td>
-                    <td scope="col" className="cell-hora">11:00 - 17:00</td>
-                    <td scope="col" className="cell-monto">$7186</td>
-                    <td scope="col" className="cell-estado">Completado</td>
-                    <td scope="col" className="cell-alerta"><a title="Reporte de vidrierista"><i className="far fa-exclamation-triangle" />Reporte</a></td>
-                    <td scope="col" className="cell-vidrierista"><a href>Juan Perez</a></td>
-                  </tr>
-                  <tr className>
-                    <td scope="col" className="cell-bullet"><i className="circle" /></td>
-                    <td scope="col" className="cell-fecha">Mie 07/04/2020 {/* que se vea el día de la semana */}</td>
-                    <td scope="col" className="cell-hora">11:00 - 17:00</td>
-                    <td scope="col" className="cell-monto">$7186</td>
-                    <td scope="col" className="cell-estado">Completado</td>
-                    <td scope="col" className="cell-alerta" />
-                    <td scope="col" className="cell-vidrierista"><a href>Juan Perez</a></td>
-                  </tr>
-                  <tr className>
-                    <td scope="col" className="cell-bullet"><i className="circle" /></td>
-                    <td scope="col" className="cell-fecha">Mie 07/04/2020 {/* que se vea el día de la semana */}</td>
-                    <td scope="col" className="cell-hora">11:00 - 17:00</td>
-                    <td scope="col" className="cell-monto">$7186</td>
-                    <td scope="col" className="cell-estado">Completado</td>
-                    <td scope="col" className="cell-alerta" />
-                    <td scope="col" className="cell-vidrierista"><a href>Juan Perez</a></td>
-                  </tr>
-                  <tr className="alerta-pendiente">
-                    <td scope="col" className="cell-bullet"><i className="circle" /></td>
-                    <td scope="col" className="cell-fecha">Mie 07/04/2020 {/* que se vea el día de la semana */}</td>
-                    <td scope="col" className="cell-hora">11:00 - 17:00</td>
-                    <td scope="col" className="cell-monto">$7186</td>
-                    <td scope="col" className="cell-estado">Completado</td>
-                    <td scope="col" className="cell-alerta"><a title="Reporte de vidrierista"><i className="far fa-exclamation-triangle" />Reporte</a></td>
-                    <td scope="col" className="cell-vidrierista"><a href>Juan Perez</a></td>
-                  </tr>
-                  <tr className>
-                    <td scope="col" className="cell-bullet"><i className="circle" /></td>
-                    <td scope="col" className="cell-fecha">Mie 07/04/2020 {/* que se vea el día de la semana */}</td>
-                    <td scope="col" className="cell-hora">11:00 - 17:00</td>
-                    <td scope="col" className="cell-monto">$7186</td>
-                    <td scope="col" className="cell-estado">Completado</td>
-                    <td scope="col" className="cell-alerta" />
-                    <td scope="col" className="cell-vidrierista"><a href>Juan Perez</a></td>
-                  </tr>
-                  <tr className>
-                    <td scope="col" className="cell-bullet"><i className="circle" /></td>
-                    <td scope="col" className="cell-fecha">Mie 07/04/2020 {/* que se vea el día de la semana */}</td>
-                    <td scope="col" className="cell-hora">11:00 - 17:00</td>
-                    <td scope="col" className="cell-monto">$7186</td>
-                    <td scope="col" className="cell-estado">Completado</td>
-                    <td scope="col" className="cell-alerta" />
-                    <td scope="col" className="cell-vidrierista"><a href>Juan Perez</a></td>
-                  </tr>
-                  <tr className="alerta-pendiente">
-                    <td scope="col" className="cell-bullet"><i className="circle" /></td>
-                    <td scope="col" className="cell-fecha">Mie 07/04/2020 {/* que se vea el día de la semana */}</td>
-                    <td scope="col" className="cell-hora">11:00 - 17:00</td>
-                    <td scope="col" className="cell-monto">$7186</td>
-                    <td scope="col" className="cell-estado">Completado</td>
-                    <td scope="col" className="cell-alerta"><a title="Reporte de vidrierista"><i className="far fa-exclamation-triangle" />Reporte</a></td>
-                    <td scope="col" className="cell-vidrierista"><a href>Juan Perez</a></td>
-                  </tr>
-                  <tr className>
-                    <td scope="col" className="cell-bullet"><i className="circle" /></td>
-                    <td scope="col" className="cell-fecha">Mie 07/04/2020 {/* que se vea el día de la semana */}</td>
-                    <td scope="col" className="cell-hora">11:00 - 17:00</td>
-                    <td scope="col" className="cell-monto">$7186</td>
-                    <td scope="col" className="cell-estado">Completado</td>
-                    <td scope="col" className="cell-alerta" />
-                    <td scope="col" className="cell-vidrierista"><a href>Juan Perez</a></td>
-                  </tr>
-                  <tr className>
-                    <td scope="col" className="cell-bullet"><i className="circle" /></td>
-                    <td scope="col" className="cell-fecha">Mie 07/04/2020 {/* que se vea el día de la semana */}</td>
-                    <td scope="col" className="cell-hora">11:00 - 17:00</td>
-                    <td scope="col" className="cell-monto">$7186</td>
-                    <td scope="col" className="cell-estado">Completado</td>
-                    <td scope="col" className="cell-alerta" />
-                    <td scope="col" className="cell-vidrierista"><a href>Juan Perez</a></td>
-                  </tr>
-                  <tr className="alerta-pendiente">
-                    <td scope="col" className="cell-bullet"><i className="circle" /></td>
-                    <td scope="col" className="cell-fecha">Mie 07/04/2020 {/* que se vea el día de la semana */}</td>
-                    <td scope="col" className="cell-hora">11:00 - 17:00</td>
-                    <td scope="col" className="cell-monto">$7186</td>
-                    <td scope="col" className="cell-estado">Completado</td>
-                    <td scope="col" className="cell-alerta"><a title="Reporte de vidrierista"><i className="far fa-exclamation-triangle" />Reporte</a></td>
-                    <td scope="col" className="cell-vidrierista"><a href>Juan Perez</a></td>
-                  </tr>
-                  <tr className>
-                    <td scope="col" className="cell-bullet"><i className="circle" /></td>
-                    <td scope="col" className="cell-fecha">Mie 07/04/2020 {/* que se vea el día de la semana */}</td>
-                    <td scope="col" className="cell-hora">11:00 - 17:00</td>
-                    <td scope="col" className="cell-monto">$7186</td>
-                    <td scope="col" className="cell-estado">Completado</td>
-                    <td scope="col" className="cell-alerta" />
-                    <td scope="col" className="cell-vidrierista"><a href>Juan Perez</a></td>
-                  </tr>
-                  <tr className>
-                    <td scope="col" className="cell-bullet"><i className="circle" /></td>
-                    <td scope="col" className="cell-fecha">Mie 07/04/2020 {/* que se vea el día de la semana */}</td>
-                    <td scope="col" className="cell-hora">11:00 - 17:00</td>
-                    <td scope="col" className="cell-monto">$7186</td>
-                    <td scope="col" className="cell-estado">Completado</td>
-                    <td scope="col" className="cell-alerta" />
-                    <td scope="col" className="cell-vidrierista"><a href>Juan Perez</a></td>
-                  </tr>
-                  <tr className="alerta-pendiente">
-                    <td scope="col" className="cell-bullet"><i className="circle" /></td>
-                    <td scope="col" className="cell-fecha">Mie 07/04/2020 {/* que se vea el día de la semana */}</td>
-                    <td scope="col" className="cell-hora">11:00 - 17:00</td>
-                    <td scope="col" className="cell-monto">$7186</td>
-                    <td scope="col" className="cell-estado">Completado</td>
-                    <td scope="col" className="cell-alerta"><a title="Reporte de vidrierista"><i className="far fa-exclamation-triangle" />Reporte</a></td>
-                    <td scope="col" className="cell-vidrierista"><a href>Juan Perez</a></td>
-                  </tr>
-                  <tr className>
-                    <td scope="col" className="cell-bullet"><i className="circle" /></td>
-                    <td scope="col" className="cell-fecha">Mie 07/04/2020 {/* que se vea el día de la semana */}</td>
-                    <td scope="col" className="cell-hora">11:00 - 17:00</td>
-                    <td scope="col" className="cell-monto">$7186</td>
-                    <td scope="col" className="cell-estado">Completado</td>
-                    <td scope="col" className="cell-alerta" />
-                    <td scope="col" className="cell-vidrierista"><a href>Juan Perez</a></td>
-                  </tr>
-                  <tr className>
-                    <td scope="col" className="cell-bullet"><i className="circle" /></td>
-                    <td scope="col" className="cell-fecha">Mie 07/04/2020 {/* que se vea el día de la semana */}</td>
-                    <td scope="col" className="cell-hora">11:00 - 17:00</td>
-                    <td scope="col" className="cell-monto">$7186</td>
-                    <td scope="col" className="cell-estado">Completado</td>
-                    <td scope="col" className="cell-alerta" />
-                    <td scope="col" className="cell-vidrierista"><a href>Juan Perez</a></td>
-                  </tr>
-                  <tr className="alerta-pendiente">
-                    <td scope="col" className="cell-bullet"><i className="circle" /></td>
-                    <td scope="col" className="cell-fecha">Mie 07/04/2020 {/* que se vea el día de la semana */}</td>
-                    <td scope="col" className="cell-hora">11:00 - 17:00</td>
-                    <td scope="col" className="cell-monto">$7186</td>
-                    <td scope="col" className="cell-estado">Completado</td>
-                    <td scope="col" className="cell-alerta"><a title="Reporte de vidrierista"><i className="far fa-exclamation-triangle" />Reporte</a></td>
-                    <td scope="col" className="cell-vidrierista"><a href>Juan Perez</a></td>
-                  </tr>
-                  <tr className>
-                    <td scope="col" className="cell-bullet"><i className="circle" /></td>
-                    <td scope="col" className="cell-fecha">Mie 07/04/2020 {/* que se vea el día de la semana */}</td>
-                    <td scope="col" className="cell-hora">11:00 - 17:00</td>
-                    <td scope="col" className="cell-monto">$7186</td>
-                    <td scope="col" className="cell-estado">Completado</td>
-                    <td scope="col" className="cell-alerta" />
-                    <td scope="col" className="cell-vidrierista"><a href>Juan Perez</a></td>
-                  </tr>
-                </tbody>
-              </table>
+                    <Table/>
+                    <Pageable/>
+                </div>
             </div>
-            <Pageable/>
-          </div>
-        </div>
       </div>
     );
 }
 EditLocal.BodyAdmin = BodyAdmin;
+
+const Table = () => {
+    return (
+        <div className="table-responsive">
+            <table className="table admin-table table-hover">
+                <THeader/>
+                <TBody/>
+            </table>
+        </div>
+    );
+}
+
+const THeader = () => {
+    return (
+        <thead>
+            <tr>
+                <th scope="col" className="cell-bullet" />
+                <th scope="col" className="cell-fecha ordenable">Fecha</th>
+                <th scope="col" className="cell-hora" />
+                <th scope="col" className="cell-monto ordenable down">Monto</th>
+                <th scope="col" className="cell-estado ordenable up">Estado</th>
+                <th scope="col" className="cell-alerta ordenable">Alertas</th>
+                <th scope="col" className="cell-vidrierista ordenable">Vidrierista</th>
+            </tr>
+        </thead>
+    );
+}
+Table.THeader = THeader;
+
+const listMockData = [
+    {
+        key: "001",
+        date: "Mie 07/04/2020",
+        timeRange: "11:00 - 17:00",
+        price: "$7186",
+        state: "Completado", // TODO: enum
+        report: true,
+        name: "Juan Perez"
+    },
+    {
+        key: "002",
+        date: "Mie 07/04/2020",
+        timeRange: "11:00 - 17:00",
+        price: "$7186",
+        state: "Completado", // TODO: enum
+        report: false,
+        name: "Juan Perez"
+    },
+    {
+        key: "003",
+        date: "Mie 07/04/2020",
+        timeRange: "11:00 - 17:00",
+        price: "$7186",
+        state: "Completado", // TODO: enum
+        report: false,
+        name: "Juan Perez"
+    },
+    {
+        key: "004",
+        date: "Mie 07/04/2020",
+        timeRange: "11:00 - 17:00",
+        price: "$7186",
+        state: "Completado", // TODO: enum
+        report: true,
+        name: "Juan Perez"
+    },
+    {
+        key: "005",
+        date: "Mie 07/04/2020",
+        timeRange: "11:00 - 17:00",
+        price: "$7186",
+        state: "Completado", // TODO: enum
+        report: false,
+        name: "Juan Perez"
+    },
+    {
+        key: "006",
+        date: "Mie 07/04/2020",
+        timeRange: "11:00 - 17:00",
+        price: "$7186",
+        state: "Completado", // TODO: enum
+        report: false,
+        name: "Juan Perez"
+    },
+    {
+        key: "007",
+        date: "Mie 07/04/2020",
+        timeRange: "11:00 - 17:00",
+        price: "$7186",
+        state: "Completado", // TODO: enum
+        report: true,
+        name: "Juan Perez"
+    },
+    {
+        key: "008",
+        date: "Mie 07/04/2020",
+        timeRange: "11:00 - 17:00",
+        price: "$7186",
+        state: "Completado", // TODO: enum
+        report: false,
+        name: "Juan Perez"
+    },
+    {
+        key: "009",
+        date: "Mie 07/04/2020",
+        timeRange: "11:00 - 17:00",
+        price: "$7186",
+        state: "Completado", // TODO: enum
+        report: false,
+        name: "Juan Perez"
+    },
+    {
+        key: "010",
+        date: "Mie 07/04/2020",
+        timeRange: "11:00 - 17:00",
+        price: "$7186",
+        state: "Completado", // TODO: enum
+        report: true,
+        name: "Juan Perez"
+    },
+    {
+        key: "011",
+        date: "Mie 07/04/2020",
+        timeRange: "11:00 - 17:00",
+        price: "$7186",
+        state: "Completado", // TODO: enum
+        report: false,
+        name: "Juan Perez"
+    },
+    {
+        key: "012",
+        date: "Mie 07/04/2020",
+        timeRange: "11:00 - 17:00",
+        price: "$7186",
+        state: "Completado", // TODO: enum
+        report: false,
+        name: "Juan Perez"
+    },
+    {
+        key: "013",
+        date: "Mie 07/04/2020",
+        timeRange: "11:00 - 17:00",
+        price: "$7186",
+        state: "Completado", // TODO: enum
+        report: true,
+        name: "Juan Perez"
+    },
+    {
+        key: "014",
+        date: "Mie 07/04/2020",
+        timeRange: "11:00 - 17:00",
+        price: "$7186",
+        state: "Completado", // TODO: enum
+        report: false,
+        name: "Juan Perez"
+    },
+    {
+        key: "015",
+        date: "Mie 07/04/2020",
+        timeRange: "11:00 - 17:00",
+        price: "$7186",
+        state: "Completado", // TODO: enum
+        report: false,
+        name: "Juan Perez"
+    },
+    {
+        key: "016",
+        date: "Mie 07/04/2020",
+        timeRange: "11:00 - 17:00",
+        price: "$7186",
+        state: "Completado", // TODO: enum
+        report: true,
+        name: "Juan Perez"
+    },
+    {
+        key: "017",
+        date: "Mie 07/04/2020",
+        timeRange: "11:00 - 17:00",
+        price: "$7186",
+        state: "Completado", // TODO: enum
+        report: false,
+        name: "Juan Perez"
+    },
+    {
+        key: "018",
+        date: "Mie 07/04/2020",
+        timeRange: "11:00 - 17:00",
+        price: "$7186",
+        state: "Completado", // TODO: enum
+        report: false,
+        name: "Juan Perez"
+    },
+    {
+        key: "019",
+        date: "Mie 07/04/2020",
+        timeRange: "11:00 - 17:00",
+        price: "$7186",
+        state: "Completado", // TODO: enum
+        report: true,
+        name: "Juan Perez"
+    },
+    {
+        key: "020",
+        date: "Mie 07/04/2020",
+        timeRange: "11:00 - 17:00",
+        price: "$7186",
+        state: "Completado", // TODO: enum
+        report: false,
+        name: "Juan Perez"
+    }
+]
+
+const FieldData = ({data}) => {
+    return (
+        <tr className="alerta-pendiente">
+            <td scope="col" className="cell-bullet"><i className="circle" /></td>
+            <td scope="col" className="cell-fecha">{data.date} {/* que se vea el día de la semana */}</td>
+            <td scope="col" className="cell-hora">{data.timeRange}</td>
+            <td scope="col" className="cell-monto">{data.price}</td>
+            <td scope="col" className="cell-estado">{data.state}</td>
+            <td scope="col" className="cell-alerta">{data.report ? <a title="Reporte de vidrierista"><i className="far fa-exclamation-triangle" />Reporte</a> : <></>}</td>
+            <td scope="col" className="cell-vidrierista"><a href>{data.name}</a></td>
+        </tr>
+    );
+}
+
+const TBody = () => {
+    return (
+        <tbody>
+             { listMockData.map((data) => {return <FieldData data={data} key={data.key}/>}) }
+        </tbody>
+    );
+}
 
 const Header = ({local}) => {
     return (
