@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import Img from '../../Img'
 
-const EditLocal = ({localId}) => {
+const EditLocal = ({localId, admin}) => {
 
     const [phone, setPhone] = useState('+5491151234567');
     const [additionalIndications, setAdditionalIndications] = useState("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut ante eget nulla sodales efficitur. Cras tempor neque risus, nec porta urna lobortis ac.");
@@ -38,34 +38,28 @@ const EditLocal = ({localId}) => {
 
     return (
         <div>
-            <div className="row intro-local">
-                <div className="col-md-6 local-data">
-                    <p className="supertitulo">Local</p>
-                    <h4>{local.name}</h4>	
-                    <div className="data-table row">
-                        <div className="col-md-6 direccion data-piece">
-                            <p className="label">Dirección</p>
-                            <p className="data">{local.direction}</p>
-                        </div>
-                        <div className="col-md-6 barrio data-piece">
-                            <p className="label">Barrio</p>
-                            <p className="data">{local.zone}</p>
-                        </div>
-                        <div className="col-md-6 superfice data-piece">
-                            <p className="label">Superficie</p>
-                            <p className="data">{local.surface}m<sup>2</sup> <i className="c-success far fa-check-circle" /></p>
-                        </div>
-                        <div className="col-md-6 tiempo data-piece">
-                            <p className="label">Tiempo estimado</p>
-                            <p className="data">{local.time}</p>
-                        </div>
-                        <div className="indicaciones col-12 data-piece"/>
-                    </div>
-                </div>
-                <div className="col-md-6 local-imagen">
-                    <Img src={local.img} alt="" className="img-fluid" />
-                </div>
-            </div>
+            <EditLocal.Header/>
+            {
+                admin ? 
+                    <EditLocal.BodyUser
+                        phone = {phone} 
+                        handlePhone = {handlePhone} 
+                        additionalIndications = {additionalIndications} 
+                        handleAdditionalIndications = {handleAdditionalIndications}
+                        save = {save}
+                        local = {local}
+                    />
+                    :
+                    <></>
+            }
+            
+      </div>
+    );
+}
+
+const BodyUser = ({phone, handlePhone, additionalIndications, handleAdditionalIndications, save, local}) => {
+    return (
+        <>
             <div className="row info-block">
                 <h5><span>Datos</span></h5>
                 <div className="form">
@@ -101,8 +95,43 @@ const EditLocal = ({localId}) => {
                     </div>
                 </div>
             </div>
-      </div>
+        </>
     );
 }
+EditLocal.BodyUser = BodyUser;
+
+const Header = () => {
+    return (
+        <div className="row intro-local">
+            <div className="col-md-6 local-data">
+                <p className="supertitulo">Local</p>
+                <h4>{local.name}</h4>	
+                <div className="data-table row">
+                    <div className="col-md-6 direccion data-piece">
+                        <p className="label">Dirección</p>
+                        <p className="data">{local.direction}</p>
+                    </div>
+                    <div className="col-md-6 barrio data-piece">
+                        <p className="label">Barrio</p>
+                        <p className="data">{local.zone}</p>
+                    </div>
+                    <div className="col-md-6 superfice data-piece">
+                        <p className="label">Superficie</p>
+                        <p className="data">{local.surface}m<sup>2</sup> <i className="c-success far fa-check-circle" /></p>
+                    </div>
+                    <div className="col-md-6 tiempo data-piece">
+                        <p className="label">Tiempo estimado</p>
+                        <p className="data">{local.time}</p>
+                    </div>
+                    <div className="indicaciones col-12 data-piece"/>
+                </div>
+            </div>
+            <div className="col-md-6 local-imagen">
+                <Img src={local.img} alt="" className="img-fluid" />
+            </div>
+        </div>
+    );
+}
+EditLocal.Header = Header;
 
 export default EditLocal;
