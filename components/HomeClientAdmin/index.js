@@ -303,7 +303,8 @@ const DataField = ({data}) => {
             (data.isNewClient ? "cliente-nuevo " : <></>) + 
             (data.suscription === "Sin suscripción" || data.suscription === "Suscripción vencida" ? "suscripcion-no" :
                 data.suscription === "Suscripción pendiente de pago" ? "suscripcion-pendiente" :
-                    data.suscription === "Suscripción vigente" ? "suscripcion-vigente" : "")
+                    data.suscription === "Suscripción vigente" ? "suscripcion-vigente" : "") // TODO review: colors
+                    // TODO refactor, enum?
         }>
             <td scope="col" className="cell-select"><input type="checkbox" /></td>
             <td scope="col" className="cell-nombre">{data.name} {data.complain ? <a href title="Cliente insatisfecho" className="cli-warning"/> : <></>}</td>
