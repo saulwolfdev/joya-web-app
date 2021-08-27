@@ -346,3 +346,5 @@ const HomeToursAdmin = () => {
         </div>
     );
 }
+
+export default HomeToursAdmin;

@@ -146,3 +146,5 @@ const HomeDiscountAdmin = () => {
         </div>
     )
 }
+
+export default HomeDiscountAdmin;

@@ -215,3 +215,5 @@ const HomePaymentsAdmin = () => {
         </div>
     );
 }
+
+export default HomePaymentsAdmin;

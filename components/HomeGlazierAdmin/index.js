@@ -211,3 +211,5 @@ const HomeGlazierAdmin = () => {
         </div>
     )
 }
+
+export default HomeGlazierAdmin;
