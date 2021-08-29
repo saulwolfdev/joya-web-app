@@ -1,4 +1,4 @@
-const ShownGlazier = () => {
+const ContactGlazier = () => {
     return (
         <div className="main-content vidrierista-individual">
             <div className="alert warning">
@@ -128,3 +128,5 @@ const ShownGlazier = () => {
         </div>
     );
 }
+
+export default ContactGlazier;

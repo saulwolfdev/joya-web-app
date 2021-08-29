@@ -152,109 +152,95 @@ const DataHeader = () => {
     );
 }
 
-const DataBody = () => {
+const DataField = ({data, handleShownProfileGlazier, setGlazierId}) => {
+
+    const contact = (e) => {
+        e.preventDefault();
+        setGlazierId(data.key);
+        handleContactGlazier(true);
+    }
+
+    return(
+        <tr className={
+            (data.type === "Nuevo" ? "vidrierista-nuevo " : "") +
+            (data.type === "Normal" ? "" : "") + // No es necesario, lo pongo para que se tenga cuenta en un enum
+            (data.type === "Suspendido" ? "vidrierista-suspendido " : "") +
+            (data.type === "Postulante" ? "vidrierista-postulante " : "")
+        }>
+            <td scope="col" className="cell-select"><input type="checkbox" /></td>
+            <td scope="col" className="cell-nombre">{data.name}</td>
+            <td scope="col" className="cell-recorridosmes">{data.monthTours}</td>
+            <td scope="col" className="cell-recorridostotales">{data.totalTours}</td>
+            <td scope="col" className="cell-activo">{data.lastCheck}</td>
+            <td scope="col" className="cell-estado">{data.glazierApproved}</td>
+            <td scope="col" className="cell-accion">
+                <a href="#" className="btn btn-outline btn-small" onClick={contact}>Contactar</a>
+            </td>
+            <td scope="col" className="cell-mas">
+                <div className="btn-group">
+                    <a href="#" className="btn btn-tertiary" data-bs-toggle="dropdown" aria-expanded="false"><i className="far fa-ellipsis-h" /></a>
+                    <ul className="dropdown-menu">
+                        <li><a className="dropdown-item" href="admin-vidrierista.html">Ver perfil</a></li>
+                        <li><a className="dropdown-item" href="admin-vidrierista-nuevo.html">Editar</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    );
+}
+
+const mockDataToMap = [
+    {
+        key: "00",
+        name: "Grant Marshall",
+        monthTours: 7,
+        totalTours: 24,
+        lastCheck: "15/10/19, 1 año y 3 meses",
+        glazierApproved: "Aprobado",
+        type: "Nuevo"
+    },
+    {
+        key: "01",
+        name: "Grant Marshall",
+        monthTours: 7,
+        totalTours: 24,
+        lastCheck: "15/10/19, 1 año y 3 meses",
+        glazierApproved: "Aprobado",
+        type: "Normal"
+    },
+    {
+        key: "02",
+        name: "Grant Marshall",
+        monthTours: 7,
+        totalTours: 24,
+        lastCheck: "15/10/19, 1 año y 3 meses",
+        glazierApproved: "Aprobado",
+        type: "Normal"
+    },
+    {
+        key: "03",
+        name: "Grant Marshall",
+        monthTours: 7,
+        totalTours: 24,
+        lastCheck: "15/10/19, 1 año y 3 meses",
+        glazierApproved: "Aprobado",
+        type: "Suspendido"
+    },
+    {
+        key: "04",
+        name: "Grant Marshall",
+        monthTours: 7,
+        totalTours: 24,
+        lastCheck: "15/10/19, 1 año y 3 meses",
+        glazierApproved: "Aprobado",
+        type: "Postulante"
+    }
+]
+
+const DataBody = ({handleShownProfileGlazier, setGlazierId}) => {
     return (
         <tbody>
-            <tr className="vidrierista-nuevo ">
-                <td scope="col" className="cell-select"><input type="checkbox" /></td>
-                <td scope="col" className="cell-nombre">Grant Marshall</td>
-                <td scope="col" className="cell-recorridosmes">7</td>
-                <td scope="col" className="cell-recorridostotales">24</td>
-                <td scope="col" className="cell-activo">15/10/19, 1 año y 3 meses</td>
-                <td scope="col" className="cell-estado">Aprobado</td>
-                <td scope="col" className="cell-accion">
-                    <a href="#" className="btn btn-outline btn-small">Contactar</a>
-                </td>
-                <td scope="col" className="cell-mas">
-                    <div className="btn-group">
-                        <a href="#" className="btn btn-tertiary" data-bs-toggle="dropdown" aria-expanded="false"><i className="far fa-ellipsis-h" /></a>
-                        <ul className="dropdown-menu">
-                            <li><a className="dropdown-item" href="admin-vidrierista.html">Ver perfil</a></li>
-                            <li><a className="dropdown-item" href="admin-vidrierista-nuevo.html">Editar</a></li>
-                        </ul>
-                    </div>
-                </td>
-            </tr>
-            <tr className>
-                <td scope="col" className="cell-select"><input type="checkbox" /></td>
-                <td scope="col" className="cell-nombre">Grant Marshall</td>
-                <td scope="col" className="cell-recorridosmes">7</td>
-                <td scope="col" className="cell-recorridostotales">24</td>
-                <td scope="col" className="cell-activo">15/10/19, 1 año y 3 meses</td>
-                <td scope="col" className="cell-estado">Aprobado</td>
-                <td scope="col" className="cell-accion">
-                    <a href="#" className="btn btn-outline btn-small">Contactar</a>
-                </td>
-                <td scope="col" className="cell-mas">
-                    <div className="btn-group">
-                        <a href="#" className="btn btn-tertiary" data-bs-toggle="dropdown" aria-expanded="false"><i className="far fa-ellipsis-h" /></a>
-                        <ul className="dropdown-menu">
-                            <li><a className="dropdown-item" href="admin-vidrierista.html">Ver perfil</a></li>
-                            <li><a className="dropdown-item" href="admin-vidrierista-nuevo.html">Editar</a></li>
-                        </ul>
-                    </div>
-                </td>
-            </tr>
-            <tr className>
-                <td scope="col" className="cell-select"><input type="checkbox" /></td>
-                <td scope="col" className="cell-nombre">Grant Marshall</td>
-                <td scope="col" className="cell-recorridosmes">7</td>
-                <td scope="col" className="cell-recorridostotales">24</td>
-                <td scope="col" className="cell-activo">15/10/19, 1 año y 3 meses</td>
-                <td scope="col" className="cell-estado">Aprobado</td>
-                <td scope="col" className="cell-accion">
-                    <a href="#" className="btn btn-outline btn-small">Contactar</a>
-                </td>
-                <td scope="col" className="cell-mas">
-                    <div className="btn-group">
-                        <a href="#" className="btn btn-tertiary" data-bs-toggle="dropdown" aria-expanded="false"><i className="far fa-ellipsis-h" /></a>
-                        <ul className="dropdown-menu">
-                            <li><a className="dropdown-item" href="admin-vidrierista.html">Ver perfil</a></li>
-                            <li><a className="dropdown-item" href="admin-vidrierista-nuevo.html">Editar</a></li>
-                        </ul>
-                    </div>
-                </td>
-            </tr>
-            <tr className="vidrierista-suspendido">
-                <td scope="col" className="cell-select"><input type="checkbox" /></td>
-                <td scope="col" className="cell-nombre">Grant Marshall</td>
-                <td scope="col" className="cell-recorridosmes">7</td>
-                <td scope="col" className="cell-recorridostotales">24</td>
-                <td scope="col" className="cell-activo">15/10/19, 1 año y 3 meses</td>
-                <td scope="col" className="cell-estado">Suspendido</td>
-                <td scope="col" className="cell-accion">
-                    <a href="#" className="btn btn-outline btn-small">Contactar</a>
-                </td>
-                <td scope="col" className="cell-mas">
-                    <div className="btn-group">
-                        <a href="#" className="btn btn-tertiary" data-bs-toggle="dropdown" aria-expanded="false"><i className="far fa-ellipsis-h" /></a>
-                        <ul className="dropdown-menu">
-                            <li><a className="dropdown-item" href="admin-vidrierista.html">Ver perfil</a></li>
-                            <li><a className="dropdown-item" href="admin-vidrierista-nuevo.html">Editar</a></li>
-                        </ul>
-                    </div>
-                </td>
-            </tr>
-            <tr className="vidrierista-postulante">
-                <td scope="col" className="cell-select"><input type="checkbox" /></td>
-                <td scope="col" className="cell-nombre">Grant Marshall</td>
-                <td scope="col" className="cell-recorridosmes">7</td>
-                <td scope="col" className="cell-recorridostotales">24</td>
-                <td scope="col" className="cell-activo">15/10/19, 1 año y 3 meses</td>
-                <td scope="col" className="cell-estado">Postulado</td>
-                <td scope="col" className="cell-accion">
-                    <a href="#" className="btn btn-outline btn-small">Contactar</a>
-                </td>
-                <td scope="col" className="cell-mas">
-                    <div className="btn-group">
-                        <a href="#" className="btn btn-tertiary" data-bs-toggle="dropdown" aria-expanded="false"><i className="far fa-ellipsis-h" /></a>
-                        <ul className="dropdown-menu">
-                            <li><a className="dropdown-item" href="admin-vidrierista.html">Ver perfil</a></li>
-                            <li><a className="dropdown-item" href="admin-vidrierista-nuevo.html">Editar</a></li>
-                        </ul>
-                    </div>
-                </td>
-            </tr>
+            { mockDataToMap.map((data) => {return <DataField data={data} key={data.key} handleShownProfileGlazier={handleShownProfileGlazier} setGlazierId={setGlazierId}/>}) }
         </tbody>
     );
 }
