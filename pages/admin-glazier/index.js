@@ -14,5 +14,5 @@ export default function AdminGlaziers() {
             <HomeGlazierAdmin/>
             <Footer glazier={false} admin={true} />
         </Container>
-        );
+    );
 }
