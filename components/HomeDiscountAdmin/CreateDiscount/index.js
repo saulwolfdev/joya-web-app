@@ -5,16 +5,18 @@ const CreateDiscount = () => {
     const [discountType, setDiscountType] = useState("none")
     const [code, setCode] = useState("");
     const [fixedAmount, setFixedAmount] = useState(0);
+    const [percentage, setPercentage] = useState("0");
     const [minimunExpense, setMinimumExpense] = useState(0);
     const [maximumExpense, setMaximumExpense] = useState(0); // TODO, validar que en los valores de input se usen numeros, o no sea NaN (cuando ingresan texto)
     const [dueDate, setDueDate] = useState("");
     const [limitsOfUse, setLimitsOfUse] = useState(0);
+    const [discountCap, setDiscountCap] = useState(0);
 
     const handleDiscountType = (e) => {
         e.preventDefault();
         setDiscountType(e.target.value);
     }
-    
+
     const handleCode = (e) => {
         e.preventDefault();
         setCode(e.target.value);
@@ -23,6 +25,11 @@ const CreateDiscount = () => {
     const handleFixedAmount = (e) => {
         e.preventDefault();
         setFixedAmount(e.target.value);
+    }
+
+    const handlePercentage = (e) => {
+        e.preventDefault();
+        setPercentage(e.target.value);
     }
 
     const handleMinimumExpense = (e) => {
@@ -45,21 +52,26 @@ const CreateDiscount = () => {
         setLimitsOfUse(e.target.value);
     }
 
+    const handleDiscountCap = (e) => {
+        e.preventDefault();
+        setDiscountCap(e.target.value);
+    }
+
     const validForm = () => {
         return (discountType === "monto" && fixedAmount && fixedAmount > 0 && code !== "") || // TODO enum
-            discountType === "porcentaje"
+            (discountType === "porcentaje" && percentage && percentage > 0)
     }
-        
+
     const save = (e) => {
         e.preventDefault();
-        if(validForm()) {
+        if (validForm()) {
             // TODO call firebase
         }
     }
 
     return (
         <div class="admin-descuento-crear">
-	    	<div class="container-fluid">
+            <div class="container-fluid">
                 <div className="row">
                     <div className="col-12 breadcrumb">
                         <div className="inner-container">
@@ -76,7 +88,7 @@ const CreateDiscount = () => {
                                             <div className="row">
                                                 <div className="col form-element">
                                                     <label htmlFor="codigo" className="form-label">Código de descuento<span className="obligatorio">*</span></label>
-                                                    <input type="text" className="form-control" name="codigo" placeholder="CODIGODEDESCUENTO" onChange={handleCode}/>
+                                                    <input type="text" className="form-control" name="codigo" placeholder="CODIGODEDESCUENTO" onChange={handleCode} />
                                                     <p className="form-text">Se recomienda utilizar un código fácil de recordar. Sin embargo, se debe evitar que sea adivinable (por ejemplo, si se pone DESCUENTO1, DESCUENTO2,... un usuario podría probar si existen en DESCUENTO3, etc).</p>
                                                 </div>
                                             </div>
@@ -95,11 +107,22 @@ const CreateDiscount = () => {
                                                             <label htmlFor="monto" className="form-label">Monto<span className="obligatorio">*</span></label>
                                                             <div className="input-group">
                                                                 <span className="input-group-text">$</span>
-                                                                <input type="text" className="form-control" placeholder={150} name="monto" onChange={handleFixedAmount}/>
+                                                                <input type="text" className="form-control" placeholder={150} name="monto" onChange={handleFixedAmount} />
                                                             </div>
                                                         </div>
                                                         :
-                                                        <div className="col form-element"/>
+                                                        (
+                                                            discountType === "porcentaje" ?
+                                                                <div className="col form-element">
+                                                                    <label htmlFor="porcentaje" className="form-label">Porcentaje<span className="obligatorio">*</span></label>
+                                                                    <div className="input-group">
+                                                                        <input type="text" className="form-control" placeholder="150" name="porcentaje" onChange={handlePercentage} />
+                                                                        <span className="input-group-text">%</span>
+                                                                    </div>
+                                                                </div>
+                                                                :
+                                                                <div className="col form-element" />
+                                                        )
                                                 }
                                             </div>
                                             <div className="row">
@@ -110,35 +133,41 @@ const CreateDiscount = () => {
                                                                 <label htmlFor="gastominimo" className="form-label">Gasto mínimo</label>
                                                                 <div className="input-group">
                                                                     <span className="input-group-text">$</span>
-                                                                    <input type="text" className="form-control" name="gastominimo" onChange={handleMinimumExpense}/>
+                                                                    <input type="text" className="form-control" name="gastominimo" onChange={handleMinimumExpense} />
                                                                 </div>
                                                             </div>
                                                             <div className="col form-element">
                                                                 <label htmlFor="gastomaximo" className="form-label">Gasto máximo</label>
                                                                 <div className="input-group">
                                                                     <span className="input-group-text">$</span>
-                                                                    <input type="text" className="form-control" name="gastomaximo" onChange={handleMaximumExpense}/>
+                                                                    <input type="text" className="form-control" name="gastomaximo" onChange={handleMaximumExpense} />
                                                                 </div>
                                                             </div>
                                                         </>
                                                         :
-                                                        <></>
+                                                        <div className="col form-element">
+                                                            <label htmlFor="tope" className="form-label">Tope descuento</label>
+                                                            <div className="input-group">
+                                                                <span className="input-group-text">$</span>
+                                                                <input type="text" className="form-control" name="tope" onChange={handleDiscountCap}/>
+                                                            </div>
+                                                        </div>
                                                 }
                                             </div>
                                             {
                                                 discountType === "monto" || discountType === "porcentaje" ?
-                                                <div className="row">
-                                                    <div className="col form-element">
-                                                        <label htmlFor="vencimiento" className="form-label">Fecha de vencimiento</label>
-                                                        <input type="date" name="vencimiento" className="form-control" onChange={handleDuetDate}/>
+                                                    <div className="row">
+                                                        <div className="col form-element">
+                                                            <label htmlFor="vencimiento" className="form-label">Fecha de vencimiento</label>
+                                                            <input type="date" name="vencimiento" className="form-control" onChange={handleDuetDate} />
+                                                        </div>
+                                                        <div className="col form-element">
+                                                            <label htmlFor="limiteusos" className="form-label">Límite de usos</label>
+                                                            <input type="text" name="limiteusos" className="form-control" onChange={handleLimitsOfUse} />
+                                                        </div>
                                                     </div>
-                                                    <div className="col form-element">
-                                                        <label htmlFor="limiteusos" className="form-label">Límite de usos</label>
-                                                        <input type="text" name="limiteusos" className="form-control" onChange={handleLimitsOfUse}/>
-                                                    </div>
-                                                </div>
-                                                :
-                                                <></>
+                                                    :
+                                                    <></>
                                             }
                                         </div>
                                         <div className="btn-set">
