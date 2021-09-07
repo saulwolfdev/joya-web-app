@@ -1,27 +1,40 @@
 import { useState } from 'react';
 
 const HomePaymentsAdmin = () => {
+
+    const [useHistory, setUseHistory] = useState(false);
+
+    const handleSetUseHistory = (e) => {
+        e.preventDefault();
+        setUseHistory(true);
+    }
+
+    const handleSetUsePendings = (e) => {
+        e.preventDefault();
+        setUseHistory(false);
+    }
+
     return (
         <div className="main-content pagos-lista">
             <div className="admin-sintesis">
                 <div className="container-fluid">
-                    <HomePaymentsAdmin.Header/>
-                    <HomePaymentsAdmin.Metrics/>
+                    <HomePaymentsAdmin.Header />
+                    <HomePaymentsAdmin.Metrics />
                 </div>
             </div>
             <div className="more-content">
                 <div className="menu">
                     <div className="container-fluid">
                         <ul>
-                            <li className="active"><a href="admin-pagos.html">Pendientes</a></li>
-                            <li><a href="admin-pagos-historial.html">Historial</a></li>
+                            <li className={useHistory ? "" : "active"}><a href="#" onClick={handleSetUsePendings}>Pendientes</a></li>
+                            <li className={useHistory ? "active" : ""}><a href="#" onClick={handleSetUseHistory}>Historial</a></li>
                         </ul>
                     </div>
                 </div>
                 <div className="content-block pagos-lista">
                     <div className="container-fluid">
-                        <HomePaymentsAdmin.Filter/>
-                        <HomePaymentsAdmin.Data/>
+                        <HomePaymentsAdmin.Filter useHistory={useHistory} />
+                        <HomePaymentsAdmin.Data useHistory={useHistory}/>
                     </div>
                 </div>
             </div>
@@ -71,16 +84,16 @@ const Metrics = () => {
                     <div className="col-auto">
                         <p className="value"><span className="number">{mockMetrics.currentMonth}</span> </p>
                     </div>
-                    { 
-                    !mockMetrics.firstMonth ? 
-                        <div className="col-auto interpretation">
-                            <p className="value worse">{mockMetrics.percentVsLastMonth}</p>
-                            <p className="aclaracion">vs. mes anterior</p>
-                        </div>
-                        :
-                        <></>
+                    {
+                        !mockMetrics.firstMonth ?
+                            <div className="col-auto interpretation">
+                                <p className="value worse">{mockMetrics.percentVsLastMonth}</p>
+                                <p className="aclaracion">vs. mes anterior</p>
+                            </div>
+                            :
+                            <></>
                     }
-                    
+
                 </div>
             </div>
             <div className="col-auto stat block-start">
@@ -92,10 +105,11 @@ const Metrics = () => {
 }
 HomePaymentsAdmin.Metrics = Metrics;
 
-const Filter = () => {
+const Filter = ({ useHistory }) => {
 
     const [range, setRange] = useState("Todas")
     const [orderState, setOrderState] = useState("Todos")
+    const [rangeAmmount, setRangeAmmount] = useState("Todos")
 
     const handleRange = (e) => {
         e.preventDefault();
@@ -105,6 +119,11 @@ const Filter = () => {
     const handleOrderState = (e) => {
         e.preventDefault();
         setOrderState(e.target.value);
+    }
+
+    const handleRangeAmmount = (e) => {
+        e.preventDefault();
+        setRangeAmmount(e.target.value)
     }
 
     const search = (e) => {
@@ -123,27 +142,40 @@ const Filter = () => {
                     <option value="c">Últimos 3 meses</option>
                 </select>
             </div>
-            <div className="col-auto filtro">
-                <p className="label">Factura</p>
-                <select className="form-select" aria-label="Factura" name="factura" id="factura" onClick={handleOrderState}>
-                    <option value="Todos">Todos</option>
-                    <option value="b" selected>Pendiente</option>
-                    <option value="c">Entregada</option>
-                </select>
-            </div>
+            {
+                useHistory ?
+                    <div className="col-auto filtro">
+                        <p className="label">Monto</p>
+                        <select className="form-select" aria-label="Factura" name="factura" id="factura" onClick={handleRangeAmmount}>
+                            <option value="Todos" selected>Todos</option>
+                            <option value="b">Mayor a $5000</option>
+                            <option value="c">Menor a $5000</option>
+                        </select>
+                    </div>
+                    :
+                    <div className="col-auto filtro">
+                        <p className="label">Factura</p>
+                        <select className="form-select" aria-label="Factura" name="factura" id="factura" onClick={handleOrderState}>
+                            <option value="Todos">Todos</option>
+                            <option value="b" selected>Pendiente</option>
+                            <option value="c">Entregada</option>
+                        </select>
+                    </div>
+            }
+
             <div className="col-12 col-md expansible-search-right">
-                <input className="expansible-search" type="search" placeholder="Buscar" onClick={search}/>
+                <input className="expansible-search" type="search" placeholder="Buscar" onClick={search} />
             </div>
         </div>
     );
 }
 HomePaymentsAdmin.Filter = Filter;
 
-const DataHeader = () => {
+const DataHeader = ({useHistory}) => {
     return (
         <thead>
             <tr>
-                <th scope="col" className="cell-select" />
+                {useHistory ? <></> : <th scope="col" className="cell-select"/>}
                 <th scope="col" className="cell-fecha ordenable up">Fecha</th>
                 <th scope="col" className="cell-nombre ordenable">Vidrierista</th>
                 <th scope="col" className="cell-cuenta">Cuenta destino</th>
@@ -151,16 +183,16 @@ const DataHeader = () => {
                 <th scope="col" className="cell-monto ordenable">Monto</th>
                 <th scope="col" className="cell-factura ordenable">Factura</th>
                 <th scope="col" className="cell-accion" />
-                <th scope="col" className="cell-mas" />
+                {useHistory ? <></> : <th scope="col" className="cell-mas"/>}
             </tr>
         </thead>
     );
 }
 
-const DataBody = () => {
+const DataBody = ({useHistory}) => {
     return (
         <tbody>
-            { mockData.map((data) => {return <DataField data={data} key={data.key}/>}) }
+            {mockData.map((data) => { return <DataField data={data} key={data.key} useHistory={useHistory}/> })}
         </tbody>
     );
 }
@@ -238,36 +270,41 @@ const mockData = [
     }
 ]
 
-const DataField = ({data}) => {
+const DataField = ({ data, useHistory }) => {
 
     const handleRegisterPayment = (e) => {
         e.preventDefault();
         // TODO call firebase, use data.id
     }
 
-    return(
+    const handleShowPayment = (e) => {
+        e.preventDefault();
+        // TODO call firebase, use data.id
+    }
+
+    return (
         <tr className>
-            <td scope="col" className="cell-select"><input type="checkbox" /></td>
+            {useHistory ? <></> : <td scope="col" className="cell-select"><input type="checkbox" /></td>}
             <th scope="col" className="cell-fecha">{data.dateOfPayment}</th>
             <td scope="col" className="cell-nombre">{data.name}</td>
             <td scope="col" className={"cell-cuenta" + (data.nro === "none" ? " c-error" : "")}>
                 {
                     data.nro === "none" ?
-                    <>
-                        <i className="far fa-exclamation-triangle" /> Reclamar
-                    </>
-                    :
-                    <>
-                        {data.nro}
-                        <span className="aclaracion">CUIT: {data.cuit}</span>
-                    </>
+                        <>
+                            <i className="far fa-exclamation-triangle" /> Reclamar
+                        </>
+                        :
+                        <>
+                            {data.nro}
+                            <span className="aclaracion">CUIT: {data.cuit}</span>
+                        </>
                 }
             </td>
             <td scope="col" className="cell-concepto">{data.concept.value}</td>
             <td scope="col" className="cell-monto">${data.concept.amount}</td>
             <td scope="col" className={"cell-factura" + (data.concept.state === "claim" ? " c-error" : "")}>
                 {
-                    data.concept.state === "claim" ? 
+                    data.concept.state === "claim" ?
                         <>
                             <i className="far fa-exclamation-triangle" /> Reclamar
                         </>
@@ -279,32 +316,42 @@ const DataField = ({data}) => {
                 }
             </td>
             <td scope="col" className="cell-accion">
-                <a href="#" className="btn btn-primary btn-small" onClick={handleRegisterPayment}>Registrar pago</a>
+                {
+                    useHistory ? 
+                        <a href="#" className="btn btn-outline btn-small" onClick={handleShowPayment}>Ver</a>
+                        :
+                        <a href="#" className="btn btn-primary btn-small" onClick={handleRegisterPayment}>Registrar pago</a>
+                }
+                
             </td>
-            <td scope="col" className="cell-mas">
-                <div className="btn-group">
-                    <a href="#" className="btn btn-tertiary" data-bs-toggle="dropdown" aria-expanded="false"><i className="far fa-ellipsis-h" /></a>
-                    <ul className="dropdown-menu">
-                        <li><a className="dropdown-item" href="#">Cargar factura</a></li>
-                        <li><a className="dropdown-item" href="#">Registrar pago</a></li>
-                        <li><a className="dropdown-item" href="#">Ver vidrierista</a></li>
-                    </ul>
-                </div>
-            </td>
+            {useHistory ? 
+                <></> 
+                :
+                <td scope="col" className="cell-mas">
+                    <div className="btn-group">
+                        <a href="#" className="btn btn-tertiary" data-bs-toggle="dropdown" aria-expanded="false"><i className="far fa-ellipsis-h" /></a>
+                        <ul className="dropdown-menu">
+                            <li><a className="dropdown-item" href="#">Cargar factura</a></li>
+                            <li><a className="dropdown-item" href="#">Registrar pago</a></li>
+                            <li><a className="dropdown-item" href="#">Ver vidrierista</a></li>
+                        </ul>
+                    </div>
+                </td>
+            }
         </tr>
     );
 }
 
-const Data = () => {
+const Data = ({useHistory}) => {
     return (
         <div className="pagos-all">
             <div className="table-responsive">
                 <table className="table admin-table table-hover">
-                    <DataHeader/>
-                    <DataBody/>
+                    <DataHeader useHistory={useHistory}/>
+                    <DataBody useHistory={useHistory}/>
                 </table>
             </div>
-            <Pageable/>
+            <Pageable />
         </div>
     );
 }
@@ -319,7 +366,7 @@ const Pageable = () => {
     }
 
     const mockTotalPages = 3;
-    
+
     const increase = (e) => {
         e.preventDefault();
         setMockCurrentPage(mockCurrentPage + 1)
@@ -334,37 +381,37 @@ const Pageable = () => {
         <div className="btn-set">
             <nav aria-label="..." className="table-pagination">
                 <ul className="pagination">
-                    <li className="page-item disabled"/>
+                    <li className="page-item disabled" />
                     <li className="page-item">
                         {
                             mockCurrentPage !== 1 ?
                                 <a className="page-link" href="#" aria-label="Anterior" onClick={decrease}>
                                     <span aria-hidden="true">«</span>
                                 </a>
-                            :
+                                :
                                 <>
                                 </>
                         }
                     </li>
-                    { 
-                        Array.from({length: mockTotalPages}, (_, index) => index + 1).map(number => 
-                                <Page 
-                                    handleNewActualPage={handleNewActualPage} 
-                                    number={number} 
-                                    currentPage={mockCurrentPage} 
-                                    key={number}
-                                />
-                            )
+                    {
+                        Array.from({ length: mockTotalPages }, (_, index) => index + 1).map(number =>
+                            <Page
+                                handleNewActualPage={handleNewActualPage}
+                                number={number}
+                                currentPage={mockCurrentPage}
+                                key={number}
+                            />
+                        )
                     }
                     <li className="page-item">
                         {
                             mockCurrentPage !== mockTotalPages ?
-                            <a className="page-link" href="#" aria-label="Siguiente" onClick={increase}>
-                                <span aria-hidden="true">»</span>
-                            </a>
-                        :
-                            <>
-                            </>
+                                <a className="page-link" href="#" aria-label="Siguiente" onClick={increase}>
+                                    <span aria-hidden="true">»</span>
+                                </a>
+                                :
+                                <>
+                                </>
                         }
                     </li>
                 </ul>
@@ -373,7 +420,7 @@ const Pageable = () => {
     );
 }
 
-const Page = ({number, currentPage, handleNewActualPage}) => {
+const Page = ({ number, currentPage, handleNewActualPage }) => {
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -383,12 +430,12 @@ const Page = ({number, currentPage, handleNewActualPage}) => {
     return (
         <>
             {
-            number === currentPage ? 
-                <li className="page-item active" aria-current="page">
-                    <a className="page-link" href="#">{number}</a>
-                </li>
-                :
-                <li className="page-item"><a className="page-link" href="#" onClick={handleClick}>{number}</a></li>
+                number === currentPage ?
+                    <li className="page-item active" aria-current="page">
+                        <a className="page-link" href="#">{number}</a>
+                    </li>
+                    :
+                    <li className="page-item"><a className="page-link" href="#" onClick={handleClick}>{number}</a></li>
             }
         </>
     );
