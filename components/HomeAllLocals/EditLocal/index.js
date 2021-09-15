@@ -37,23 +37,37 @@ const EditLocal = ({localId, admin}) => {
     }
 
     return (
-        <div>
-            <EditLocal.Header local={local}/>
-            {
-                admin ?
-                    <EditLocal.BodyAdmin localId={localId}/>
-                    :
-                    <EditLocal.BodyUser
-                        phone={phone} 
-                        handlePhone={handlePhone} 
-                        additionalIndications={additionalIndications} 
-                        handleAdditionalIndications={handleAdditionalIndications}
-                        save={save}
-                        local={local}
-                    />
-            }
-            
-      </div>
+        <div className="admin-local-individual">
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-12 breadcrumb">
+                        <div className="inner-container">
+                            <a href="#"><i className="far fa-arrow-left"></i> Volver</a> {/*TODO */}
+                        </div>
+                    </div>
+                    <div className="col-12 card-page-container">
+                        <div className="card-page-content">
+                            <div className="inner-container">
+                                <EditLocal.Header local={local}/>
+                                    {
+                                        admin ?
+                                            <EditLocal.BodyAdmin localId={localId}/>
+                                            :
+                                            <EditLocal.BodyUser
+                                                phone={phone} 
+                                                handlePhone={handlePhone} 
+                                                additionalIndications={additionalIndications} 
+                                                handleAdditionalIndications={handleAdditionalIndications}
+                                                save={save}
+                                                local={local}
+                                            />
+                                    }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }
 
@@ -127,6 +141,7 @@ const ContactSection = ({localId}) => {
                     <p className="label">Cliente</p>
                     <p className="data">
                         {mockInfo.name}
+                        <p/>
                         <a href={"mailto:" + mockInfo.email} className="email">{mockInfo.email}</a>
                     </p>
                 </div>
