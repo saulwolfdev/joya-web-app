@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import { useState } from 'react';
 import UserOrderContainer from '../UserOrderContainer'
 import Body from './Body'
 import EditLocal from './EditLocal';

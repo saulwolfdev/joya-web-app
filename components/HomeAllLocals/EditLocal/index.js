@@ -1,24 +1,14 @@
-import React,{useState} from 'react';
+import { useState } from 'react';
 import Img from '../../Img'
+import { mockLocal, listMockData } from './data'
 
 const EditLocal = ({localId, admin}) => {
 
+    let local = mockLocal;
+    local.localId = localId;
+
     const [phone, setPhone] = useState('+5491151234567');
     const [additionalIndications, setAdditionalIndications] = useState("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut ante eget nulla sodales efficitur. Cras tempor neque risus, nec porta urna lobortis ac.");
-
-    let local = { // TODO firebase
-        id: localId,
-        name: "Kentucky Santa Fe",
-        direction: "Av. Santa Fe 2702",
-        zone: "Palermo, Comuna 12",
-        surface: "64",
-        time: "10 minutos",
-        additionalIndications: '',
-        record: "11/12/2021",
-        lastOrder: "Mi 15/4/2020, 15:05hs",
-        totalOrder: "254",
-        img: "kentucky.jpg"
-    }
 
     const handlePhone = (e) => {
         const value = e.currentTarget.value;
@@ -292,189 +282,6 @@ const THeader = () => {
 }
 Table.THeader = THeader;
 
-const listMockData = [
-    {
-        key: "001",
-        date: "Mie 07/04/2020",
-        timeRange: "11:00 - 17:00",
-        price: "$7186",
-        state: "Completado", // TODO: enum
-        report: true,
-        name: "Juan Perez"
-    },
-    {
-        key: "002",
-        date: "Mie 07/04/2020",
-        timeRange: "11:00 - 17:00",
-        price: "$7186",
-        state: "Completado", // TODO: enum
-        report: false,
-        name: "Juan Perez"
-    },
-    {
-        key: "003",
-        date: "Mie 07/04/2020",
-        timeRange: "11:00 - 17:00",
-        price: "$7186",
-        state: "Completado", // TODO: enum
-        report: false,
-        name: "Juan Perez"
-    },
-    {
-        key: "004",
-        date: "Mie 07/04/2020",
-        timeRange: "11:00 - 17:00",
-        price: "$7186",
-        state: "Completado", // TODO: enum
-        report: true,
-        name: "Juan Perez"
-    },
-    {
-        key: "005",
-        date: "Mie 07/04/2020",
-        timeRange: "11:00 - 17:00",
-        price: "$7186",
-        state: "Completado", // TODO: enum
-        report: false,
-        name: "Juan Perez"
-    },
-    {
-        key: "006",
-        date: "Mie 07/04/2020",
-        timeRange: "11:00 - 17:00",
-        price: "$7186",
-        state: "Completado", // TODO: enum
-        report: false,
-        name: "Juan Perez"
-    },
-    {
-        key: "007",
-        date: "Mie 07/04/2020",
-        timeRange: "11:00 - 17:00",
-        price: "$7186",
-        state: "Completado", // TODO: enum
-        report: true,
-        name: "Juan Perez"
-    },
-    {
-        key: "008",
-        date: "Mie 07/04/2020",
-        timeRange: "11:00 - 17:00",
-        price: "$7186",
-        state: "Completado", // TODO: enum
-        report: false,
-        name: "Juan Perez"
-    },
-    {
-        key: "009",
-        date: "Mie 07/04/2020",
-        timeRange: "11:00 - 17:00",
-        price: "$7186",
-        state: "Completado", // TODO: enum
-        report: false,
-        name: "Juan Perez"
-    },
-    {
-        key: "010",
-        date: "Mie 07/04/2020",
-        timeRange: "11:00 - 17:00",
-        price: "$7186",
-        state: "Completado", // TODO: enum
-        report: true,
-        name: "Juan Perez"
-    },
-    {
-        key: "011",
-        date: "Mie 07/04/2020",
-        timeRange: "11:00 - 17:00",
-        price: "$7186",
-        state: "Completado", // TODO: enum
-        report: false,
-        name: "Juan Perez"
-    },
-    {
-        key: "012",
-        date: "Mie 07/04/2020",
-        timeRange: "11:00 - 17:00",
-        price: "$7186",
-        state: "Completado", // TODO: enum
-        report: false,
-        name: "Juan Perez"
-    },
-    {
-        key: "013",
-        date: "Mie 07/04/2020",
-        timeRange: "11:00 - 17:00",
-        price: "$7186",
-        state: "Completado", // TODO: enum
-        report: true,
-        name: "Juan Perez"
-    },
-    {
-        key: "014",
-        date: "Mie 07/04/2020",
-        timeRange: "11:00 - 17:00",
-        price: "$7186",
-        state: "Completado", // TODO: enum
-        report: false,
-        name: "Juan Perez"
-    },
-    {
-        key: "015",
-        date: "Mie 07/04/2020",
-        timeRange: "11:00 - 17:00",
-        price: "$7186",
-        state: "Completado", // TODO: enum
-        report: false,
-        name: "Juan Perez"
-    },
-    {
-        key: "016",
-        date: "Mie 07/04/2020",
-        timeRange: "11:00 - 17:00",
-        price: "$7186",
-        state: "Completado", // TODO: enum
-        report: true,
-        name: "Juan Perez"
-    },
-    {
-        key: "017",
-        date: "Mie 07/04/2020",
-        timeRange: "11:00 - 17:00",
-        price: "$7186",
-        state: "Completado", // TODO: enum
-        report: false,
-        name: "Juan Perez"
-    },
-    {
-        key: "018",
-        date: "Mie 07/04/2020",
-        timeRange: "11:00 - 17:00",
-        price: "$7186",
-        state: "Completado", // TODO: enum
-        report: false,
-        name: "Juan Perez"
-    },
-    {
-        key: "019",
-        date: "Mie 07/04/2020",
-        timeRange: "11:00 - 17:00",
-        price: "$7186",
-        state: "Completado", // TODO: enum
-        report: true,
-        name: "Juan Perez"
-    },
-    {
-        key: "020",
-        date: "Mie 07/04/2020",
-        timeRange: "11:00 - 17:00",
-        price: "$7186",
-        state: "Completado", // TODO: enum
-        report: false,
-        name: "Juan Perez"
-    }
-]
-
 const FieldData = ({data}) => {
     return (
         <tr className="alerta-pendiente">
@@ -520,7 +327,10 @@ const Header = ({local}) => {
                         <p className="label">Tiempo estimado</p>
                         <p className="data">{local.time}</p>
                     </div>
-                    <div className="indicaciones col-12 data-piece"/>
+                    <div className="indicaciones col-12 data-piece">
+                        <p className="label">Indicaciones adicionales</p>
+                        <p className="data">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut ante eget nulla sodales efficitur. Cras tempor neque risus, nec porta urna lobortis ac. </p>
+                    </div>
                 </div>
             </div>
             <div className="col-md-6 local-imagen">
