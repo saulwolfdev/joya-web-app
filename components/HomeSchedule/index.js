@@ -9,14 +9,9 @@ const HomeSchedule = () => {
                 <div className="menu">
                     <div className="container-fluid">
                         <ul>
-                        {/*<li><a href="#">Resumen</a></li>*/}
-                        <li className="active">
-                            <a href="/admin-agenda.html">Recorridos</a>
-                        </li>
-                        <li>
-                            <a href="#">Urgencias</a>
-                        </li>
-                        {/*<li class="active"><a href="#">Perfil</a></li>*/}
+                            <li className="active">
+                                <a href="/admin-agenda.html">Recorridos</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
