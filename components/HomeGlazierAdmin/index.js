@@ -77,9 +77,6 @@ const Metrics = () => {
                     <div className="col-auto">
                         <p className="value"><span className={"number" + (mockMetrics.totalApplicants > 0 ? " c-warning" : "")}>{mockMetrics.totalApplicants}</span></p>
                     </div>
-                    <div className="col-auto interpretation">
-                        <a href="#" className="btn btn-outline btn-small">Ver</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -145,7 +142,6 @@ const DataHeader = () => {
                 <th scope="col" className="cell-recorridostotales ordenable down">Recorridos totales</th>
                 <th scope="col" className="cell-activo ordenable">Activo desde</th>
                 <th scope="col" className="cell-estado ordenable">Estado</th>
-                <th scope="col" className="cell-accion" />
                 <th scope="col" className="cell-mas" />
             </tr>
         </thead>
@@ -153,12 +149,6 @@ const DataHeader = () => {
 }
 
 const DataField = ({data, handleShownProfileGlazier, setGlazierId}) => {
-
-    const contact = (e) => {
-        e.preventDefault();
-        setGlazierId(data.key);
-        handleContactGlazier(true);
-    }
 
     return(
         <tr className={
@@ -173,15 +163,12 @@ const DataField = ({data, handleShownProfileGlazier, setGlazierId}) => {
             <td scope="col" className="cell-recorridostotales">{data.totalTours}</td>
             <td scope="col" className="cell-activo">{data.lastCheck}</td>
             <td scope="col" className="cell-estado">{data.glazierApproved}</td>
-            <td scope="col" className="cell-accion">
-                <a href="#" className="btn btn-outline btn-small" onClick={contact}>Contactar</a>
-            </td>
             <td scope="col" className="cell-mas">
                 <div className="btn-group">
                     <a href="#" className="btn btn-tertiary" data-bs-toggle="dropdown" aria-expanded="false"><i className="far fa-ellipsis-h" /></a>
                     <ul className="dropdown-menu">
-                        <li><a className="dropdown-item" href="admin-vidrierista.html">Ver perfil</a></li>
-                        <li><a className="dropdown-item" href="admin-vidrierista-nuevo.html">Editar</a></li>
+                        <li><a className="dropdown-item" href="#">Ver perfil</a></li>
+                        <li><a className="dropdown-item" href="#">Editar</a></li>
                     </ul>
                 </div>
             </td>
