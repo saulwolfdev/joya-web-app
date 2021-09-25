@@ -45,9 +45,7 @@ const Metrics = () => {
     const mockMetrics = {
         total: "105",
         totalActive: "80",
-        pendingOrders: "75",
-        percentVsLastMonth: "-2",
-        expired: "25"
+        percentVsLastMonth: "-2"
     }
 
     return (
@@ -59,14 +57,6 @@ const Metrics = () => {
             <div className="col-auto stat">
                 <p className="label">Vigentes</p>
                 <p className="value"><span className="number">{mockMetrics.totalActive}</span> </p>
-            </div>
-            <div className="col-auto stat">
-                <p className="label">Pendientes de pago</p>
-                <p className="value"><span className="number">{mockMetrics.pendingOrders}</span></p>
-            </div>
-            <div className="col-auto stat">
-                <p className="label">Vencidos</p>
-                <p className="value"><span className="number">{mockMetrics.expired}</span></p>
             </div>
         </div>
     );
@@ -141,7 +131,6 @@ const mockData = [
         totalLocals: 7,
         totalOrders: 24,
         activePeriod: "15/10/19, 1 año y 3 meses",
-        subscription: "Suscripción vigente",
         complain: true,
         isNewClient: false
     },
@@ -151,7 +140,6 @@ const mockData = [
         totalLocals: 7,
         totalOrders: 24,
         activePeriod: "15/10/19, 1 año y 3 meses",
-        subscription: "Suscripción vencida",
         complain: false,
         isNewClient: false
     },
@@ -161,7 +149,6 @@ const mockData = [
         totalLocals: 7,
         totalOrders: 24,
         activePeriod: "15/10/19, 1 año y 3 meses",
-        subscription: "Suscripción vigente",
         complain: false,
         isNewClient: false
     },
@@ -171,7 +158,6 @@ const mockData = [
         totalLocals: 7,
         totalOrders: 24,
         activePeriod: "15/10/19, 1 año y 3 meses",
-        subscription: "Suscripción vigente",
         complain: false,
         isNewClient: false
     },
@@ -181,7 +167,6 @@ const mockData = [
         totalLocals: 7,
         totalOrders: 24,
         activePeriod: "15/10/19, 1 año y 3 meses",
-        subscription: "Suscripción vigente",
         complain: false,
         isNewClient: true
     },
@@ -191,7 +176,6 @@ const mockData = [
         totalLocals: 7,
         totalOrders: 24,
         activePeriod: "15/10/19, 1 año y 3 meses",
-        subscription: "Suscripción vigente",
         complain: false,
         isNewClient: false
     },
@@ -201,7 +185,6 @@ const mockData = [
         totalLocals: 7,
         totalOrders: 24,
         activePeriod: "15/10/19, 1 año y 3 meses",
-        subscription: "Suscripción pendiente de pago",
         complain: false,
         isNewClient: false
     },
@@ -211,7 +194,6 @@ const mockData = [
         totalLocals: 7,
         totalOrders: 24,
         activePeriod: "15/10/19, 1 año y 3 meses",
-        subscription: "Sin suscripción",
         complain: false,
         isNewClient: false
     },
@@ -221,7 +203,6 @@ const mockData = [
         totalLocals: 7,
         totalOrders: 24,
         activePeriod: "15/10/19, 1 año y 3 meses",
-        subscription: "Suscripción vigente",
         complain: false,
         isNewClient: false
     },
@@ -231,7 +212,6 @@ const mockData = [
         totalLocals: 7,
         totalOrders: 24,
         activePeriod: "15/10/19, 1 año y 3 meses",
-        subscription: "Suscripción vigente",
         complain: false,
         isNewClient: false
     },
@@ -241,7 +221,6 @@ const mockData = [
         totalLocals: 7,
         totalOrders: 24,
         activePeriod: "15/10/19, 1 año y 3 meses",
-        subscription: "Suscripción vencida",
         complain: true,
         isNewClient: false
     },
@@ -251,7 +230,6 @@ const mockData = [
         totalLocals: 7,
         totalOrders: 24,
         activePeriod: "15/10/19, 1 año y 3 meses",
-        subscription: "Suscripción vigente",
         complain: false,
         isNewClient: false
     },
@@ -261,7 +239,6 @@ const mockData = [
         totalLocals: 7,
         totalOrders: 24,
         activePeriod: "15/10/19, 1 año y 3 meses",
-        subscription: "Suscripción vencida",
         complain: false,
         isNewClient: false
     },
@@ -271,7 +248,6 @@ const mockData = [
         totalLocals: 7,
         totalOrders: 24,
         activePeriod: "15/10/19, 1 año y 3 meses",
-        subscription: "Suscripción vigente",
         complain: false,
         isNewClient: false
     },
@@ -281,7 +257,6 @@ const mockData = [
         totalLocals: 7,
         totalOrders: 24,
         activePeriod: "15/10/19, 1 año y 3 meses",
-        subscription: "Suscripción vigente",
         complain: true,
         isNewClient: false
     },
@@ -291,7 +266,6 @@ const mockData = [
         totalLocals: 7,
         totalOrders: 24,
         activePeriod: "15/10/19, 1 año y 3 meses",
-        subscription: "Suscripción pendiente de pago",
         complain: false,
         isNewClient: true
     }
@@ -311,10 +285,6 @@ const DataField = ({data}) => {
             <td scope="col" className="cell-locales">{data.totalLocals} <span className="d-none d-lg-inline">locales</span></td>
             <td scope="col" className="cell-pedidos">{data.totalOrders}</td>
             <td scope="col" className="cell-activo">{data.activePeriod}</td>
-            <td scope="col" className="cell-suscripcion">{data.subscription}</td>
-            <td scope="col" className="cell-accion">
-                <a href="#" className="btn btn-outline btn-small">Contactar</a>
-            </td>
         </tr>
     );
 }
@@ -351,8 +321,6 @@ const DataHeader = () => {
                 <th scope="col" className="cell-locales ordenable up">Locales</th>
                 <th scope="col" className="cell-pedidos ordenable down">Pedidos este mes</th>
                 <th scope="col" className="cell-activo ordenable">Activo desde</th>
-                <th scope="col" className="cell-suscripcion ordenable">Suscripción</th>
-                <th scope="col" className="cell-accion" />
             </tr>
         </thead>
     );
