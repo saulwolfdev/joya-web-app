@@ -1,10 +1,5 @@
 const DetailsGlazier = ({data}) => {
 
-    const handleResetPassword = (e) => {
-        e.preventDefault();
-        // TODO
-    }
-
     const handleEditProfile = (e) => {
         e.preventDefault();
         // TODO
@@ -51,14 +46,6 @@ const DetailsGlazier = ({data}) => {
                             <div className="col-md-6 data-piece">
                                 <p className="label">Registro</p>
                                 <p className="data">{data.registeredDate}</p>
-                            </div>
-                            <div className="col-md-6 data-piece">
-                                <p className="label">Última actividad</p>
-                                <p className="data">{data.lastActivity}</p>
-                            </div>
-                            <div className="col-md-12 direccion data-piece">
-                                <p className="label">Contraseña</p>
-                                <p className="data">Última actualización {data.passwordLastModified}. <a href="#" onClick={handleResetPassword}>Resetear contraseña</a></p>
                             </div>
                             <div className="col-md-12 direccion data-piece">
                                 <p className="label">Notas</p>

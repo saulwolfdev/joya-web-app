@@ -1,13 +1,6 @@
-import { useState } from 'react';
 import DetailsGlazier from './DetailsGlazier'
 
 const ProfileGlazier = () => {
-
-    const [activeTab, setActiveTab] = useState("Perfil");
-
-    const handleActiveTab = (value) => {
-        setActiveTab(value);
-    }
 
     const mockData = {
         isNew: true,
@@ -19,8 +12,6 @@ const ProfileGlazier = () => {
         bithdate: "1/12/1992",
         nacionality: "Argentino",
         registeredDate: "21/1/2021",
-        lastActivity: "Mi 15/4/2021, 15:05hs",
-        passwordLastModified: "10/4/2020, 11:45hs",
         metrics: {
             tours: {
                 inThisMonth: 156,
@@ -55,34 +46,19 @@ const ProfileGlazier = () => {
                 </div>
             </div>
             <div className="more-content">
-                <ProfileGlazier.Tabs handleActiveTab={handleActiveTab} activeTab={activeTab}/>
-                {activeTab === "Perfil" ? <DetailsGlazier data={mockData}/> : <></>}
+                <ProfileGlazier.Tabs/>
+                <DetailsGlazier data={mockData}/>
             </div>
         </div>
     );
 }
 
-const Tabs = ({handleActiveTab, activeTab}) => {
+const Tabs = () => {
     return (
         <div className="menu">
             <div className="container-fluid">
                 <ul>
-                    <li className={activeTab === "Trabajos" ? "active" : ""}><a href="#" onClick={(e) => {
-                            e.preventDefault();
-                            handleActiveTab("Trabajos")}
-                        }>Trabajos</a></li>
-                    <li className={activeTab === "Historial" ? "active" : ""}><a href="#" onClick={(e) => {
-                            e.preventDefault();
-                            handleActiveTab("Historial")}
-                        }>Historial</a></li> {/* TODO href="admin-pagos-historial.html"*/}
-                    <li className={activeTab === "Reseñas" ? "active" : ""}><a href="#" onClick={(e) => {
-                            e.preventDefault();
-                            handleActiveTab("Reseñas")}
-                        }>Reseñas</a></li>
-                    <li className={activeTab === "Perfil" ? "active" : ""}><a href="#" onClick={(e) => {
-                            e.preventDefault();
-                            handleActiveTab("Perfil")}
-                        }>Perfil</a></li>
+                    <li className="active"><a href="#">Perfil</a></li>
                 </ul>
             </div>
         </div>
@@ -119,10 +95,6 @@ const Header = ({data}) => {
                     {data.type === "Postulante" ? <span className="c-warning">Postulante</span> : <></>}
                     {data.type === "Suspendido" ? <span className="c-error">Suspendido</span> : <></>}
                 </p>
-            </div>
-            <div className="btn-set col-auto">
-                <button className="btn btn-primary btn-small" onClick={handleContact}>Contactar</button>
-                <button className="btn btn-misc"><i className="far fa-ellipsis-h" /></button>
             </div>
         </div>
     );
